@@ -1,0 +1,106 @@
+---
+layout: post
+title: The NetBSD OpenSSL PowerPC oopsie
+---
+Last year, the NetBSD team has started to maintain an official port of the operating system to the Nintendo Wii, powered
+by a custom PowerPC processor by IBM.<br><br>
+
+Out of curiosity, I tried to run it on my console.<br><br>
+
+<!--more-->
+
+Everything went smooth, until when I tried running <code>pkg_add pkgin</code>; the program would just hang immediately
+and wouldn't respond.<br><br>
+
+I then whipped out <code>gdb</code> and ran the program through the debugger; I discovered that <code>pkg_add</code>
+crashed during OpenSSL initialization. More specifically, it was crashing with an illegal instruction exception in
+<code>OPENSSL_ppc64_probe()</code> from <code>/usr/bin/libcrypto.so.15</code>.<br><br>
+<div class="window-body">
+    <div class="window image-block">
+        <div class="window-body">
+            <div class="title-bar">
+                <div class="title-bar-text">The first crash</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <a href="/assets/pictures/posts/openssl_crash_1.jpg"><img src="/assets/pictures/posts/openssl_crash_1.jpg"
+                    class="body-photo"></a>
+        </div>
+    </div>
+</div><br>
+<h4><i>Wait, what?</i></h4>
+PPC64? But the Wii only has a 32 bit CPU, no wonder it's crashing!<br><br>
+I spent some more time disassembling parts of <code>libcrypto</code> to figure out why an illegal instruction exception
+was thrown in the first place. I ended up taking a look at the same function that crashed,
+<code>OPENSSL_ppc64_probe</code>. This is what I found:<br><br>
+<div class="window-body">
+    <div class="window image-block">
+        <div class="window-body">
+            <div class="title-bar">
+                <div class="title-bar-text">The culprit</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <a href="/assets/pictures/posts/openssl_crash_2.jpg"><img src="/assets/pictures/posts/openssl_crash_2.jpg"
+                    class="body-photo"></a>
+        </div>
+    </div>
+</div><br>
+That <code>fcfid</code> instruction is, indeed, present only on 64-bit PowerPC CPUs, as you can see from <a
+    href="https://www.ibm.com/docs/en/xl-fortran-aix/16.1.0?topic=extension-fcfidi" target="_blank">IBM's
+    website</a>:<br><br>
+<div class="window-body">
+    <div class="window image-block">
+        <div class="window-body">
+            <div class="title-bar">
+                <div class="title-bar-text">The culprit</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <a href="/assets/pictures/posts/fcfid.jpg"><img src="/assets/pictures/posts/fcfid.jpg"
+                    class="body-photo"></a>
+        </div>
+    </div>
+</div><br>
+Testing on real hardware confirms this (again!): the GNU assembler (<code>as</code>) indeed does not recognize the
+instruction.<br><br>
+<div class="window-body">
+    <div class="window image-block">
+        <div class="window-body">
+            <div class="title-bar">
+                <div class="title-bar-text">The culprit</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <a href="/assets/pictures/posts/openssl_crash_3.jpg"><img src="/assets/pictures/posts/openssl_crash_3.jpg"
+                    class="body-photo"></a>
+        </div>
+    </div>
+</div><br>
+Digging out NetBSD's source code, I can indeed confirm that <code>libcrypto</code> <a
+    href="https://ftp.netbsd.org/pub/NetBSD/NetBSD-release-10/src/crypto/external/bsd/openssl/lib/libcrypto/arch/powerpc/ppccpuid.S"
+    target="_blank">contains this function.</a> Its scope appears to check if the CPU the OS is running on supports
+64-bit
+integer and floating point operations. <br><br>
+The problem is that this code is part of the <code>powerpc</code> source tree, which is the 32-bit flavour of the
+architecture, so running this function will always raise an illegal instruction exception:<br><br>
+<div class="window-body">
+    <div class="window image-block">
+        <div class="window-body">
+            <div class="title-bar">
+                <div class="title-bar-text">The culprit</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <a href="/assets/pictures/posts/ppc64_probe.jpg"><img src="/assets/pictures/posts/ppc64_probe.jpg"
+                    style="width: 50%; height: 50%;" class="body-photo"></a>
+        </div>
+    </div>
+</div><br>
+In the end, I gave up trying to figure this out - but this bug still persists in what was the latest PowerPC release
+when all of this happened (April 23, 2025).<br><br>

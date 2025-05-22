@@ -1,0 +1,86 @@
+---
+layout: default
+title: My music
+---
+I publish my music here (only the good stuff though) and I am part of a band centered on video game music remixes, <a
+    href="https://youtube.com/@ostremixes" target="_blank">WhenWorldCollides</a>.
+<br><br>
+For now I use FL Studio/FLEX, but I plan to learn Reaper in the future. Sometimes I like to mess with soundfont stuff,
+mainly from the Roland SC-55/Sound Canvas.
+<br><br><br>
+
+<div class="window">
+    <div class="title-bar">
+        <div class="title-bar-text">My songs</div>
+        <div class="title-bar-controls">
+            <button aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <div class="sunken-panel pics">
+            <table>
+                <thead style="text-align: center;">
+                    <tr>
+                        <th>Play the song</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Download the song</th>
+                        <th>YouTube link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for song in site.data.music.music %}
+                    <tr>
+                        <td class="songs">
+                            <audio controls src="{{ song.url }}" class="visible-music-player">
+                        </td>
+                        <td style="text-align: center;">
+                            {{ song.title }}
+                        </td>
+                        <td style="text-align: center;">
+                            {{ song.description }}
+                        </td>
+                        <td style="text-align: center;">
+                            <a href="{{ song.url }}">Link</a>
+                        </td>
+                        <td style="text-align: center;">
+                            {% if song.is_on_yt == 'yes' %}
+                            <a href="{{ song.yt_url }}">Link</a>
+                            {% endif %}
+                            {% if song.is_on_yt == 'no' %}
+                            Not available
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div><br>
+<div class="window-body">
+
+</div>
+
+<div class="window">
+    <div class="title-bar">
+        <div class="title-bar-text">Other music projects</div>
+        <div class="title-bar-controls">
+            <button aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <ul>
+            <li>
+                I remade the Touhou 6: EoSD soundtrack reimagining for the OPL3 synth.
+                If you want to listen to it, click <a href="/projects/music/eosd_opl3.html">here</a>.
+            </li><br>
+            <li>
+                I have documented the General MIDI instrument mapping for my digital piano (Furstein DP300).
+                Check <a href="projects/music/midi_mappings.html">this page</a> for the documentation.
+            </li>
+        </ul>
+
+    </div>
+</div><br>

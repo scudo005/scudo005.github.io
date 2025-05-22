@@ -1,0 +1,60 @@
+---
+layout: default
+title: My photos
+---
+You can see some of my photos below. I also have a <a href="https://www.flickr.com/photos/202226920@N03" target="_blank">Flickr</a> page!
+<br><br>
+All shots here are done on two cameras:
+<ul>
+    <li>Canon EOS 1100D, with an EF-S 18-55mm lens</li>
+    <li>Xiaomi Redmi Note 10S (my phone)</li>
+</ul>
+You can click on the pictures to see them full screen.
+<br><br>
+
+<div class="window">
+    <div class="title-bar">
+        <div class="title-bar-text">My pics</div>
+        <div class="title-bar-controls">
+            <button aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <div class="sunken-panel pics">
+            <table>
+                <thead style="text-align: center;">
+                    <tr>
+                        <th>Preview</th>
+                        <th>Description</th>
+                        <th>Camera used</th>
+                        <th>Flickr link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for photo in site.data.photos.photos %}
+                    <tr>
+                        <td>
+                            <a href="{{ photo.url }}"><img src="{{ photo.url }}" class="embed-photo"></a>
+                        </td>
+                        <td>
+                            {{ photo.description }}
+                        </td>
+                        <td>
+                            {{ photo.camera_used }}
+                        </td>
+                        <td>
+                            {% if photo.is_on_flickr == 'yes' %}
+                            <a href="{{ photo.flickr_url }}">Link</a>
+                            {% endif %}
+                            {% if photo.is_on_flickr == 'no' %}
+                            Not available
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div><br>

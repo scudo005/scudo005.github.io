@@ -1,0 +1,13 @@
+list_name: switch 2 things that happened
+fact:
+  - title: Console release
+    date: June 5, 2025
+    description: The Nintendo Switch 2 releases worldwide at an MSRP of 450USD/EUR, with the main game being Mario Kart World, priced at 80USD/EUR. Other accessories are available at similar exhorbitant prices. As is the norm for any new popular hardware launch, some stores do run out of stock, though not as much as, say, the PS3's release, which had a similar price point.
+
+  - title: First userspace exploit found
+    date: June 5, 2025
+    description: BlueSky user David Buchanan, AKA retr0.id, discovers an user-land ROP exploit in the Switch 2's operating system that allows the user to take control of the console and call some Nintendo APIs (like initializing the GPU), as seen in this <a href="https://bsky.app/profile/retr0.id/post/3lqtwrndzf22w">post</a>.
+
+  - title: GameStop, being GameStop, breaks some consoles
+    date: June 5, 2025
+    description: <a href="https://www.tomshardware.com/video-games/nintendo/gamestop-nintendo-switch-2-customers-hit-with-punctured-screens-after-store-employees-staple-receipts-to-the-box" target="_blank">The news that made me want to open this page.</a>

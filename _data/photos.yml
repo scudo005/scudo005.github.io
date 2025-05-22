@@ -1,0 +1,19 @@
+list_name: My published photographs
+photos:
+  - url: /assets/pictures/wood.jpg
+    description: An old log.
+    camera_used: Canon EOS 1100D
+    is_on_flickr: 'yes'
+    flickr_url: https://www.flickr.com/photos/202226920@N03/54496630490
+
+  - url: /assets/pictures/blackbird.jpg
+    description: A blackbird.
+    camera_used: Redmi Note 10S
+    is_on_flickr: 'no'
+    flickr_url: ''
+
+  - url: /assets/pictures/flowers.jpg
+    description: No description available.
+    camera_used: Redmi Note 10S
+    is_on_flickr: 'no'
+    flickr_url: ''

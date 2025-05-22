@@ -1,0 +1,72 @@
+list_name: eosd
+music:
+  - url: /assets/mp3/my_music/th6_eosd_opl3/01_scarlet.mp3
+    title: A Dream More Scarlet than Red (Scarlet Beyond a Crimson Dream)
+    description: Title screen theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/02_scarlet.mp3
+    title: A Soul as Scarlet as a Ground Cherry
+    description: Stage 1 theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/03_apparitions.mp3
+    title: Apparitions Stalk the Night
+    description: Stage 1 Boss - Rumia's theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/04_lunate.mp3
+    title: Lunate Elf
+    description: Stage 2 theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/05_cirno.mp3
+    title: Tomboyish Girl in Love (Beloved Tomboyish Daughter)
+    description: Stage 2 Boss - Cirno's theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/06_chinese.mp3
+    title: Shanghai Scarlet Teahouse ~ Chinese Tea
+    description: Stage 3 theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/07_meiji.mp3
+    title: Shanghai Alice of Meiji 17
+    description: Stage 3 Boss - Hong Meiling's theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/08_library.mp3
+    title: Voile, the Magic Library
+    description: Stage 4 theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/09_room.mp3
+    title: Locked Girl ~ The Girl's Sealed Room
+    description: Stage 4 Boss - Patchouli Knowledge's theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/10_maid.mp3
+    title: The Maid and the Pocket Watch of Blood
+    description: Stage 5 theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/11_luna.mp3
+    title: Lunar Clock ~ Luna Dial
+    description: Stage 5 Boss - Sakuya Izayoi's theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/12_descendant.mp3
+    title: The Young Descendant of Tepes
+    description: Stage 6 theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/13_princess.mp3
+    title: Septette for a Dead Princess
+    description: Stage 6 Boss - Remilia Scarlet's theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/14_magical.mp3
+    title: The Centennial Festival for Magical Girls
+    description: Extra Stage theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/15_owen.mp3
+    title: U.N. Owen Was Her?
+    description: Extra Stage Boss - Flandre Scarlet's theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/16_transient.mp3
+    title: An Eternity More Transient than Scarlet (Crimson Beyond a Fleeting Eternity)
+    description: Ending theme
+
+  - url: /assets/mp3/my_music/th6_eosd_opl3/17_crimson.mp3
+    title: Scarlet Chamber ~ Eastern Dream (Crimson Belvedere ~ Eastern Dream)
+    description: Staff Roll theme
+
+
+
