@@ -1,0 +1,14 @@
+---
+layout: default
+title: Switch 2 things that happened
+---
+<h2>{{ page.title }}</h2>
+<ul>
+    {% for fact in site.data.switch_2.facts %}
+    <li>
+        <h4>{{ fact.title }}</h4>
+        <b>{{ fact.date }}</b><br><br>
+        {{ fact.description }}
+    </li>
+    {% endfor %}
+</ul>
