@@ -3,21 +3,21 @@ pic:
   - description: "This is a picture of the full board:"
     title: Overview
     alt-text: A picture of a Wii motherboard, surrounded by the white plastic, on a wooden background.
-    url: /assets/pictures/rvl/overview.jpg
+    url: /assets/imgs/rvl/overview.jpg
 
   - description:
       'This is the <a href="https://wiibrew.org/wiki/Hardware/MX23L4005" target="_blank">MX23L4005</a>, a combined RTC,
       ROM and SRAM chip:'
     title: RTC
     alt-text: A small chip.
-    url: /assets/pictures/rvl/mx-rtc.jpg
+    url: /assets/imgs/rvl/mx-rtc.jpg
 
   - description: 'Here you can see the RVL-CPU-01 markings and the <a
       href="https://fccid.io/EW4DWMW004/User-Manual/Users-Manual-670440" target="_blank">Mitsumi DWM-W004</a> WiFi
       card:'
     title: WiFi
     alt-text: missing alt description, sorry screen readers, will fix asap
-    url: /assets/pictures/rvl/network.jpg
+    url: /assets/imgs/rvl/network.jpg
 
   - description:
       'Here you can see the <a href="https://usermanual.wiki/Mitsumi-Electric/WMLC43/pdf" target="_blank">Mitsumi
@@ -25,7 +25,7 @@ pic:
       card</a>:'
     title: Bluetooth
     alt-text: missing alt description, sorry screen readers, will fix asap
-    url: /assets/pictures/rvl/bt.jpg
+    url: /assets/imgs/rvl/bt.jpg
 
   - description:
       "This is the optical drive; the metal part locks the drive mechanism in place and allows the drive to pick up,
@@ -33,20 +33,20 @@ pic:
       That PCB contains a sensor that detects if a disc has been inserted, so the drive can pick it up and read it."
     title: "Optical drive #1"
     alt-text: missing alt description, sorry screen readers, will fix asap
-    url: /assets/pictures/rvl/dvd1.jpg
+    url: /assets/imgs/rvl/dvd1.jpg
 
   - description: "This is the optical drive without the metal retention."
     title: "Optical drive #2"
     alt-text: missing alt description, sorry screen readers, will fix asap
-    url: /assets/pictures/rvl/dvd2.jpg
+    url: /assets/imgs/rvl/dvd2.jpg
 
   - description: 'These are the optical drive controller chips: they manage all data exchanged between the <a href="https://wiibrew.org/wiki/Hardware/Starlet" target="_blank">Starlet</a> and the <a href="https://wiibrew.org/wiki/Hardware/Disc_Drive">disc drive</a>.'
     title: "Optical drive #3"
     alt-text: missing alt description, sorry screen readers, will fix asap
-    url: /assets/pictures/rvl/dvd-controller.jpg
+    url: /assets/imgs/rvl/dvd-controller.jpg
 
   - description: 'This board has some interesting sharpie marks.'
     title: "Sharpie"
     alt-text: Some chips laying on a circuit board; in the middle, there is something scribbled with a sharpie.
-    url: /assets/pictures/rvl/sharpie.jpg
+    url: /assets/imgs/rvl/sharpie.jpg
 
