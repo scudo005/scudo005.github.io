@@ -2,6 +2,7 @@ var links = Array.from(document.querySelectorAll('a'));
 var sound_play = document.getElementById('nav_button');
 var buttons = document.getElementsByTagName('button');
 
+// this check works only on Firefox; on Chromium, it just plays the sound.
 if (navigator.getAutoplayPolicy(sound_play) === 'allowed') {
     sound_play.play();
 }
