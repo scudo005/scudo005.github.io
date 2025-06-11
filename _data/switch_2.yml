@@ -32,3 +32,7 @@ facts:
   - title: GameStop, being GameStop, breaks some consoles
     date: June 5, 2025
     description: <a href="https://www.tomshardware.com/video-games/nintendo/gamestop-nintendo-switch-2-customers-hit-with-punctured-screens-after-store-employees-staple-receipts-to-the-box" target="_blank">The news that made me want to open this page.</a>
+
+  - title: Nintendo claims amazing Switch 2 sales
+    date: June 11, 2025
+    description: Nintendo <a href="https://x.com/NintendoAmerica/status/1932620051955270127?t=7wf1XvXq4aazO5h6liGZxg&s=19" target="_blank">claims has sold over 3.5 million units worldwide in its first four days</a>, becoming the fastest-selling Nintendo hardware ever globally. (And yes, I've checked, <a href="https://www.nintendo.co.jp/ir/finance/historical_data/xls/consolidated_sales_e2503.xlsx" target="blank">and it seems plausible.</a>)
