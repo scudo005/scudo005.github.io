@@ -1,0 +1,25 @@
+---
+layout: default
+title: Nintendo Wii RVL-CPU-01 motherboard imgs
+---
+<br>
+This is my PS2 motherboard; an SCPH-50004 console, with board revision GH-023 1-688-757-31.<br><br>
+<div class="window">
+    <div class="window-body"><br>
+        {% for pic in site.data.ps2_pics.pic %}
+        {{ pic.description }}<br><br><br>
+        <div class="window image-block">
+            <div class="window-body">
+                <div class="title-bar">
+                    <div class="title-bar-text">{{ pic.title }}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <a data-flickr-embed="true" href="{{ pic.url }}"><img src="{{ pic.src }}" alt="{{ pic.alt-text }}"
+                        class="body-photo" /></a>
+            </div>
+        </div><br><br>
+        {% endfor %}
+    </div>
+</div><br>
