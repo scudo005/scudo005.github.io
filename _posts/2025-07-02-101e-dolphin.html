@@ -12,7 +12,7 @@ I then tried to run in Dolphin, where I ended up having to patch out some infini
 0x8110c904:		lis r3, 0xcc00 ; load r3 with 0xcc00 &lt;&lt; 16 (r3 = 0xcc000000, we fill it with zeroes)
 0x8110c908:		addi r3, r3, 25256 ; r3 = 0xcc0062a8
 0x8110c90c:		bl 0x81111ef8
-0x81111ef8:		lwz r3, 0 (r3) ; this means: load r3 with [r3+0]. r3 is now pointing to open bus!
+0x81111ef8:		lwz r3, 0 (r3) ; r3 = [r3+0]. r3 is now pointing to open bus!
 0x81111efc:		blr ; branch to link register, return to 0x8110c90c+4
 0x8110c910:		stw r3, 0x000c (sp) ; store r3 (0xcc0062a8) in [sp+0xc] - stack frame data
 0x8110c914:		lwz r4, 0x0010 (sp) ; load the contents of [sp+0x10] - stack frame data
@@ -37,7 +37,7 @@ This code snippet is repeated at least 3 times in the binary, with different add
 0x8001b9c:		ori r11, r11, 0x0001 ; we set the bits to check if the L2 cache is currently being flushed
 0x8001ba0:		mfspr r10, L2CR ; L2CR is a special register, it controls the state of the L2 cache.
 0x8001ba4:		and. r10, r10, r11 ; is the cache being flushed?
-0x8001ba8:		beq+ 0x8001ba0 ; if not, busy waiting for cache flush to be over
+0x8001ba8:		beq+ 0x8001ba0 ; if not, busy wait for cache flush to be over
 </pre><br><br>
 This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeated 3 times in the binary... for reasons&trade;.
 
@@ -50,7 +50,7 @@ This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeat
 0x8000cb7c:		bl 0x8000f478
 0x8000f478:		lwz r3, 0 (r3) ; r3 = [0xc0000000], open bus again.
 0x8000f47c:		blr
-0x8000cb80:		lwz	r0, 0x0008 (sp) ; stack frame data
+0x8000cb80:		lwz r0, 0x0008 (sp) ; stack frame data
 0x8000cb84:		cmpwi r0, 0
 0x8000cb88:		bne- 0x8000cb90 ; we skip a subtract instruction on r31
 0x8000cb90:		cmpwi r31, 0
