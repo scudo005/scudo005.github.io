@@ -20,7 +20,7 @@ These are a good part of the roadblocks I've encountered over time:<br>
     <li>The code references header files that take you a few hours to find, if you can find them at all.</li>
     <li>The code calls some functions from custom libraries that are not included.</li>
     <li>The code lacks half of the libraries from its own .NET project that are fundamental for the software to build (hi, Ryujinx).</li>
-    <li>The programmer(s) didn't really respect the GPL license and included only the code that <i>they</i> wrote and did not include the code that required them to license the program under the GPL license in the first place. (rare)</li>
+    <li>The programmer(s) didn't really respect the GPL license and included only the code that <i>they</i>&nbsp; wrote and did not include the code that required them to license the program under the GPL license in the first place. (rare)</li>
     <li>The code references platform-specific OS syscalls that have a different name on the target platform (not Windows syscalls on Linux, but the opposite; for example, there is no <code>mmap()</code> function in the Windows C standard library, you need MinGW's libraries to do that translation for you at compile time).</li>
     <li>The software requires old proprietary blobs/binaries/libraries/header files to build.</li>
     <li>The software is written in a language that has no compiler (or modern compiler) for your target platform.</li>
@@ -38,4 +38,4 @@ These are a good part of the roadblocks I've encountered over time:<br>
     <li>The compiled binary has weird glitches (very rare with modern software, mostly a matter of difference in behiavor between old and new compilers).</li>
     <li>You need to flash the software to a MCU/SoC/memory chip for which you need a proprietary flashing utility that is no longer available, or doesn't run well on modern OSs, or you need special flashing hardware (looking at you, Dallas TINI/DC85S350).</li>
 </ul><br>
-This isn't even a problem of reproducible builds; it's a matter of "it this software <i>really</i> free, or am I getting scammed?", and a matter of "why does their binary work, even if it's supposedly built in the same way, and mine doesn't"?
+This isn't even a problem of reproducible builds; it's a matter of "is this software <i>really</i>&nbsp;&nbsp;free, or am I getting scammed?", and a matter of "why does their binary work, even if it's supposedly built in the same way, and mine doesn't"?
