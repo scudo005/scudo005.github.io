@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="/assets/css/docs.css">
     <link rel="stylesheet" href="/assets/css/vs.css">
     <title>{{ site.title }} - {{ page.title }}</title>
-    <meta name="description" content="test{{ page.descript }}{{ post.excerpt }}">
+    <meta name="description" content="Tech, art and more.">
+	<meta name="application-name" content="{{ site.title }}">
+	<meta name="author" content="{{ site.admin }}" lang="en" />
 </head>
 
 <body>
@@ -40,7 +42,7 @@
     <div class="footer">
         <div class="title-bar">
             <div class="title-bar-text" style="text-align: left;">&copy; {{ 'now' | date: "%Y" }}<a
-                    href="https://github.com/scudo005"> scudo</a> - Licensed under <a
+                    href="https://github.com/scudo005"> {{ site.admin }}</a> - Licensed under <a
                     href="/LICENSE.txt">GPLv3</a>.&nbsp;Last updated on {{ 'now' | date: "%B %d, %Y @ %H:%M:%S" }}. <a
                     href="/feed.xml"><img src="/assets/imgs/inline/rss.png" alt="RSS feed"></a>
             </div>
