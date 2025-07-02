@@ -1,0 +1,60 @@
+---
+layout: post
+title: "Booting 101E on Dolphin"
+---
+
+101E is the title ID of a disc Nintendo used to test GameCube consoles in the factory, also known as "Uji Diag Station" or "Main Unit Inspection Disc".<br><br>
+I decided to obtain a dump of the disk<a href='#disk'><sup>1</sup></a>&nbsp; out of curiosity; I first tried to run it on my Wii, where <a href="https://www.youtube.com/watch?v=NHOkzFMq45c" target="_blank">nothing interesting happened</a>.<br><br>
+I then tried to run in Dolphin, where I ended up having to patch out some infinite loops. Here are all the things I had to fix to have the software run.
+<!--more-->
+<h4>First infinite loop (open bus data copy)</h4>
+<pre>
+0x8110c904:		lis r3, 0xcc00 ; load r3 with 0xcc00 &lt;&lt; 16 (r3 = 0xcc000000, we fill it with zeroes)
+0x8110c908:		addi r3, r3, 25256 ; r3 = 0xcc0062a8
+0x8110c90c:		bl 0x81111ef8
+0x81111ef8:		lwz r3, 0 (r3) ; this means: load r3 with [r3+0]. r3 is now pointing to open bus!
+0x81111efc:		blr ; branch to link register, return to 0x8110c90c+4
+0x8110c910:		stw r3, 0x000c (sp) ; store r3 (0xcc0062a8) in [sp+0xc] - stack frame data
+0x8110c914:		lwz r4, 0x0010 (sp) ; load the contents of [sp+0x10] - stack frame data
+0x8110c918:		lwz r3, 0x000c (sp) ; r3 = [0xcc0062a8] = ? (basically, we retrieve the contents of the pointer we just pushed to the stack)
+0x8110c91c:		lwz r0, 0x0010 (sp) ; r0 = r4 
+0x8110c920:		and r0, r3, r0 ; we seem to be checking some specific bits...
+0x8110c924:		cmplw r4, r0 ; same as above
+0x8110c928:		bne+ 0x8110c904 ; we loop if they don't match
+</pre><br><br>
+
+So, to recap:
+<ol>
+	<li>We access open bus (the mapped address space of the GC starts at 0x80000000)</li>
+	<li>We read the last byte of some random data that happened to be in the MBR + some unknown stack frame data</li>
+	<li>We check some bits of a number with itself? Why?</li>
+</ol>
+This code snippet is repeated at least 3 times in the binary, with different addresses.
+
+<h4>Second loop (L2 cache check)</h4>
+<pre>
+0x8001b98:		xor r11, r11, r11 ; we zero r11
+0x8001b9c:		ori r11, r11, 0x0001 ; we set the bits to check if the L2 cache is currently being flushed
+0x8001ba0:		mfspr r10, L2CR ; L2CR is a special register, it controls the state of the L2 cache.
+0x8001ba4:		and. r10, r10, r11 ; is the cache being flushed?
+0x8001ba8:		beq+ 0x8001ba0 ; if not, busy waiting for cache flush to be over
+</pre><br><br>
+This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeated 3 times in the binary... for reasons&trade;.
+
+<h4>Third loop (hangs while <code>memrange.lzs</code> is on screen)</h4>
+<pre>
+0x8000cb6c:		lhz r0, -0x7f9c (r13) ; r0 = [r13-0x7f9c] (only lower 16 bits, load halfword and zero)
+0x8000cb70:		cmplwi r0, 0 ; is r0 zero? (unsigned; not like it matters.)
+0x8000cb74:		bne- 0x8000cb98 ; this branch is not taken in my experience
+0x8000cb78:		lis r3, 0xc000 ; pointer
+0x8000cb7c:		bl 0x8000f478
+0x8000f478:		lwz r3, 0 (r3) ; r3 = [0xc0000000], open bus again.
+0x8000f47c:		blr
+0x8000cb80:		lwz	r0, 0x0008 (sp) ; stack frame data
+0x8000cb84:		cmpwi r0, 0
+0x8000cb88:		bne- 0x8000cb90 ; we skip a subtract instruction on r31
+0x8000cb90:		cmpwi r31, 0
+0x8000cb94:		bgt+ 0x8000cb6c ; we loop again
+</pre><br><br>
+The tests then crash during DMA tests because they start running code in the 0x00000000-0x0000ffff range (more or less).<br><br><hr>
+<a href='#disk'></a><h5 id='disk'><sup>1</sup>&nbsp;No, I'm not telling you where to find a dump of this disc.</h5>
