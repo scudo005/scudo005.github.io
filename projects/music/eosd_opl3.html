@@ -4,48 +4,48 @@ title: "Touhou 6: EoSD OPL3 cover album"
 ---
 I have remade the entirety of the Touhou 6: EoSD soundtrack reimagining it for the <a
     href="https://en.wikipedia.org/wiki/Yamaha_OPL#OPL3" target="_blank">OPL3</a> synth. Take a listen!<br><br>
-    <div class="window">
-        <div class="title-bar">
-            <div class="title-bar-text">The album</div>
-            <div class="title-bar-controls">
-                <button aria-label="Close"></button>
-            </div>
+<div class="window">
+    <div class="title-bar">
+        <div class="title-bar-text">The album</div>
+        <div class="title-bar-controls">
+            <button aria-label="Close"></button>
         </div>
-        <div class="window-body">
-            <div class="sunken-panel pics">
-                <table>
-                    <thead style="text-align: center;">
-                        <tr>
-                            <th>Play the song</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Download the song</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for song in site.data.eosd_songs.music %}
-                        <tr>
-                            <td class="songs">
-                                <audio controls src="{{ song.url }}" class="visible-music-player">
-                            </td>
-                            <td style="text-align: center;">
-                                {{ song.title }}
-                            </td>
-                            <td style="text-align: center;">
-                                {{ song.description }}
-                            </td>
-                            <td style="text-align: center;">
-                                <a href="{{ song.url }}">Link</a>
-                            </td>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-
-                </table>
-            </div>
-        </div>
-    </div><br>
-    <div class="window-body">
-        This is all thanks to <a href="https://chiptune.app" target="_blank">chiptune.app</a> and to their ADL2MIDI
-        software layer!
     </div>
+    <div class="window-body">
+        <div class="sunken-panel pics">
+            <table>
+                <thead style="text-align: center;">
+                    <tr>
+                        <th>Play the song</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Download the song</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for song in site.data.eosd_songs.music %}
+                    <tr>
+                        <td class="songs">
+                            <audio controls src="{{ song.url }}" class="visible-music-player">
+                        </td>
+                        <td style="text-align: center;">
+                            {{ song.title }}
+                        </td>
+                        <td style="text-align: center;">
+                            {{ song.description }}
+                        </td>
+                        <td style="text-align: center;">
+                            <a href="{{ song.url }}">Link</a>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div><br>
+<div class="window-body">
+    This is all thanks to <a href="https://chiptune.app" target="_blank">chiptune.app</a> and to their ADL2MIDI
+    software layer!
+</div>

@@ -6,7 +6,7 @@
     font-style: normal;
     font-weight: 400;
     src: url(/assets/fonts/ms_sans_serif.woff) format("woff"),
-         url(/assets/fonts/ms_sans_serif.woff2) format("woff2")
+        url(/assets/fonts/ms_sans_serif.woff2) format("woff2")
 }
 
 /* Note: why is this duplicated? */
@@ -15,7 +15,7 @@
     font-style: normal;
     font-weight: 700;
     src: url(/assets/fonts/ms_sans_serif.woff) format("woff"),
-         url(/assets/fonts/ms_sans_serif.woff2) format("woff2")
+        url(/assets/fonts/ms_sans_serif.woff2) format("woff2")
 }
 
 .invisible {
@@ -31,7 +31,7 @@
     margin: auto;
 }
 
-blockquote{
+blockquote {
     width: 95%
 }
 
@@ -39,7 +39,7 @@ blockquote{
 @font-face {
     font-family: "Pixelated MS Sans Serif Bold";
     src: url(/assets/fonts/ms_sans_serif_bold.woff) format("woff"),
-         url(/assets/fonts/ms_sans_serif_bold.woff2) format("woff2");
+        url(/assets/fonts/ms_sans_serif_bold.woff2) format("woff2");
 }
 
 b {
@@ -735,7 +735,7 @@ ul.tree-view li {
     list-style-type: none
 }
 
-li{
+li {
     line-height: 1.5;
 }
 

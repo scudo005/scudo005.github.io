@@ -39,16 +39,14 @@ hr {
     width: 400px;
     height: 1px;
     opacity: 0.5;
-    background: linear-gradient(
-        to right,
-        red 20%,
-        yellow 20%,
-        yellow 36%,
-        green 36%,
-        green 60%,
-        blue 60%,
-        blue 100%
-    );
+    background: linear-gradient(to right,
+            red 20%,
+            yellow 20%,
+            yellow 36%,
+            green 36%,
+            green 60%,
+            blue 60%,
+            blue 100%);
 }
 
 h2 {
@@ -115,7 +113,7 @@ button.focused {
 
 button.active {
     box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
-    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+        inset -2px -2px #dfdfdf, inset 2px 2px #808080;
 }
 
 @media (max-width: 480px) {
