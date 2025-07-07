@@ -41,3 +41,27 @@ pic:
     alt-text: A picture of two black chips; one is square and the other rectangular (TSOP).
     url: https://www.flickr.com/photos/202226920@N03/54589243515/in/datetaken-public/
     src: https://live.staticflickr.com/65535/54589243515_2258858014_k.jpg
+
+  - description: This is the <a href="https://www.psdevwiki.com/ps2/DEV9C" target="_blank">DEV9C</a>, and it controls the bus for the expansion bay in phat PS2s. It's also known as "SSBUS controller" or "HDD controller", because it handles the HDD in the expansion bay. Some older revisions also supported PCMCIA.
+    title: The DEV9C
+    alt-text: A picture of a black chip.
+    url: https://www.flickr.com/photos/202226920@N03/54588905439/
+    src: https://live.staticflickr.com/65535/54588905439_08d68bbf8a_k.jpg
+
+  - description: This Texas Instruments SP3727D is the <a href="https://www.psdevwiki.com/ps2/RF-Amp" target="_blank">RF-Amp</a>. I'm not sure what it does, as it's very poorly documented. My guess is that it helps the DVD drive laser in some way.
+    title: The RF-Amp
+    alt-text: A picture of a black chip.
+    url: https://www.flickr.com/photos/202226920@N03/54588052827/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54588052827_c2d67d09b4_k.jpg
+
+  - description: This is the <a href="https://www.psdevwiki.com/ps2/Drivers" target="_blank">Sanyo LB11971</a>, the spindle motor driver for the DVD drive.
+    title: The spindle motor driver.
+    alt-text: A picture of a black chip.
+    url: https://www.flickr.com/photos/202226920@N03/54588053097/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54589243515_2258858014_k.jpg
+
+  - description: This is the CXD3098Q <a href="https://www.psdevwiki.com/ps2/DSP" target="_blank">DVD drive DSP.</a>
+    title: The DVD drive DSP.
+    alt-text: A picture of a black chip.
+    url: https://www.flickr.com/photos/202226920@N03/54588931951/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54588931951_70b15e390e_k.jpg
