@@ -89,6 +89,7 @@ table,
 textarea,
 ul.tree-view {
     -webkit-font-smoothing: none;
+    font-smooth: never;
     font-family: "Pixelated MS Sans Serif", Arial;
     font-size: 0.94rem;
     border: 1px solid black;
