@@ -11,7 +11,7 @@ facts:
 
   - title: Nintendo warns they'll brick consoles if they detect homebrew or piracy
     date: May 9, 2025
-    description: 'Nintendo surprises absolutely nobody by <a href="https://web.archive.org/web/20250609151255/https://accounts.nintendo.com/term/eula/US" target="_blank">updating their EULA</a> to say: <br><br><blockquote>You acknowledge that if you fail to comply with the foregoing restrictions Nintendo may render the Nintendo Account Services and/or the applicable Nintendo device permanently unusable in whole or in part.</blockquote>Translated from legalese:<br><br><blockquote>If we figure out you tried to run your code on your 450$ console, we will brick it no matter what.</blockquote>'
+    description: 'Nintendo <a href="https://www.defectivebydesign.org/nintendo3ds" target="_blank">surprises absolutely nobody</a> by <a href="https://web.archive.org/web/20250609151255/https://accounts.nintendo.com/term/eula/US" target="_blank">updating their EULA</a> to say: <br><br><blockquote>You acknowledge that if you fail to comply with the foregoing restrictions Nintendo may render the Nintendo Account Services and/or the applicable Nintendo device permanently unusable in whole or in part.</blockquote>Translated from legalese:<br><br><blockquote>If we figure out you tried to run your code on your 450$ console, we will brick it no matter what.</blockquote>'
 
   - title: Nintendo denies access to Switch 2 hardware and games to reviewers
     date: May 15, 2025
