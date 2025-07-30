@@ -1,6 +1,8 @@
 var links = Array.from(document.querySelectorAll('a'));
 var sound_play = document.getElementById('nav_button');
 var buttons = document.getElementsByTagName('button');
+// stupid fucking browsers auto loop it??????
+sound_play.loop = false;
 
 addEventListener("DOMContentLoaded", (event) => {
     // this check works only on Firefox; on Chromium, it just plays the sound.
@@ -25,10 +27,7 @@ function click() {
         (function (i) {
             if (buttons.item(i).className === 'button_link') {
                 buttons[i].onclick = function () {
-                    setInterval(function () {
-                        location.href = links[i - 1]
-                    }
-                        , 64);
+                    location.href = links[i - 1];
                 }
             }
         }(i));
