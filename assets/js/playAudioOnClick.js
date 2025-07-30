@@ -2,10 +2,13 @@ var links = Array.from(document.querySelectorAll('a'));
 var sound_play = document.getElementById('nav_button');
 var buttons = document.getElementsByTagName('button');
 
-// this check works only on Firefox; on Chromium, it just plays the sound.
-if (navigator.getAutoplayPolicy(sound_play) === 'allowed') {
-    sound_play.play();
-}
+addEventListener("DOMContentLoaded", (event) => {
+    // this check works only on Firefox; on Chromium, it just plays the sound.
+    if (navigator.getAutoplayPolicy(sound_play) === 'allowed') {
+        sound_play.play();
+    }
+    click();
+});
 
 if (navigator.userAgent.includes("Mozilla/5.0 (Android")) {
     var domBody = document.getElementById('main');
@@ -15,16 +18,18 @@ if (navigator.userAgent.includes("Mozilla/5.0 (Android")) {
     domBody.appendChild(warnBox);
 }
 
-// magical function: I spent like an hour making this. LOL
-for (var i = 0; i < buttons.length; i++) {
-    (function (i) {
-        if (buttons.item(i).className === 'button_link') {
-            buttons[i].onclick = function () {
-                setInterval(function () {
-                    location.href = links[i - 1]
+function click() {
+    // magical function: I spent like an hour making this. LOL
+    for (var i = 0; i < buttons.length; i++) {
+        (function (i) {
+            if (buttons.item(i).className === 'button_link') {
+                buttons[i].onclick = function () {
+                    setInterval(function () {
+                        location.href = links[i - 1]
+                    }
+                        , 64);
                 }
-                    , 64);
             }
-        }
-    }(i));
+        }(i));
+    }
 }
