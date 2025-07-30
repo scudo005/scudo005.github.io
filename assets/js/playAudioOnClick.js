@@ -14,3 +14,8 @@ addEventListener("DOMContentLoaded", (event) => {
         }(i));
     }
 });
+// not working
+sound_play.addEventListener("ended", (event) => {
+    new AbortController().abort('stopped reloading');
+    sound_play.remove();
+})
