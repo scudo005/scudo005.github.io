@@ -24,6 +24,8 @@ admin: scudo
 
 excerpt_separator: <!--more-->
 
+descript: Hi, this is scudo's website!
+
 # Build settings
 plugins:
   - jekyll-feed
