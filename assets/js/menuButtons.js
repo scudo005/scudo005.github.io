@@ -1,4 +1,3 @@
-// really ugly array generation
 let menu_buttons = Array.from(document.getElementsByClassName("menu-button"));
 let projects = Array.from(document.getElementsByClassName("project-list"));
 menu_buttons[0].setAttribute("aria-selected", "true");
@@ -6,7 +5,7 @@ for (let h = 1; h < projects.length; h++) {
     projects[h].className = 'invisible';
 }
 for (var i = 0; i < menu_buttons.length; i++) {
-    (function (i) {
+    (function (i) { // maybe not so efficient?
         menu_buttons[i].onclick = function () {
             menu_buttons[i].setAttribute("aria-selected", "true");
             projects[i].classList.remove('invisible');
