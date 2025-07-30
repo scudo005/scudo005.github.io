@@ -27,80 +27,29 @@ interface IReceiverService : IServiceObject
     }
 </pre><br>
 Great. An empty interface that extends another interface. What an amazing start.<br><br>
-But what does <code>IServiceObject</code>&nbsp;contain? Not much, actually:<br><br>
+But what does <code>IServiceObject</code>&nbsp;&nbsp;contain? Not much, actually:<br><br>
 <pre>
 interface IServiceObject
     {
         IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers();
     }
 </pre><br>
-Great. Another (almost) empty interface.
+Great. Another (almost) empty interface. But see that <code>GetCommandHandlers()</code>&nbsp;? That is the method that gave all those build errors before!
 <br><br>
-
-
-dopo il casino con Ryujinx, mi sono messo a cercare di compilare il codice sorgente; build per Windows e Linux di tutti
-i tipi sono presenti ovunque (pure la versione Flatpak sta ancora sulle repo), per cui era più per curiosità.
-come sapete se avete letto il gruppo, Ryujinx non builda, ma il motivo per cui non lo fa è abbastanza assurdo.
-
-sono partito dall'analizzare i log: tutti gli errori erano qualcosa del tipo "error CS0535: 'UnregistrationNotifier' non
-implementa il membro di interfaccia 'IServiceObject.GetCommandHandlers()". tutti gli errori si riferivano a classi e
-progetti che servono a gestire le system calls fatte ad HorizonOS, l'OS della Switch.
-
-ora, cos'è quel metodo?
-così ho pigliato la repo e ho dato il tempo a VSCodium di elaborare tutti i file, finché non sono iniziati ad apparire
-errori, poi ho preso una classe a caso che dava errori, che mi ha rimandato a una interfaccia, per poi ritrovarmi la
-gioia di una interfaccia vuota davanti agli occhi:
-
-interface IReceiverService : IServiceObject
-{
-}
-
-benone. una interfaccia vuota che estende un'altra interfaccia. iniziamo bene.
-ma cosa c'è in IServiceObject? non molto:
-
-interface IServiceObject
-{
-IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers();
-    }
-
-    benone, un'altra interfaccia semivuota.
-    vabbè, una collezione. (IReadOnlyDictionary è un oggetto di System.Collections.Generic.)
-    ma quel GetCommandHandlers() è esattamente il metodo che faceva fallire la compilazione!
-    così, vado a cercare tutti i riferimenti a quel metodo, che viene chiamato solo una volta nell'intero progetto,
-    all'interno di ServiceDispatchTables, una classe che dovrebbe gestire i command handler relativi alle syscall di
-    HorizonOS:
-
-    public static ServiceDispatchTableBase Create(IServiceObject instance)
+So I searched all references to that method; it was called only once in the whole project, inside <code>ServiceDispatchTables</code>&nbsp;, a class that should deal with command handlers relative to HorizonOS syscalls:<br><br>
+<pre>
+public static ServiceDispatchTableBase Create(IServiceObject instance)
     {
-    if (instance is DomainServiceObject)
-    {
-    return new DomainServiceObjectDispatchTable();
+        if (instance is DomainServiceObject)
+        {
+            return new DomainServiceObjectDispatchTable();
+        }
+        return new ServiceDispatchTable(instance.GetType().Name, instance.GetCommandHandlers());
     }
-
-    return new ServiceDispatchTable(instance.GetType().Name, instance.GetCommandHandlers());
-    }
-
-    bene, arriviamo su un costruttore persino, e abbiamo la nostra call a GetCommandHandlers, un metodo invocato
-    sull'oggetto instance, che è... (rullo di tamburi) una istanza di IServiceObject! yay! abbiamo chiuso il cerchio
-    apparentemente, no?
-
-    no, perché IServiceObject è una interfaccia, e le interfacce per definizione non sono istanziabili in un oggetto
-    (oltretutto IServiceObject non ha un costruttore, per cui non è possibile istanziarne un oggetto in ogni caso).
-    ottimo, grazie dev team di Ryujinx.
-
-    ma concentriamoci piuttosto su quella call a GetCommandHandlers. siccome la call è invocata su un oggetto di tipo
-    IServiceObject, bisogna vedere all'interno di IServiceObject se esistono metodi chiamati GetCommandHandlers(), e
-    difatti c'è menzione di un metodo con quel nome, che è l'unica cosa presente all'interno di quella interfaccia. ma
-    cosa fa quel metodo?
-
-    GetCommandHandlers dovrebbe restituire una collezione di tipo IReadOnlyDictionary, ovverosia una coppia di valori
-    key-value read-only dove la chiave è un numero intero e il valore è un oggetto di tipo CommandHandler, che
-    idealmente è quello che vogliamo avere. il problema è che questa definizione di GetCommandHandlers è definita
-    all'interno di una interfaccia, per cui sta alle singole classi che implementano l'interfaccia IServiceObject,
-    ovverosia tutte le classi che gestiscono le funzionalità emulate di HorizonOS, implementare GetCommandHandlers.
-    (tecnicamente dichiara la firma del metodo e non la sua funzionalità, che puoi fare nelle interfacce)
-
-    il problema è che nessuna classe in tutto il progetto implementa GetCommandHandlers. ahia.
-
-    in pratica si sono dimenticati di implementare una cosa che usano letteralmente TUTTE le classi che implementano le
-    syscalls di HorizonOS in software. davvero un ottimo lavoro.
+</pre><br>
+Wow, we even land on a constructor! And we have our <code>GetCommandHandlers</code>&nbsp; call, invoked on the <code>instance</code>&nbsp; object, which is... (drum roll)... an instance of <code>IServiceObject</code>&nbsp;! Yay! We closed the circle!<br><br>
+<b><i>Or did we?</b></i><br><br>
+Let's concentrate on that call to <code>GetCommandHandlers</code>&nbsp;. Since that call is invoked on a <code>IServiceObject</code>&nbsp; object, we need to look into <code>IServiceObject</code>&nbsp; to see if there are any methods called <code>GetCommandHandlers</code>&nbsp;.<br><br>
+There is indeed a method with that name, which is the only thing inside of that interface. What does that method do?<br><br>
+<code>GetCommandHandlers</code>&nbsp; returns a <code>IReadOnlyDictionary</code>&nbsp; collection; that is, a key-value pair where the key is an integer and the value is a <code>CommandHandler</code>&nbsp; object, which is what we want to have. The problem is that this definition of <code>GetCommandHandlers</code>&nbsp; is defined inside of an interface, so it is the job of any class that implements that interface to also implement its methods; this means all the classes that implement all the HorizonOS syscalls have to implement <code>GetCommandHandlers</code>&nbsp;.<br><br>
+The problem is that <b>no class in the whole project ever implements GetCommandHandlers.</b> Oopsie. No wonder it didn't compile!
