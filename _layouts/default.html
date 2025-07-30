@@ -24,7 +24,7 @@
             {% for page in site.data.pages.pages %}
             <a href="{{ page.url }}"><button onclick="playAudioOnClick()" class="button_link">{{ page.title
                     }}</button></a>
-            <audio src="/assets/mp3/reserved/xp_navig_start.mp3" id="nav_button" preload="auto"></audio>
+            <audio src="/assets/mp3/reserved/xp_navig_start.mp3" id="nav_button" preload="auto" onended="unloadAudioClick()"></audio>
             {% endfor %}
         </div>
     </div><br>
@@ -50,6 +50,7 @@
         </div>
     </div>
     <script src="/assets/js/playAudioOnClick.js"></script>
+    <script src="/assets/js/unloadAudioClick.js"></script>
 </body>
 
 </html>
