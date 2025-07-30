@@ -2,11 +2,9 @@ var links = Array.from(document.querySelectorAll('a'));
 var sound_play = document.getElementById('nav_button');
 var buttons = document.getElementsByTagName('button');
 
-sound_play.play();
-
-/*if (navigator.getAutoplayPolicy(sound_play) != 'allowed') {
-    alert('Please enable autoplay to hear navigation sounds.');
-}*/
+if (navigator.getAutoplayPolicy(sound_play) === 'allowed') {
+    sound_play.play();
+}
 
 // magical function: I spent like an hour making this. LOL
 for (var i = 0; i < buttons.length; i++) {
@@ -19,3 +17,4 @@ for (var i = 0; i < buttons.length; i++) {
     }(i));
 }
 
+alert(navigator.userAgent);
