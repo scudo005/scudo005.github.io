@@ -1,0 +1,26 @@
+list_name: My published songs
+music:
+  - url: /assets/mp3/my_music/dune.mp3
+    title: Dune/Arrakis 2
+    description: A tribute to the soundtrack of the Dune DOS game.
+    is_on_yt: 'no'
+    yt_url: ''
+
+  - url: /assets/mp3/my_music/whiplash-options.mp3
+    title: Whiplash/Fatal Racing (MS-DOS, 1995) - Options
+    description: This remix landed me a spot in the band!
+    is_on_yt: 'yes'
+    yt_url: 'https://youtu.be/4BploeFRhWQ'
+
+  - url: /assets/mp3/my_music/descent-ii-credits.mp3
+    title: Descent II (MS-DOS, 1996) - credits
+    description: One of my best covers so far.
+    is_on_yt: 'no'
+    yt_url: ''
+
+  - url: /assets/mp3/my_music/skate-or-die.mp3
+    title: Skate Or Die (C64, 1987)
+    description: Really nice song, thanks Rob Hubbard.
+    is_on_yt: 'no'
+    yt_url: ''
+

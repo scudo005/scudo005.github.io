@@ -1,0 +1,42 @@
+---
+layout: default
+title: My projects
+---
+
+Here you can have a brief overview of all the projects I have published on this website. Enjoy!<br><br>
+
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">My projects</div>
+    <div class="title-bar-controls">
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body">
+    <a id="page"></a>
+    <menu role="tablist">
+      {% for page in site.data.project_pages.page %}
+      <li role="tab" class="menu-button"><a href="#page">{{ page.name }}</a></li>
+      {% endfor %}
+    </menu>
+    <div class="window" role="tabpanel">
+      <div class="window-body">
+        <ul class="project-list">
+          {% for project in site.data.projects.project %}
+          {% if project.type == 'Music' %} <!-- do this for every project type! -->
+          <li><a href="{{ project.url }}">{{ project.name }}</a></p>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        <ul class="project-list">
+          {% for project in site.data.projects.project %}
+          {% if project.type == 'Hardware and electronics' %} <!-- do this for every project type! -->
+          <li><a href="{{ project.url }}">{{ project.name }}</a></p>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+      </div>
+    </div>
+  </div><br>
+  <script src="/assets/js/menuButtons.js"></script>

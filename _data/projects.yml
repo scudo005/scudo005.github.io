@@ -1,0 +1,18 @@
+list_name: My projects
+project:
+  - name: 'Touhou 6: EoSD OPL3 full cover'
+    type: Music
+    url: /projects/music/eosd_opl3.html
+
+  - name: Furstein DP-300 General MIDI mappings
+    type: Music
+    url: /projects/music/midi_mappings.html
+
+  - name: Nintendo Wii RVL-CPU-01 motherboard pictures
+    type: Hardware and electronics
+    url: /projects/hardware/rvl-cpu-01-pics.html
+
+
+
+
+

@@ -1,0 +1,22 @@
+list_name: List of the site pages
+pages:
+  - title: Homepage
+    url: /index.html
+
+  - title: Blog posts
+    url: /blog.html
+
+  - title: Sysadmin info
+    url: /me.html
+
+  - title: Music
+    url: /music.html
+
+  - title: Photography
+    url: /photos.html
+
+  - title: Projects
+    url: /projects.html
+
+  - title: Tutorials
+    url: /tutorials.html

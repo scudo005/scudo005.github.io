@@ -1,0 +1,60 @@
+---
+layout: post
+title: "The impossible Wii"
+---
+<p>As you can see from <a href="/projects/hardware/rvl-cpu-01-pics.html">here</a>, I own a first motherboard revision
+    Wii
+    console.<br><br>
+    I have had this console since 2009 - and I almost bricked it several times. Originally it had an Argon II modchip,
+    (insert blog link here), but I have since removed it and gave it to a friend of mine.<br><br>
+    <!--more-->
+    Now, all consoles made <a
+        href="https://consolemods.org/wiki/Wii:Buying_Guide#%E2%80%9CRVL-CPU-20/30%E2%80%9D_(2007-2009)"
+        target="_blank">before 2009</a> had a version of <a href="https://wiibrew.org/wiki/Boot1"
+        target="_blank">boot1</a> that was vulnerable to <a href="https://wiibrew.org/wiki/Signing_bug"
+        target="_blank">a
+        pretty huge bug</a> that allowed <a href="https://wiibrew.org/wiki/BootMii" target="_blank">BootMii</a> to be
+    installed as <a href="https://wiibrew.org/wiki/Boot2">boot2</a>.<br><br>
+    Given that my console was bought sometimes before August 2009, and given that it's a RVL-CPU-01, it was probably
+    manufactured sometimes before 2008, which would make it a likely candidate to have an exploitable version of boot1.
+    And yet it doesn't!<br><br>
+    Every time I hack this console - which I had to do <i>several times</i> by the way - I can only ever install BootMii
+    as <a href="https://wiibrew.org/wiki/IOS" target="_blank">IOS</a> and never as boot2. This should be
+    impossible!<br><br>
+    My personal guess is that my console was part of what's known as a <a
+        href="https://www.lawinsider.com/dictionary/bonepile-inventory">bonepile inventory</a> (in a similar fashion as
+    to what was mentioned in the <a href="https://www.youtube.com/watch?v=z2d6IMBS8oY" target="_blank">official Xbox 360
+        documentary</a>); basically, a console that failed factory tests and was put aside to be fixed later.<br><br>
+    Since boot1's hash is written into <a href="https://wiibrew.org/wiki/Hollywood" target="_blank">Hollywood</a>'s <a
+        href="https://wiibrew.org/wiki/Hardware/OTP" target="_blank">OTP</a> <a
+        href="https://wiibrew.org/wiki/Wii_architecture_overview#Boot_loaders" target="_blank">late in production</a>,
+    it is completely possible that this happened:</p>
+<ol>
+    <li>The console was manufactured around 2006 or 2007, and it failed factory tests, so it was put aside to focus on
+        shipping working units around the time of release;</li><br>
+    <li>As an effort to clear the bonepile inventory, Nintendo's manufacturing plant recovered my board, fixed whatever
+        was wrong with it, wrote the new OTP, flashed the NAND with System Menu 3.2/3.3 (I don't remember exactly what
+        version it had) and shipped the console to be sold at retail.</li>
+</ol>
+<h4><i>And it doesn't end here!</i></h4>
+<p>
+    For a few years, this console has exibited another unusual behiavor: every time a new title is loaded, the console
+    hangs
+    on a black screen, no matter what title.<br><br>
+    This console is capable of booting a single title once every boot-up, and every subsequent title load (be it
+    Nintendo
+    software or homebrew stuff) it always hangs.<br><br>
+    This is after I reformatted the console and <a href="https://wiibrew.org/wiki/Ohneschwanzenegger"
+        target="_blank">rebuilt its NAND from scratch</a>. Also, <a href="https://wiibrew.org/wiki/Wilbrand"
+        target="_blank">Wilbrand</a>, its older variation <a href="https://wiibrew.org/wiki/LetterBomb"
+        target="_blank">LetterBomb</a>, and <a href="https://wiibrew.org/wiki/Bluebomb" target="_blank">BlueBomb</a>
+    crash
+    the console with the same black screen issue; only <a href="https://wiibrew.org/wiki/Str2hax"
+        target="_blank">str2hax</a> works reliably.<br><br>
+    The only likely explanation I have is that since titles are stored in the NAND, an IOS syscall is made to the
+    Starlet to read the title and load it into memory, and the Starlet somehow completely fumbles itself somewhere (maybe TMD verification? maybe a hardware failure? I have no idea),
+    throws an exception and hangs the console. But without a debugger (such as an <a
+        href="https://wiibrew.org/wiki/USB_Gecko" target="_blank">USBGecko</a>), I have no way to know.<br><br>
+    Also: the SD card reader despises SDHC/SDXC cards, and the disc drive is likely completely dead due to having to read a lot of DVD-Rs in the past (and I'm sure you can figure out why).<br><br>
+    If you have any ideas, <a href="/me.html">contact me</a>.
+</p>

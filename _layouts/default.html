@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/assets/css/98.css">
+    <link rel="stylesheet" href="/assets/css/docs.css">
+    <link rel="stylesheet" href="/assets/css/vs.css">
+    <title>{{ site.title }} - {{ page.title }}</title>
+</head>
+
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">{{ site.title }}</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            {% for page in site.data.pages.pages %}
+            <a href="{{ page.url }}"><button onclick="playAudioOnClick()" class="button_link">{{ page.title
+                    }}</button></a>
+            <audio src="/assets/mp3/reserved/xp_navig_start.mp3" id="nav_button" autobuffer="autobuffer"></audio>
+            {% endfor %}
+        </div>
+    </div><br>
+
+    <div class="window">
+
+        <div class="window-body">
+            {{ content }}
+        </div>
+    </div><br>
+    <div class="window-body">
+
+    </div>
+
+    <div class="footer">
+        <div class="title-bar">
+            <div class="title-bar-text" style="text-align: left;">&copy; {{ 'now' | date: "%Y" }}<a
+                    href="https://github.com/scudo005"> scudo</a> - Licensed under <a
+                    href="/LICENSE.txt">GPLv3</a>.&nbsp;Last updated on {{ 'now' | date: "%B %d, %Y @ %H:%M:%S" }}. <a
+                    href="/feed.xml"><img src="/assets/pictures/inline/rss.png"></a>
+            </div>
+
+        </div>
+    </div>
+    <script src="/assets/js/playAudioOnClick.js"></script>
+</body>
+
+</html>
