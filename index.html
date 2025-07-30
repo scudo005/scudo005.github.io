@@ -12,11 +12,11 @@ For now it is quite empty as I am currently busy with university - I'll get to a
 enjoy what it's on here already.<br><br>
 BTW: <a href="https://github.com/scudo005/scudo005.github.io" target="_blank">this site is open source!</a>
 <script>
-var sound_play2 = document.getElementById('nav_button');
-if (navigator.getAutoplayPolicy(sound_play2) === 'allowed-muted' || navigator.getAutoplayPolicy(sound_play2) === 'disallowed') {
-    document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode('If you want to experience the Windows XP click sounds, please allow audio autoplay. Look around the address bar area.')));
-}
-if (navigator.userAgent.includes("Mozilla/5.0 (Android")) {
-    document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode('Warning: this site is currently broken under Firefox for Android, and I do not know why. For an optimal experience on mobile, please use a Chromium-based browser.')));
-}
+    var sound_play2 = document.getElementById('nav_button');
+    if (navigator.getAutoplayPolicy(sound_play2) === 'allowed-muted' || navigator.getAutoplayPolicy(sound_play2) === 'disallowed') {
+        document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode('If you want to experience the Windows XP click sounds, please allow audio autoplay. Look around the address bar area.')));
+    }
+    if (navigator.userAgent.includes("Mozilla/5.0 (Android")) {
+        document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode('Warning: this site is currently broken under Firefox for Android, and I do not know why. For an optimal experience on mobile, please use a Chromium-based browser.')));
+    }
 </script>

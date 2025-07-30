@@ -8,7 +8,8 @@ req.onload = () => {
         console.log(req.status);
     }
     else {
-
+        console.log("error:");
+        console.log(req.status);
     }
 }
 req.send();

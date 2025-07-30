@@ -23,14 +23,14 @@ Here you can have a brief overview of all the projects I have published on this 
       <div class="window-body">
         <ul class="project-list">
           {% for project in site.data.projects.project %}
-          {% if project.type == 'Music' %} <!-- do this for every project type! -->
+          {% if project.type == 'Music' %}
           <li><a href="{{ project.url }}">{{ project.name }}</a></p>
             {% endif %}
             {% endfor %}
         </ul>
         <ul class="project-list">
           {% for project in site.data.projects.project %}
-          {% if project.type == 'Hardware and electronics' %} <!-- do this for every project type! -->
+          {% if project.type == 'Hardware and electronics' %}
           <li><a href="{{ project.url }}">{{ project.name }}</a></p>
             {% endif %}
             {% endfor %}
