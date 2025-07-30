@@ -26,9 +26,12 @@ excerpt_separator: <!--more-->
 
 descript: Hi, this is scudo's website!
 
+url: "https://scudo005.github.io" # update if necessary
+
 # Build settings
 plugins:
   - jekyll-feed
+  - jekyll-sitemap # not working
 
 # Exclude from processing.
 # The following items will not be processed, by default.
