@@ -20,7 +20,10 @@ for (var i = 0; i < buttons.length; i++) {
     (function (i) {
         if (buttons.item(i).className === 'button_link') {
             buttons[i].onclick = function () {
-                setInterval(function () { location.href = links[i - 1] }, 64);
+                setInterval(function () {
+                    location.href = links[i - 1]
+                }
+                    , 64);
             }
         }
     }(i));
