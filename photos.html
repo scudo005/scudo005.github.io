@@ -9,7 +9,7 @@ All shots here are done on two cameras:
     <li>Canon EOS 1100D, with an EF-S 18-55mm lens</li>
     <li>Xiaomi Redmi Note 10S (my phone)</li>
 </ul>
-You can click on the pictures to see them full screen.
+You can click on the imgs to see them full screen.
 <br><br>
 
 <div class="window">
@@ -34,7 +34,7 @@ You can click on the pictures to see them full screen.
                     {% for photo in site.data.photos.photos %}
                     <tr>
                         <td>
-                            <a href="{{ photo.url }}"><img src="{{ photo.url }}" class="embed-photo"></a>
+                            <a href="{{ photo.hires_url }}"><img src="{{ photo.preview_url }}" class="embed-photo"></a>
                         </td>
                         <td>
                             {{ photo.description }}
