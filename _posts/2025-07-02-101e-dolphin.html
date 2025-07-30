@@ -3,9 +3,13 @@ layout: post
 title: "Booting 101E on Dolphin"
 ---
 
-101E is the title ID of a disc Nintendo used to test GameCube consoles in the factory, also known as "Uji Diag Station" or "Main Unit Inspection Disc".<br><br>
-I decided to obtain a dump of the disk<a href='#disk'><sup>1</sup></a>&nbsp; out of curiosity; I first tried to run it on my Wii, where <a href="https://www.youtube.com/watch?v=NHOkzFMq45c" target="_blank">nothing interesting happened</a>.<br><br>
-I then tried to run in Dolphin, where I ended up having to patch out some infinite loops. Here are all the things I had to fix to have the software run.
+101E is the title ID of a disc Nintendo used to test GameCube consoles in the factory, also known as "Uji Diag Station"
+or "Main Unit Inspection Disc".<br><br>
+I decided to obtain a dump of the disk<a href='#disk'><sup>1</sup></a>&nbsp; out of curiosity; I first tried to run it
+on my Wii, where <a href="https://www.youtube.com/watch?v=NHOkzFMq45c" target="_blank">nothing interesting
+	happened</a>.<br><br>
+I then tried to run in Dolphin, where I ended up having to patch out some infinite loops. Here are all the things I had
+to fix to have the software run.
 <!--more-->
 <h4>First infinite loop (open bus data copy)</h4>
 <pre>
@@ -39,7 +43,8 @@ This code snippet is repeated at least 3 times in the binary, with different add
 0x8001ba4:		and. r10, r10, r11 ; is the cache being flushed?
 0x8001ba8:		beq+ 0x8001ba0 ; if not, busy wait for cache flush to be over
 </pre><br><br>
-This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeated 3 times in the binary... for reasons&trade;.
+This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeated 3 times in the binary... for
+reasons&trade;.
 
 <h4>Third loop (hangs while <code>memrange.lzs</code> is on screen)</h4>
 <pre>
@@ -56,5 +61,8 @@ This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeat
 0x8000cb90:		cmpwi r31, 0
 0x8000cb94:		bgt+ 0x8000cb6c ; we loop again
 </pre><br><br>
-The tests then crash during DMA tests because they start running code in the 0x00000000-0x0000ffff range (more or less).<br><br><hr>
-<a href='#disk'></a><h5 id='disk'><sup>1</sup>&nbsp;No, I'm not telling you where to find a dump of this disc.</h5>
+The tests then crash during DMA tests because they start running code in the 0x00000000-0x0000ffff range (more or
+less).<br><br>
+<hr>
+<a href='#disk'></a>
+<h5 id='disk'><sup>1</sup>&nbsp;No, I'm not telling you where to find a dump of this disc.</h5>

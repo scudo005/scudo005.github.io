@@ -3,41 +3,65 @@ layout: post
 title: The problem with unbuildable open source software
 note: publish on jul 6, 2025
 ---
-In the last couple of years, I've had a problem: some software is not available in binary form, or the binaries are too old to run on my system (this of course happens only on Linux, as Windows has amazing backwards compatibility most of the time); so I am forced to build it myself. Or I just want to do it anyway, just as a challenge.<!--more--><br><br>
+In the last couple of years, I've had a problem: some software is not available in binary form, or the binaries are too
+old to run on my system (this of course happens only on Linux, as Windows has amazing backwards compatibility most of
+the time); so I am forced to build it myself. Or I just want to do it anyway, just as a challenge.<!--more--><br><br>
 These are a good part of the roadblocks I've encountered over time:<br>
 <ul>
     <li>The software doesn't list its dependencies.</li>
-    <li>The software lists its dependencies, with the package name of a different distro or package manager (e.g. Fedora's <code>-devel</code> vs Debian/apt's <code>-dev</code>).</li>
-    <li>The dependencies changed name, or got absorbed into another package or library. (see older versions of <code>libjpeg-turbo</code>).</li>
+    <li>The software lists its dependencies, with the package name of a different distro or package manager (e.g.
+        Fedora's <code>-devel</code> vs Debian/apt's <code>-dev</code>).</li>
+    <li>The dependencies changed name, or got absorbed into another package or library. (see older versions of
+        <code>libjpeg-turbo</code>).</li>
     <li>You need to build the dependencies first.</li>
     <li>The dependencies are not available or don't work (anymore) on your current platform.</li>
-    <li>The software relies on libraries/packages that have since been deprecated and removed from package managers' repositories.</li>
+    <li>The software relies on libraries/packages that have since been deprecated and removed from package managers'
+        repositories.</li>
     <li>The software has no instructions on how to build it, or they are hard to follow.</li>
-    <li>The software's build chain relies on outdated technologies, or libraries, or packages, or old compilers, or specific versions of libraries.</li>
-    <li>The build chain is available, but it doesn't work correctly, usually because it forgets to set the PATH variable, or some other variable. (hi, PS2SDK)</li>
+    <li>The software's build chain relies on outdated technologies, or libraries, or packages, or old compilers, or
+        specific versions of libraries.</li>
+    <li>The build chain is available, but it doesn't work correctly, usually because it forgets to set the PATH
+        variable, or some other variable. (hi, PS2SDK)</li>
     <li>The software includes no Makefile (or similar equivalent).</li>
     <li>The Makefile (or equivalent) is broken and/or requires specific old versions of libraries.</li>
-    <li>The software was built with proprietary build tools, often old and outdated (like a huge chunk of old Windows programs that were built with Microsoft Visual C++ 2003).</li>
-    <li>Compiling the software requires using proprietary old compilers and build tools (looking at you, <a href="https://en.wikipedia.org/wiki/CodeWarrior#Old_versions" target="_blank">Metrowerks CodeWarriors</a>).</li>
+    <li>The software was built with proprietary build tools, often old and outdated (like a huge chunk of old Windows
+        programs that were built with Microsoft Visual C++ 2003).</li>
+    <li>Compiling the software requires using proprietary old compilers and build tools (looking at you, <a
+            href="https://en.wikipedia.org/wiki/CodeWarrior#Old_versions" target="_blank">Metrowerks CodeWarriors</a>).
+    </li>
     <li>The code references missing header files.</li>
     <li>The code calls some functions from custom libraries that are not included.</li>
-    <li>The code lacks half of the libraries from its own .NET project that are fundamental for the software to build (hi, Ryujinx).</li>
-    <li>The programmer(s) didn't really respect the GPL license and included only the code that <i>they</i>&nbsp; wrote and did not include the code that required them to license the program under the GPL license in the first place. (rare)</li>
-    <li>The code references platform-specific OS syscalls that have a different name on the target platform (not Windows syscalls on Linux, but the opposite; for example, there is no <code>mmap()</code> function in the Windows C standard library, you need MinGW's libraries to do that translation for you at compile time).</li>
+    <li>The code lacks half of the libraries from its own .NET project that are fundamental for the software to build
+        (hi, Ryujinx).</li>
+    <li>The programmer(s) didn't really respect the GPL license and included only the code that <i>they</i>&nbsp; wrote
+        and did not include the code that required them to license the program under the GPL license in the first place.
+        (rare)</li>
+    <li>The code references platform-specific OS syscalls that have a different name on the target platform (not Windows
+        syscalls on Linux, but the opposite; for example, there is no <code>mmap()</code> function in the Windows C
+        standard library, you need MinGW's libraries to do that translation for you at compile time).</li>
     <li>The software requires old proprietary blobs/binaries/libraries/header files to build.</li>
     <li>The software is written in a language that has no compiler (or modern compiler) for your target platform.</li>
     <li>Language version differences (e.g. Python 2.x vs Python 3.x).</li>
-    <li>The software makes use of assembly language for another architecture (rare, and usually this rarely happens on x86, and cross-compilers + QEMU is a possibility, but a pain).</li>
-    <li>Unknown/undefined data types (apparently, some compilers don't understand what a <code>u32</code> is if you don't tell it).</li>
+    <li>The software makes use of assembly language for another architecture (rare, and usually this rarely happens on
+        x86, and cross-compilers + QEMU is a possibility, but a pain).</li>
+    <li>Unknown/undefined data types (apparently, some compilers don't understand what a <code>u32</code> is if you
+        don't tell it).</li>
     <li>Custom, undefined data types.</li>
-    <li>Reliance on undefined behiavor (see GTA: SA, but it's mostly unseen in modern software built with modern tools).</li>
+    <li>Reliance on undefined behiavor (see GTA: SA, but it's mostly unseen in modern software built with modern tools).
+    </li>
     <li>Reliance on compilers being more lax in the past.</li>
     <li>Platform-specific quirks (e.g. PS2 and PS3 FPU being non-IEEE-754 compliant).</li>
     <li>The code makes assumptions about what platform it's supposed to be running on.</li>
     <li>You are trying to build a Java project with Maven or Gradle. Said enough.</li>
     <li>Hard to understand build failures - what is "Error 15" supposed to tell me?</li>
-    <li>The compiled binary crashes (see <a href="../../../2025/06/07/netbsd-openssl.html" target="_blank">OpenSSL on PowerPC</a>).</li>
-    <li>The compiled binary has weird glitches (very rare with modern software, mostly a matter of difference in behiavor between old and new compilers).</li>
-    <li>You need to flash the software to a MCU/SoC/memory chip for which you need a proprietary flashing utility that is no longer available, or doesn't run well on modern OSs, or you need special flashing hardware (looking at you, Dallas TINI/DC85S350).</li>
+    <li>The compiled binary crashes (see <a href="../../../2025/06/07/netbsd-openssl.html" target="_blank">OpenSSL on
+            PowerPC</a>).</li>
+    <li>The compiled binary has weird glitches (very rare with modern software, mostly a matter of difference in
+        behiavor between old and new compilers).</li>
+    <li>You need to flash the software to a MCU/SoC/memory chip for which you need a proprietary flashing utility that
+        is no longer available, or doesn't run well on modern OSs, or you need special flashing hardware (looking at
+        you, Dallas TINI/DC85S350).</li>
 </ul><br>
-This isn't even a problem of reproducible builds; it's a matter of "is this software <i>really</i>&nbsp;&nbsp;free, or am I getting scammed?", and a matter of "why does their binary work, even if it's supposedly built in the same way, and mine doesn't"?
+This isn't even a problem of reproducible builds; it's a matter of "is this software <i>really</i>&nbsp;&nbsp;free, or
+am I getting scammed?", and a matter of "why does their binary work, even if it's supposedly built in the same way, and
+mine doesn't"?
