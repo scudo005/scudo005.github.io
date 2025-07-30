@@ -7,6 +7,7 @@ addEventListener("DOMContentLoaded", (event) => {
     if (navigator.getAutoplayPolicy(sound_play) === 'allowed') {
         sound_play.play();
     }
+    // we need this so the page does not get stuck infinitely loading sometimes
     click();
 });
 
