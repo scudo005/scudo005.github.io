@@ -1,12 +1,33 @@
 list_name: Switch 2 things that happened
 facts:
+
+  - title: Nintendo unveils their next console, the Nintendo Switch 2, during a Nintendo Direct
+    date: February 4, 2025
+    description: <a href="https://www.nintendo.com/us/nintendo-direct/4-2-2025/" target="_blank">Not much to say.</a> The console is set to launch worldwide on June 5, 2025.
+
+  - title: <a href="https://en.wikipedia.org/wiki/Nintendo_Switch_system_software" target="_blank">HorizonOS</a> v20.0.0 adds Game Share support amongst other Switch 2 related features
+    date: April 29, 2025
+    description: <a href="https://en-americas-support.nintendo.com/app/answers/detail/a_id/43314/~/system-update-history-for-nintendo-switch" target="_blank">Here is the update history.</a>
+
+  - title: Nintendo warns they'll brick consoles if they detect homebrew or piracy
+    date: May 9, 2025
+    description: 'Nintendo surprises absolutely nobody by <a href="https://web.archive.org/web/20250609151255/https://accounts.nintendo.com/term/eula/US" target="_blank">updating their EULA</a> to say: <br><br><blockquote>You acknowledge that if you fail to comply with the foregoing restrictions Nintendo may render the Nintendo Account Services and/or the applicable Nintendo device permanently unusable in whole or in part.</blockquote>Translated from legalese:<br><br><blockquote>If we figure out you tried to run your code on your 450$ console, we will brick it no matter what.</blockquote>'
+
+  - title: Nintendo denies access to Switch 2 hardware and games to reviewers
+    date: May 15, 2025
+    description: Citing a requirement for a day-one system software patch, Nintendo <a href="https://www.thegamebusiness.com/p/major-media-outlets-will-not-have" target="_blank">refuses access to their new game console</a> until launch, scheduled for June 5, 2025.
+
+  - title: Multiple confirmed cases of early delivers show the console needs a day-one system update to play games
+    date: May 28, 2025
+    description: Some people <a href="https://www.videogameschronicle.com/news/nintendo-switch-2-is-already-in-some-users-hands-but-a-mandatory-update-means-they-cant-be-played/" target="_blank">get their hands</a> <a href="https://www.videogameschronicle.com/news/nintendo-switch-2-floodgates-open-as-another-user-shares-early-walkthrough-video/" target="_blank">on the console</a> before release, and all of them report the system won't play games unless a patch is applied, which is not available at this point.
+
   - title: Console release
     date: June 5, 2025
     description: The Nintendo Switch 2 releases worldwide at an MSRP of 450USD/EUR, with the main game being Mario Kart World, priced at 80USD/EUR. Other accessories are available at similar exhorbitant prices. As is the norm for any new popular hardware launch, some stores do run out of stock, though not as much as, say, the PS3's release, which had a comparable price point. Some other stores report very few sales.
 
   - title: First userspace exploit found
     date: June 5, 2025
-    description: BlueSky user David Buchanan, AKA retr0.id, discovers an user-land ROP exploit in the Switch 2's operating system that allows the user to take control of the console and call some Nintendo APIs (like initializing the GPU), as seen in this <a href="https://bsky.app/profile/retr0.id/post/3lqtwrndzf22w">thread</a>.
+    description: BlueSky user David Buchanan, AKA retr0.id, discovers an user-land ROP exploit in the Switch 2's operating system that allows the user to take partial control of the console and execute some simple code, as seen in this <a href="https://bsky.app/profile/retr0.id/post/3lqtwrndzf22w">thread</a>.
 
   - title: GameStop, being GameStop, breaks some consoles
     date: June 5, 2025
