@@ -1,0 +1,43 @@
+list_name: scph 50004 gh-023 board pics
+pic:
+  - description: This is the board, as seen from the top.
+    title: The top of the board
+    alt-text: A picture of an emerald-looking PCB. Besides some capacitors and other components, there are two big black BGA chips and one really big silver BGA chip on the left side of the board.
+    url: https://www.flickr.com/photos/202226920@N03/54587839492/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54587839492_420dacf270_k.jpg
+
+  - description: This is the board, as seen from the bottom.
+    title: The bottom of the board
+    alt-text: A picture of an emerald-looking PCB. Besides some capacitors and other components, there are three big black BGA chips on the right side of the board.
+    url: https://www.flickr.com/photos/202226920@N03/54588905349/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54588905349_049bb7dfe0_k.jpg
+
+  - description: This is the <a href="https://www.psdevwiki.com/ps2/Emotion_Engine" target="_blank">Emotion Engine</a>, the PS2's custom CPU. I have a CXD9708GB, as you can see, manufactured in early July 2003.
+    title: The CPU
+    alt-text: A picture of silver chip, marked "Emotion Engine".
+    url: https://www.flickr.com/photos/202226920@N03/54588925858/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54588925858_b91f1bd10a_k.jpg
+
+  - description: This is the Emotion Engine's 32MB of dual-channel 32-bit <a href="https://www.psdevwiki.com/ps2/Rambus_DRAM" target="_blank">RDRAM</a>.
+    title: The main memory
+    alt-text: A picture of two small shiny chips.
+    url: https://www.flickr.com/photos/202226920@N03/54588905269/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54588905269_e110d325f2_k.jpg
+
+  - description: This is the <a href="https://www.psdevwiki.com/ps2/Graphics_Synthesizer" target="_blank">Graphics Synthesizer</a>, the PS2's GPU. I have a CXD2949BGB (I think that's what it says? It's really hard to read).
+    title: The GPU
+    alt-text: A picture of a black chip, marked "Graphics Synthesizer" It's really hard to make out what it says.
+    url: https://www.flickr.com/photos/202226920@N03/54589028180/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54589028180_4e440bdd5c_k.jpg
+
+  - description: This is the <a href="https://www.psdevwiki.com/ps2/MechaCon" target="_blank">MechaCon</a>, the PS2's optical drive controller and security coprocessor. I have a CXR706080 - a later ARM-based variant.
+    title: The MechaCon
+    alt-text: A picture of a black chip.
+    url: https://www.flickr.com/photos/202226920@N03/54588905474/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54588905474_493e94cbcf_k.jpg
+
+  - description: This is the <a href="https://www.psdevwiki.com/ps2/SPU2" target="_blank">SPU2</a>, the PS2's sound processor (I have a CXD2947R) and a Macronix mask ROM.
+    title: The SPU2
+    alt-text: A picture of two black chips; one is square and the other rectangular (TSOP).
+    url: https://www.flickr.com/photos/202226920@N03/54589243515/in/datetaken-public/
+    src: https://live.staticflickr.com/65535/54589243515_2258858014_k.jpg
