@@ -1,10 +1,18 @@
+---
+descript: Hi, this is scudo's website!
+---
 <!DOCTYPE html>
-<html>
+<html lang="en_US">
 
 <head>
     <link rel="stylesheet" href="/assets/css/98.css">
     <link rel="stylesheet" href="/assets/css/docs.css">
     <link rel="stylesheet" href="/assets/css/vs.css">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:site_name" content="{{ site.title }}"/>
+    <meta property="og:title" content="{{ page.title }}"/>
+    <meta property="og:description" content="{{ page.descript }}"/>
+    <meta property="og:type" content="website"/>
     <title>{{ site.title }} - {{ page.title }}</title>
 </head>
 
@@ -21,7 +29,7 @@
             {% for page in site.data.pages.pages %}
             <a href="{{ page.url }}"><button onclick="playAudioOnClick()" class="button_link">{{ page.title
                     }}</button></a>
-            <audio src="/assets/mp3/reserved/xp_navig_start.mp3" id="nav_button" autobuffer="autobuffer"></audio>
+            <audio src="/assets/mp3/reserved/xp_navig_start.mp3" id="nav_button" autobuffer="autobuffer" autoplay="true"></audio>
             {% endfor %}
         </div>
     </div><br>
@@ -41,7 +49,7 @@
             <div class="title-bar-text" style="text-align: left;">&copy; {{ 'now' | date: "%Y" }}<a
                     href="https://github.com/scudo005"> scudo</a> - Licensed under <a
                     href="/LICENSE.txt">GPLv3</a>.&nbsp;Last updated on {{ 'now' | date: "%B %d, %Y @ %H:%M:%S" }}. <a
-                    href="/feed.xml"><img src="/assets/pictures/inline/rss.png"></a>
+                    href="/feed.xml"><img src="/assets/pictures/inline/rss.png" alt="RSS feed"></a>
             </div>
 
         </div>
