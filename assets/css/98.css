@@ -351,6 +351,7 @@ pre {
     padding-left: 25px;
     padding-right: 25px;
     width: fit-content;
+    white-space: pre-wrap;
 }
 
 code,
