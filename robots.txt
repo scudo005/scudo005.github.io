@@ -1,0 +1,4 @@
+Sitemap: https://scudo005.github.io/sitemap.xml
+
+User-agent: ChatGPT-User
+Disallow: /
