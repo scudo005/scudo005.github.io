@@ -1,0 +1,38 @@
+---
+layout: post
+title: Ryujinx can't (couldn't?) be compiled
+---
+After Nintendo successfully managed to <a href="https://twitter.com/OatmealDome/status/1841186829837513017"
+    target="_blank">close down the Ryujinx project</a>, out of curiosity I tried to compile its source code, as the repo
+had
+been backed up and reuploaded both on GitHub and the Internet Archive.<br> There still were (and are) builds for Windows
+and
+Linux, and my notes from back then say the Flatpak version was still available on Flathub. <br><br>
+Also, back then I was experimenting with C#/.NET and Ryujinx is written in C#, so I figured I could give it a
+try.<br><br>
+What I found is that the project did not build, and for quite complicated reasons.<br><br><!--more-->
+Analyzing the build logs, I found there were a lot of errors saying things like:<br><br>
+<pre>
+error CS0535: 'UnregistrationNotifier' does not implement interface method 'IServiceObject.GetCommandHandlers()'
+</pre><br>
+Generally speaking, all of these errors referred to classes and project related to managing <a
+    href="https://en.wikipedia.org/wiki/Nintendo_Switch_system_software" target="_blank">HorizonOS</a> system
+calls.<br><br>
+I took a look into it; I loaded the repo into VSCodium and I let it crunch through all the files until it started giving
+out errors; I then grabbed a random class that errored out, that referenced an interface.<br><br>
+I was then welcomed with the sight of a completely empty interface:<br><br>
+<pre>
+interface IReceiverService : IServiceObject
+    {
+    }
+</pre><br>
+Great. An empty interface that extends another interface. What an amazing start.<br><br>
+But what does <code>IServiceObject</code>&nbsp;contain? Not much, actually:<br><br>
+<pre>
+interface IServiceObject
+    {
+        IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers();
+    }
+</pre><br>
+Great. Another (almost) empty interface.
+<br><br>
