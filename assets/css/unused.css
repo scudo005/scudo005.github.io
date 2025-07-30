@@ -317,9 +317,6 @@ ul.tree-view li {
     list-style-type: none
 }
 
-li {
-    line-height: 1.5;
-}
 
 ul.tree-view a {
     color: #000;
