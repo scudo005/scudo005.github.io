@@ -7,7 +7,7 @@ addEventListener("DOMContentLoaded", (event) => {
         (function (i) {
             if (buttons.item(i).className === 'button_link') {
                 buttons[i].onclick = function () {
-                    location.href = buttons.item(i).getAttribute("href");
+                    location.href = buttons.item(i).getAttribute("--href");
                 }
             }
         }(i));
