@@ -22,8 +22,8 @@
         </div>
         <div class="window-body">
             {% for page in site.data.pages.pages %}
-            <a href="{{ page.url }}"><button onclick="playAudioOnClick()" class="button_link">{{ page.title
-                    }}</button></a>
+            <button onclick="playAudioOnClick()" class="button_link" href="{{ page.url }}">{{ page.title
+                    }}</button>
             <audio src="/assets/mp3/reserved/xp_navig_start.mp3" id="nav_button" preload="auto"></audio>
             {% endfor %}
         </div>

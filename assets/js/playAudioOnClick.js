@@ -1,4 +1,3 @@
-var links = Array.from(document.querySelectorAll('a'));
 var sound_play = document.getElementById('nav_button');
 var buttons = document.getElementsByTagName('button');
 sound_play.loop = false;
@@ -8,7 +7,7 @@ addEventListener("DOMContentLoaded", (event) => {
         (function (i) {
             if (buttons.item(i).className === 'button_link') {
                 buttons[i].onclick = function () {
-                    location.href = links[i - 1];
+                    location.href = buttons.item(i).getAttribute("href");
                 }
             }
         }(i));
