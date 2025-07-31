@@ -8,7 +8,7 @@
     <title>{{ site.title }} - {{ page.title }}</title>
     <meta name="description" content="Tech, art and more.">
     <meta name="application-name" content="{{ site.title }}">
-    <meta name="author" content="{{ site.admin }}" lang="en" />
+    <meta name="author" content="{{ site.admin }}" lang="en">
 </head>
 
 <body>
@@ -22,8 +22,8 @@
         </div>
         <div class="window-body">
             {% for page in site.data.pages.pages %}
-            <button onclick="playAudioOnClick()" class="button_link" --href="{{ page.url }}">{{ page.title
-                    }}</button>
+            <a href="{{ page.url }}"><button onclick="playAudioOnClick()" class="button_link">{{ page.title
+                    }}</button></a>
             <audio src="/assets/mp3/reserved/xp_navig_start.mp3" id="nav_button" preload="auto"></audio>
             {% endfor %}
         </div>
