@@ -9,6 +9,10 @@
         url(/assets/fonts/xp.woff2) format("woff2")
 }
 
+li:last-of-type{
+    padding-bottom: 0px;
+}
+
 .invisible {
     display: none;
 }
@@ -80,6 +84,7 @@ menu[role=tablist].multirows>li {
 
 li {
     line-height: 1.5;
+    padding-bottom: 4px;
 }
 
 body{
