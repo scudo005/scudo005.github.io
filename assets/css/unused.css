@@ -11,50 +11,7 @@ input[type=radio] {
 }
 
 
-menu[role=tablist] {
-    display: flex;
-    list-style-type: none;
-    margin: 0 0 -2px;
-    padding-left: 3px;
-    position: relative;
-    text-indent: 0
-}
 
-menu[role=tablist]>li {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    box-shadow: inset -1px 0 #0a0a0a, inset 1px 1px #dfdfdf, inset -2px 0 grey, inset 2px 2px #fff;
-    z-index: 1
-}
-
-menu[role=tablist]>li[aria-selected=true] {
-    background-color: silver;
-    margin-left: -3px;
-    margin-top: -2px;
-    padding-bottom: 2px;
-    position: relative;
-    z-index: 8
-}
-
-menu[role=tablist]>li>a {
-    color: #222;
-    display: block;
-    margin: 6px;
-    text-decoration: none
-}
-
-menu[role=tablist]>li[aria-selected=true]>a:focus {
-    outline: none
-}
-
-menu[role=tablist]>li>a:focus {
-    outline: 1px dotted #222
-}
-
-menu[role=tablist].multirows>li {
-    flex-grow: 1;
-    text-align: center
-}
 
 input[type=checkbox]+label,
 input[type=radio]+label {
