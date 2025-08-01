@@ -20,6 +20,10 @@ project:
     type: Hardware and electronics
     url: /projects/hardware/ps2-scph-5004-gallery.html
 
+  - name: Interactive Arduino LCD demo
+    type: Hardware and electronics
+    url: /projects/hardware/arduino_lcd.html
+
 
 
 
