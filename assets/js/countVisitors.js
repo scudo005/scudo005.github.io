@@ -10,12 +10,7 @@ req.onload = () => {
     }
 }
 req.send();
-vis = '';
-try{
-    vis = JSON.parse(req.responseText);
-}
-catch (SyntaxError){
-    console.log('Invalid JSON data: ' + req.responseText);
+if (req.responseText === ''){
     document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode('Something went wrong. See the browser console for details.')));
 }
-document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode(vis)));
+document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode(req.responseText)));
