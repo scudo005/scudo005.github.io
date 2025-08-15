@@ -3,7 +3,7 @@ layout: post
 title: Changing your display refresh rate when the battery is low (without VRR)
 ---
 Today I was messing around with my laptop display, when I noticed that it had a 48Hz mode; I immediately thought it was going to be great to save power (spoiler: it probably doesn't save all that much).<br><br><!--more-->
-KDE Plasma offers a tool (<code>kscreen-doctor</code>)&nbsp; that allows you to change all of your display settings with a single command (basically <code>xrandr</code>&nbsp; on X11 but it's actually useable and you don't risk bricking your X server). There may be a GNOME equivalent, but I don't know it.<br><br>
+KDE Plasma offers a tool (<code>kscreen-doctor</code>) that allows you to change all of your display settings with a single command (basically <code>xrandr</code>&nbsp; on X11 but it's actually useable and you don't risk bricking your X server). There may be a GNOME equivalent, but I don't know it.<br><br>
 So I made two scripts that changed the display to the 60Hz and 48Hz modes:<br><br>
 <div class="window image-block">
             <div class="window-body">
@@ -18,4 +18,4 @@ So I made two scripts that changed the display to the 60Hz and 48Hz modes:<br><b
             </div>
         </div>
 <br>
-<a href="/assets/other/set_script.sh">Here</a> is the script if you want it.<br>
+<a href="/assets/other/set_script.sh">Here</a> is the script if you want it. YMMV as your laptop may address its internal monitor in a different way than mine.<br>
