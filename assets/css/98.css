@@ -9,7 +9,7 @@
         url(/assets/fonts/xp.woff2) format("woff2")
 }
 
-li:last-of-type{
+li:last-of-type {
     padding-bottom: 0px;
 }
 
@@ -87,7 +87,7 @@ li {
     padding-bottom: 4px;
 }
 
-body{
+body {
     line-height: 1.3;
 }
 
@@ -418,8 +418,8 @@ pre {
 code,
 code * {
     font-family: monospace;
-    padding-left:0.5px;
-    padding-right:0.5px;
+    padding-left: 0.5px;
+    padding-right: 0.5px;
 }
 
 ::-webkit-scrollbar {

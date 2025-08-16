@@ -2,17 +2,20 @@
 layout: default
 title: "Interactive Arduino LCD demo"
 ---
-<h3><b>{{ page.title }}</h3></b>
+<b><h3>{{ page.title }}</h3></b>
 Years ago, I got myself an Arduino Uno kit - it ended up sitting on the shelf for quite a long time, and I kept wondering what would I ever do with it.<br><br>
 One day, at an event, I saw a person wear an e-ink digital badge, and I thought: "Damn, why don't I make something like it myself?". I then quickly realized that I only had an LCD display, that couldn't do bitmaps.<br><br>
-<i><b>Or could it?</i></b><br><br>
-You see, a large part of 2-line LCDs use a clone of the <a href="https://en.wikipedia.org/wiki/Hitachi_HD44780_LCD_controller" target="_blank">Hitachi HD44780 LCD controller</a>, including the LCD display included with every Arduino (and clone) kit; and that chip allows you to define some custom characters.<br><br>
+<b><i>Or could it?</i></b><br><br>
+You see, a large part of 2-line LCDs use a clone of the
+<a href="https://en.wikipedia.org/wiki/Hitachi_HD44780_LCD_controller" target="_blank">Hitachi HD44780 LCD controller</a>, including the LCD display included with every Arduino (and clone) kit; and that chip allows you to define some custom characters.<br><br>
 Now, making a digital badge that showed my name and everything with an Arduino on a 2-line LCD was a really stupid idea; it would have been so big it would've been funny to see. So instead, I tried making something else.<br><br>
 While I was trying to understand how to program custom "bitmaps" (actually custom text characters), I found out that what I was trying to do had, apparently, never been done before; or if someone had done it before, I couldn't find it. So I decided to make something cooler instead; something inspired by a Tamagotchi.<br><br>
 (Everyone knows what that is, so I'll spare you the explanation.)
 <h4>How does it work?</h4>
 It doesn't actually do that much (I even ran out of custom characters!); it "boots up", blinks at you, sometimes it beeps at you, and if you don't press any buttons it closes its eyes and eventually goes to sleep.<br>
-It can be woken up by pressing a button. <br><br>
+It can be woken up by pressing a button.
+<br><br>
 I plan to add stuff to it and eventually to post a demonstration video; when that last thing's done, I will update this page so you can see the thing in action. It's not very exciting, admittedly, but I find it really cool.<br><br>
-<a href="https://codeberg.org/scudo/protopotato_arduino">Here is the repository</a> if you're interested.
+<a href="https://codeberg.org/scudo/protopotato_arduino">Here is the repository</a>
+if you're interested.
 <h5>P.S.: It is exactly what you think it is.</h5>

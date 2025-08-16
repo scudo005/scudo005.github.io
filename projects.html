@@ -4,7 +4,6 @@ title: My projects
 ---
 
 Here you can have a brief overview of all the projects I have published on this website. Enjoy!<br><br>
-
 <div class="window">
   <div class="title-bar">
     <div class="title-bar-text">My projects</div>
@@ -24,19 +23,19 @@ Here you can have a brief overview of all the projects I have published on this 
         <ul class="project-list">
           {% for project in site.data.projects.project %}
           {% if project.type == 'Music' %}
-          <li><a href="{{ project.url }}">{{ project.name }}</a>
-            {% endif %}
+          <li><a href="{{ project.url }}">{{ project.name }}</a></li>
+          {% endif %}
             {% endfor %}
         </ul>
         <ul class="project-list">
           {% for project in site.data.projects.project %}
           {% if project.type == 'Hardware and electronics' %}
-          <li><a href="{{ project.url }}">{{ project.name }}</a>
-            {% endif %}
+          <li><a href="{{ project.url }}">{{ project.name }}</a></li>
+          {% endif %}
             {% endfor %}
         </ul>
-</div>
       </div>
     </div>
-  </div><br>
-  <script src="/assets/js/menuButtons.js"></script>
+  </div>
+</div><br>
+<script src="/assets/js/menuButtons.js"></script>

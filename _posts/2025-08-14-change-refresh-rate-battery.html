@@ -3,19 +3,20 @@ layout: post
 title: Changing your display refresh rate when the battery is low (without VRR)
 ---
 Today I was messing around with my laptop display, when I noticed that it had a 48Hz mode; I immediately thought it was going to be great to save power (spoiler: it probably doesn't save all that much).<br><br><!--more-->
-KDE Plasma offers a tool (<code>kscreen-doctor</code>) that allows you to change all of your display settings with a single command (basically <code>xrandr</code>&nbsp; on X11 but it's actually useable and you don't risk bricking your X server). There may be a GNOME equivalent, but I don't know it.<br><br>
+KDE Plasma offers a tool (<code>kscreen-doctor</code>) that allows you to change all of your display settings with a single command (basically
+<code>xrandr</code>&nbsp; on X11 but it's actually useable and you don't risk bricking your X server). There may be a GNOME equivalent, but I don't know it.<br><br>
 So I made two scripts that changed the display to the 60Hz and 48Hz modes:<br><br>
 <div class="window image-block">
-            <div class="window-body">
-                <div class="title-bar">
-                    <div class="title-bar-text">Sorry for the italian lol</div>
-                    <div class="title-bar-controls">
-                        <button aria-label="Close"></button>
-                    </div>
-                </div>
-                <img src="/assets/imgs/posts/kde_batt.png" alt="KDE Plasma's power management settings, on the 'low battery' section, showing two scripts to be ran. One is set to run when the 'low battery' status is entered, and the other when the status is left."
-                        class="body-photo" /></a>
-            </div>
-        </div>
+  <div class="window-body">
+    <div class="title-bar">
+      <div class="title-bar-text">Sorry for the italian lol</div>
+      <div class="title-bar-controls">
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <img src="/assets/imgs/posts/kde_batt.png" alt="KDE Plasma's power management settings, on the 'low battery' section, showing two scripts to be ran. One is set to run when the 'low battery' status is entered, and the other when the status is left." class="body-photo">
+  </div>
+</div>
 <br>
-<a href="/assets/other/set_script.sh">Here</a> is the script if you want it. YMMV as your laptop may address its internal monitor in a different way than mine.<br>
+<a href="/assets/other/set_script.sh">Here</a>
+is the script if you want it. YMMV as your laptop may address its internal monitor in a different way than mine.<br>

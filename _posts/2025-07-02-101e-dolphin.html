@@ -6,7 +6,8 @@ title: "Booting 101E on Dolphin"
 101E is the title ID of a disc Nintendo used to test GameCube consoles in the factory, also known as "Uji Diag Station"
 or "Main Unit Inspection Disc".<br><br>
 I decided to obtain a dump of the disk<a href='#disk'><sup>1</sup></a>&nbsp; out of curiosity; I first tried to run it
-on my Wii, where <a href="https://www.youtube.com/watch?v=NHOkzFMq45c" target="_blank">nothing interesting
+on my Wii, where
+<a href="https://www.youtube.com/watch?v=NHOkzFMq45c" target="_blank">nothing interesting
 	happened</a>.<br><br>
 I then tried to run in Dolphin, where I ended up having to patch out some infinite loops. Here are all the things I had
 to fix to have the software run.
@@ -26,15 +27,13 @@ to fix to have the software run.
 0x8110c924:		cmplw r4, r0 ; same as above
 0x8110c928:		bne+ 0x8110c904 ; we loop if they don't match
 </pre><br><br>
-
 So, to recap:
 <ol>
-	<li>We access open bus (the mapped address space of the GC starts at 0x80000000)</li>
-	<li>We read the last byte of some random data that happened to be in the MBR + some unknown stack frame data</li>
-	<li>We check some bits of a number with itself? Why?</li>
+  <li>We access open bus (the mapped address space of the GC starts at 0x80000000)</li>
+  <li>We read the last byte of some random data that happened to be in the MBR + some unknown stack frame data</li>
+  <li>We check some bits of a number with itself? Why?</li>
 </ol>
 This code snippet is repeated at least 3 times in the binary, with different addresses.
-
 <h4>Second loop (L2 cache check)</h4>
 <pre>
 0x8001b98:		xor r11, r11, r11 ; we zero r11
@@ -45,8 +44,9 @@ This code snippet is repeated at least 3 times in the binary, with different add
 </pre><br><br>
 This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeated 3 times in the binary... for
 reasons&trade;.
-
-<h4>Third loop (hangs while <code>memrange.lzs</code> is on screen)</h4>
+<h4>Third loop (hangs while
+  <code>memrange.lzs</code>
+  is on screen)</h4>
 <pre>
 0x8000cb6c:		lhz r0, -0x7f9c (r13) ; r0 = [r13-0x7f9c] (only lower 16 bits, load halfword and zero)
 0x8000cb70:		cmplwi r0, 0 ; is r0 zero? (unsigned; not like it matters.)

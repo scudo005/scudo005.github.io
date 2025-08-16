@@ -2,12 +2,14 @@
 layout: post
 title: Ryujinx can't (couldn't?) be compiled
 ---
-After Nintendo successfully managed to <a href="https://twitter.com/OatmealDome/status/1841186829837513017"
-    target="_blank">close down the Ryujinx project</a>, out of curiosity I tried to compile its source code, as the repo
+After Nintendo successfully managed to
+<a href="https://twitter.com/OatmealDome/status/1841186829837513017" target="_blank">close down the Ryujinx project</a>, out of curiosity I tried to compile its source code, as the repo
 had
-been backed up and reuploaded both on GitHub and the Internet Archive.<br> There still were (and are) builds for Windows
+been backed up and reuploaded both on GitHub and the Internet Archive.<br>
+There still were (and are) builds for Windows
 and
-Linux, and my notes from back then say the Flatpak version was still available on Flathub. <br><br>
+Linux, and my notes from back then say the Flatpak version was still available on Flathub.
+<br><br>
 Also, back then I was experimenting with C#/.NET and Ryujinx is written in C#, so I figured I could give it a
 try.<br><br>
 What I found is that the project did not build, and for quite complicated reasons.<br><br><!--more-->
@@ -15,8 +17,9 @@ Analyzing the build logs, I found there were a lot of errors saying things like:
 <pre>
 error CS0535: 'UnregistrationNotifier' does not implement interface method 'IServiceObject.GetCommandHandlers()'
 </pre><br>
-Generally speaking, all of these errors referred to classes and project related to managing <a
-    href="https://en.wikipedia.org/wiki/Nintendo_Switch_system_software" target="_blank">HorizonOS</a> system
+Generally speaking, all of these errors referred to classes and project related to managing
+<a href="https://en.wikipedia.org/wiki/Nintendo_Switch_system_software" target="_blank">HorizonOS</a>
+system
 calls.<br><br>
 I took a look into it; I loaded the repo into VSCodium and I let it crunch through all the files until it started giving
 out errors; I then grabbed a random class that errored out, that referenced an interface.<br><br>
@@ -27,16 +30,19 @@ interface IReceiverService : IServiceObject
     }
 </pre><br>
 Great. An empty interface that extends another interface. What an amazing start.<br><br>
-But what does <code>IServiceObject</code>&nbsp;&nbsp;contain? Not much, actually:<br><br>
+But what does
+<code>IServiceObject</code>contain? Not much, actually:<br><br>
 <pre>
 interface IServiceObject
     {
-        IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers();
+        IReadOnlyDictionary&lt;int, CommandHandler&gt; GetCommandHandlers();
     }
 </pre><br>
-Great. Another (almost) empty interface. But see that <code>GetCommandHandlers()</code>&nbsp;? That is the method that gave all those build errors before!
+Great. Another (almost) empty interface. But see that
+<code>GetCommandHandlers()</code>? That is the method that gave all those build errors before!
 <br><br>
-So I searched all references to that method; it was called only once in the whole project, inside <code>ServiceDispatchTables</code>&nbsp;, a class that should deal with command handlers relative to HorizonOS syscalls:<br><br>
+So I searched all references to that method; it was called only once in the whole project, inside
+<code>ServiceDispatchTables</code>, a class that should deal with command handlers relative to HorizonOS syscalls:<br><br>
 <pre>
 public static ServiceDispatchTableBase Create(IServiceObject instance)
     {
@@ -47,9 +53,30 @@ public static ServiceDispatchTableBase Create(IServiceObject instance)
         return new ServiceDispatchTable(instance.GetType().Name, instance.GetCommandHandlers());
     }
 </pre><br>
-Wow, we even land on a constructor! And we have our <code>GetCommandHandlers</code>&nbsp; call, invoked on the <code>instance</code>&nbsp; object, which is... (drum roll)... an instance of <code>IServiceObject</code>&nbsp;! Yay! We closed the circle!<br><br>
-<b><i>Or did we?</b></i><br><br>
-Let's concentrate on that call to <code>GetCommandHandlers</code>&nbsp;. Since that call is invoked on a <code>IServiceObject</code>&nbsp; object, we need to look into <code>IServiceObject</code>&nbsp; to see if there are any methods called <code>GetCommandHandlers</code>&nbsp;.<br><br>
+Wow, we even land on a constructor! And we have our
+<code>GetCommandHandlers</code>
+call, invoked on the
+<code>instance</code>
+object, which is... (drum roll)... an instance of
+<code>IServiceObject</code>! Yay! We closed the circle!<br><br>
+<i><b>Or did we?</b></i><br><br>
+Let's concentrate on that call to
+<code>GetCommandHandlers</code>. Since that call is invoked on a
+<code>IServiceObject</code>
+object, we need to look into
+<code>IServiceObject</code>
+to see if there are any methods called
+<code>GetCommandHandlers</code>.<br><br>
 There is indeed a method with that name, which is the only thing inside of that interface. What does that method do?<br><br>
-<code>GetCommandHandlers</code>&nbsp; returns a <code>IReadOnlyDictionary</code>&nbsp; collection; that is, a key-value pair where the key is an integer and the value is a <code>CommandHandler</code>&nbsp; object, which is what we want to have. The problem is that this definition of <code>GetCommandHandlers</code>&nbsp; is defined inside of an interface, so it is the job of any class that implements that interface to also implement its methods; this means all the classes that implement all the HorizonOS syscalls have to implement <code>GetCommandHandlers</code>&nbsp;.<br><br>
-The problem is that <b>no class in the whole project ever implements GetCommandHandlers.</b> Oopsie. No wonder it didn't compile!
+<code>GetCommandHandlers</code>
+returns a
+<code>IReadOnlyDictionary</code>
+collection; that is, a key-value pair where the key is an integer and the value is a
+<code>CommandHandler</code>
+object, which is what we want to have. The problem is that this definition of
+<code>GetCommandHandlers</code>
+is defined inside of an interface, so it is the job of any class that implements that interface to also implement its methods; this means all the classes that implement all the HorizonOS syscalls have to implement
+<code>GetCommandHandlers</code>.<br><br>
+The problem is that
+<b>no class in the whole project ever implements GetCommandHandlers.</b>
+Oopsie. No wonder it didn't compile!
