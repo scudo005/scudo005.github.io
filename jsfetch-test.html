@@ -26,6 +26,6 @@ document.getElementById('main').appendChild(document.createElement("div").append
 document.getElementById('main').appendChild(document.createElement("br"));
 // use WebGL to list client GPUs; by name if possible, else by feature compliance (e.g. "GLES 3.0 compatible GPU")
 if (navigator.deviceMemory != 'undefined' && navigator.deviceMemory != null){ // https only
-  document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode("Memory: "+navigator.deviceMemory+" MB")));
+  document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode("Memory: "+navigator.deviceMemory*1024+" MB")));
 }
 </script>
