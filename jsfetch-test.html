@@ -13,7 +13,7 @@ let os = "OS: "+parser.getOS().name;
 if (parser.getOS.version != 'undefined' && parser.getOS.version != null){
     os += " "+parser.getOS().version;
 }
-document.getElementById('main').appendChild(document.createElement("div").appendChild(os)));
+document.getElementById('main').appendChild(document.createElement("div").appendChild(os));
 document.getElementById('main').appendChild(document.createElement("br"));
 let browser = "Shell: "+parser.getBrowser().name + " " + parser.getBrowser().version;
 }
