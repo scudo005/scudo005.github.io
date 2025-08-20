@@ -16,7 +16,7 @@ if (parser.getOS.version != 'undefined' && parser.getOS.version != null){
 document.getElementById('main').appendChild(document.createElement("div").appendChild(os));
 document.getElementById('main').appendChild(document.createElement("br"));
 let browser = "Shell: "+parser.getBrowser().name + " " + parser.getBrowser().version;
-}
+
 if (parser.getBrowser().type != 'undefined' && parser.getBrowser().type != null){ // doesn't work with desktops
     browser =+ " ("+parser.getBrowser().type+")";
 }
