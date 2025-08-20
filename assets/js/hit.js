@@ -6,7 +6,7 @@ if (document.cookie === '') {
     req.send('{"key":"2Z0GxYUE3xNXTF2B"}');
     req.addEventListener('loadend', function () {
         if (req.response != 'success') {
-            console.log('increment fail. http status ' + req.status + ' request state ' + req.readyState);
+            console.log('increment fail. http status ' + req.status + ' request state ' + req.readyState + ' response ' + req.response);
         }
     })
 }
