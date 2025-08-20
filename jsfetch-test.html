@@ -9,9 +9,14 @@ title: JSFetch test
 // shell=browser info (es. Firefox 69), terminal=Navigator.connection.type+Navigator.devicePosture, cpu=Navigator.oscpu/Navigator.userAgent+Navigator.hardwareConcurrency,
 // gpu = navigator.gpu, memory = navigator.deviceMemory*1024
   const parser = new UAParser(navigator.userAgent);
-document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode("OS: "+parser.getOS().name+" "+parser.getOS().version)));
+let os = "OS: "+parser.getOS().name;
+if (parser.getOS.version != 'undefined' && parser.getOS.version != null){
+    os += " "+parser.getOS().version;
+}
+document.getElementById('main').appendChild(document.createElement("div").appendChild(os)));
 document.getElementById('main').appendChild(document.createElement("br"));
-let browser = "Shell: "+parser.getBrowser().name+" "+parser.getBrowser().version
+let browser = "Shell: "+parser.getBrowser().name + " " + parser.getBrowser().version;
+}
 if (parser.getBrowser().type != 'undefined' && parser.getBrowser().type != null){ // doesn't work with desktops
     browser =+ " ("+parser.getBrowser().type+")";
 }
