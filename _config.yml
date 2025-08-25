@@ -12,4 +12,5 @@ url: "https://scudo005.github.io" # update if necessary
 # Build settings
 plugins:
   - jekyll-feed
-  - jekyll-sitemap 
+  - jekyll-sitemap
+  - jekyll-redirect-from
