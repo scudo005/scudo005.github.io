@@ -4,7 +4,7 @@ title: A stupid Chrome bug
 ---
 Today I was testing the site under Ungoogled-Chromium to verify that now the page scales properly on mobile devices - since Firefox/Gecko has no such feature for web development - when the
 <a href="/music.html">music page</a>
-suddenly stopped working properly; some songs would immediately stop playing.<br><br>
+suddenly stopped working properly; some songs would immediately stop playing.<br><br><!--more-->
 After much searching, I ended up looking at Chrome's logs (through
 <a href="chrome://media-internals/"><code>chrome://media-internals/</code></a>); there I found that the demux process was failing with a "data source error":<br><br>
 <div class="window image-block">
@@ -15,7 +15,7 @@ After much searching, I ended up looking at Chrome's logs (through
         <button aria-label="Close"></button>
       </div>
     </div>
-    <img src="/assets/imgs/posts/chrome.jpg" alt="Chrome's logs showing FFMpegAudioDecoder has no idea what the sample format is, followed by FFMpegDemuxer crashing with a data source error" class="body-photo">
+    <a href="/assets/imgs/posts/chrome.jpg"><img src="/assets/imgs/posts/chrome.jpg" alt="Chrome's logs showing FFMpegAudioDecoder has no idea what the sample format is, followed by FFMpegDemuxer crashing with a data source error" class="body-photo"></a>
   </div>
 </div>
 <br>
