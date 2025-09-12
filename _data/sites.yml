@@ -1,0 +1,16 @@
+site:
+  - title: Arcisito
+    description: A girl in tech. Not very frequently updated.
+    url: arci.me
+
+  - title: Duskhorn's Links
+    description: A central hub of a funny bear friend.
+    url: links.duskhorn.eu
+
+  - title: neonsn0w's website
+    description: The site is just a hub, but he's one cool guy.
+    url: neonsn0w.com
+
+  - title: bruschetta.cc
+    description: Multiple self-hosted services. Plus it looks cool. (also, the <a href='/count.html'>site hit counter</a> is hosted on this server!)
+    url: bruschetta.cc

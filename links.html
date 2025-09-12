@@ -1,0 +1,21 @@
+---
+layout: default
+title: Links
+---
+Here I will put links to some personal websites that I think you should check out!<br><br>
+
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">The websites</div>
+    <div class="title-bar-controls">
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body">
+     <ul>
+       {% for site in site.data.sites.site %}
+       <li><b>{{ site.title }}: </b>{{ site.description }}<br>Address: <a href='https://{{ site.url }}'>{{ site.url }}</a></li>
+       {% endfor %}
+     </ul>
+  </div>
+  </div>
