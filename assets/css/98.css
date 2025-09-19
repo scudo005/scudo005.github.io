@@ -9,6 +9,9 @@
         url(/assets/fonts/xp.woff2) format("woff2")
 }
 
+i{
+    padding-right: 2px;
+}
 li:last-of-type {
     padding-bottom: 0px;
 }
