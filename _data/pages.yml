@@ -1,4 +1,3 @@
-list_name: List of the site pages
 pages:
   - title: Homepage
     url: /index.html
