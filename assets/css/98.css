@@ -422,7 +422,7 @@ code,
 code * {
     font-family: monospace;
     padding-left: 0.5px;
-    padding-right: 0.5px;
+    padding-right: 2px;
 }
 
 ::-webkit-scrollbar {
