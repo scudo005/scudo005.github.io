@@ -1,0 +1,26 @@
+MIDI Mappings for my digital piano (Furstein DP300)
+01 Acoustic Grand Piano -> Grand Piano
+02 Bright Acoustic Piano -> Bright Piano
+03 Electric Grand Piano -> Studio Piano
+04 Honky-tonk Piano -> Stereo Piano
+05 Electric Piano 1 -> Honky Tonky
+07 Electric Piano 2 -> Harpsichord 
+08 Clavi -> Dyno Electric Piano 
+09 Celesta -> 80's Electric Piano 
+10 Glockenspiel -> Warm Electric Piano 
+11 Music Box -> Legend Electric Piano 
+12 Vibraphone-> Hard Electric Piano 
+13 Marimba -> Vibraphone  
+14 Xylophone -> Marimba 
+15 Tubular Bells -> Nylon Guitar 
+16 Dulcimer -> Church Organ 
+17 Drawbar Organ -> Puff Organ 
+18 Percussive Organ -> Rock Organ
+19 Rock Organ -> Strings 
+20 Church Organ -> Slow Strings
+21 Reed Organ ->  Choir
+22 Accordion -> Metronome????
+23 Harmonica -> Second metronome sound????
+ 
+
+
