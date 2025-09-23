@@ -3,10 +3,6 @@ project:
     type: Music
     url: /projects/music/eosd_opl3.html
 
-  - name: Furstein DP-300 General MIDI mappings
-    type: Music
-    url: /projects/music/midi_mappings.html
-
   - name: Nintendo Wii RVL-CPU-01 motherboard imgs
     type: Hardware and electronics
     url: /projects/hardware/rvl-cpu-01-pics.html
