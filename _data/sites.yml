@@ -14,3 +14,7 @@ site:
   - title: bruschetta.cc
     description: Multiple self-hosted services. Plus it looks cool. (also, the <a href='/count.html'>site hit counter</a> is hosted on this server!)
     url: bruschetta.cc
+
+  - title: Edoardo(?) Borgia Leiva
+    description: Another website a friend made.
+    url: edoardo-b-leiva.github.io
