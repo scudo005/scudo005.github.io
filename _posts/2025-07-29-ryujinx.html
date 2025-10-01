@@ -26,17 +26,17 @@ out errors; I then grabbed a random class that errored out, that referenced an i
 I was then welcomed with the sight of a completely empty interface:<br><br>
 <pre>
 interface IReceiverService : IServiceObject
-    {
-    }
+	{
+	}
 </pre><br>
 Great. An empty interface that extends another interface. What an amazing start.<br><br>
 But what does
 <code>IServiceObject</code>contain? Not much, actually:<br><br>
 <pre>
 interface IServiceObject
-    {
-        IReadOnlyDictionary&lt;int, CommandHandler&gt; GetCommandHandlers();
-    }
+	{
+	IReadOnlyDictionary&lt;int, CommandHandler&gt; GetCommandHandlers();
+	}
 </pre><br>
 Great. Another (almost) empty interface. But see that
 <code>GetCommandHandlers()</code>? That is the method that gave all those build errors before!
@@ -45,13 +45,13 @@ So I searched all references to that method; it was called only once in the whol
 <code>ServiceDispatchTables</code>, a class that should deal with command handlers relative to HorizonOS syscalls:<br><br>
 <pre>
 public static ServiceDispatchTableBase Create(IServiceObject instance)
-    {
-        if (instance is DomainServiceObject)
-        {
-            return new DomainServiceObjectDispatchTable();
-        }
-        return new ServiceDispatchTable(instance.GetType().Name, instance.GetCommandHandlers());
-    }
+	{
+	if (instance is DomainServiceObject)
+	{
+	return new DomainServiceObjectDispatchTable();
+	}
+	return new ServiceDispatchTable(instance.GetType().Name, instance.GetCommandHandlers());
+	}
 </pre><br>
 Wow, we even land on a constructor! And we have our
 <code>GetCommandHandlers</code>

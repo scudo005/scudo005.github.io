@@ -8,15 +8,15 @@ suddenly stopped working properly; some songs would immediately stop playing.<br
 After much searching, I ended up looking at Chrome's logs (through
 <a href="chrome://media-internals/"><code>chrome://media-internals/</code></a>); there I found that the demux process was failing with a "data source error":<br><br>
 <div class="window image-block">
-  <div class="window-body">
-    <div class="title-bar">
-      <div class="title-bar-text">The error</div>
-      <div class="title-bar-controls">
-        <button aria-label="Close"></button>
-      </div>
-    </div>
-    <a href="/assets/imgs/posts/chrome.jpg"><img src="/assets/imgs/posts/chrome.jpg" alt="Chrome's logs showing FFMpegAudioDecoder has no idea what the sample format is, followed by FFMpegDemuxer crashing with a data source error" class="body-photo"></a>
-  </div>
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">The error</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/chrome.jpg"><img src="/assets/imgs/posts/chrome.jpg" alt="Chrome's logs showing FFMpegAudioDecoder has no idea what the sample format is, followed by FFMpegDemuxer crashing with a data source error" class="body-photo"></a>
+	</div>
 </div>
 <br>
 The culprit MP3 files were all encoded using
