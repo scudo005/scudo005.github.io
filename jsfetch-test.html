@@ -4,7 +4,7 @@ title: JSFetch test
 ---
 <script src="https://cdn.jsdelivr.net/npm/ua-parser-js/dist/ua-parser.min.js"></script>
 <script>
-// terminal=Navigator.connection.type+Navigator.devicePosture
+  // terminal=Navigator.connection.type+Navigator.devicePosture
 const parser = new UAParser(navigator.userAgent);
 let os = "OS: "+parser.getOS().name;
 if (parser.getOS.version != 'undefined' && parser.getOS.version != null){
