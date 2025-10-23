@@ -13,7 +13,7 @@ Here I will put links to some personal websites that I think you should check ou
   <div class="window-body">
     <ul>
       {% for site in site.data.sites.site %}
-      <li><b>{{ site.title }}:</b>{{ site.description }}<br>Address:
+      <li><b>{{ site.title }}: </b>{{ site.description }}<br>Address:&nbsp;
         <a href='https://{{ site.url }}'>{{ site.url }}</a></li>
       {% endfor %}
     </ul>

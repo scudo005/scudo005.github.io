@@ -4,7 +4,7 @@ site:
     url: arci.me
 
   - title: Duskhorn's Links
-    description: A central hub of a funny bear friend.
+    description: A central hub of a funny friend of mine.
     url: links.duskhorn.eu
 
   - title: neonsn0w's website
@@ -15,6 +15,10 @@ site:
     description: Multiple self-hosted services. Plus it looks cool. (also, the <a href='/count.html'>site hit counter</a> is hosted on this server!)
     url: bruschetta.cc
 
-  - title: Edoardo(?) Borgia Leiva
+  - title: a_mayb3_'s portfolio
     description: Another website a friend made.
-    url: edoardo-b-leiva.github.io
+    url: a-mayb3.github.io
+    
+  - title: lopl's failures den
+    description: Despite the title, the owner of this site is pretty cool and, indeed, not a failure.
+    url: failures-den.neocities.org

@@ -4,3 +4,20 @@ title: Building firmware for the ASUS DSL-N12E-C1 modem-router
 ---
 A few months ago, I recovered an ASUS DSL-N12E-C1 modem-router combo someone was throwing away. At the time I didn't have a router at home, so I picked it up; it worked flawlessly first time. I then recefound out ASUS had published the full source code for the router firmware, so I started figuring out how to build it.<!--more--><br>
 First of all, I had to settle on an OS. In the readme, ASUS says to use either Ubuntu 10.04 or CentOS 6.2; I decided to go with Ubuntu since I was familiar with it.<br>
+Here I made a critical mistake as I couldn't be bothered to fix the repositories to just fullfill the dependencies, and I instead tried to compile them on my own.<br><br>
+Here's what I needed to install:
+<div class="window image-block">
+  <div class="window-body">
+    <div class="title-bar">
+      <div class="title-bar-text">The dependencies</div>
+      <div class="title-bar-controls">
+	<button aria-label="Close"></button>
+      </div>
+    </div>
+    <a href="/assets/imgs/posts/asus_deps.jpg"><img src="/assets/imgs/posts/asus_deps.jpg" alt="Install these packages: build-essential, bison, flex, gawk, dos2unix, libstdc++" class="body-photo"></a>
+  </div>
+</div><br><br>
+I checked for GCC and Make, and they were there, so I moved on.<br>
+Next thing, <code>bison</code>. After fullfilling its dependency <code>m4</code>, I was set. <code>flex</code> was not a problem as well.<br><br>
+I hit the first real roadblock with <code>dos2unix</code>: not only is it only available from SourceForge, but it also has a lot of dependencies. It depends on <code>po4a</code>, which depends on <code>SGMLSpm</code> (yes, Perl of all things), <code>gettext</code> and <code>libxslt</code>; <code>libxslt</code> itself has <code>libtool</code> and <code>libxml2</code> as dependencies, and needed <code>automake</code> (which has <code>autoconf</code> as dependency) to be compiled. So I got to work.<br><br>
+<code>po4a</code> was a giant pain in the ass because it has support for <a href="https://perldoc.perl.org/perlpod">perlpod</a> and <a href="https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language">SGML</a>, and being that this software was written in the early 2010s, it's written in Perl; so, off to building I went. I soon then found out that one of the listed dependencies was called just "SGMLS" and that it had no hits on <a href="http://www.cpan.org/"CPAN
