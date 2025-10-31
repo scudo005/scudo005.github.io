@@ -5,7 +5,7 @@ pages:
   - title: Blog posts
     url: /blog.html
 
-  - title: Sysadmin info
+  - title: About me
     url: /me.html
 
   - title: Music
@@ -19,3 +19,6 @@ pages:
 
   - title: Tutorials
     url: /tutorials.html
+
+  - title: Links
+    url: /links.html
