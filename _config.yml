@@ -1,11 +1,11 @@
 # Site settings
 title: scudo's junkie site
 
-admin: scudo
+author: scudo
 
 excerpt_separator: <!--more-->
 
-descript: Hi, this is scudo's website!
+description: Tech, art, and more.
 
 url: "https://scudo005.github.io" # update if necessary
 
