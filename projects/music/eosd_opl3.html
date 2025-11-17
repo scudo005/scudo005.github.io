@@ -27,7 +27,7 @@ synth. Take a listen!<br><br>
           {% for song in site.data.eosd_songs.music %}
           <tr>
             <td class="songs">
-              <audio controls src="{{ song.url }}" class="visible-music-player"></audio>
+              <audio controls src="{{ song.url }}" class="visible-music-player" preload="metadata"></audio>
             </td>
             <td style="text-align: center;">
               {{ song.title }}

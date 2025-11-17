@@ -32,7 +32,7 @@ mainly from the Roland SC-55/Sound Canvas.
           {% for song in site.data.music.music %}
           <tr>
             <td class="songs">
-              <audio controls src="/assets/mp3/my_music/{{ song.url }}" class="visible-music-player"></audio>
+              <audio controls src="/assets/mp3/my_music/{{ song.url }}" class="visible-music-player" preload="metadata"></audio>
             </td>
             <td style="text-align: center;">
               {{ song.title }}
