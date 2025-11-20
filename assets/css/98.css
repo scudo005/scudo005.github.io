@@ -4,14 +4,16 @@
 @font-face {
     font-family: "xp";
     font-style: normal;
-    font-weight: 700; /* needed for footer */
+    font-weight: 700;
+    /* needed for footer */
     src: url(/assets/fonts/xp.woff) format("woff"),
         url(/assets/fonts/xp.woff2) format("woff2")
 }
 
-i{
+i {
     padding-right: 2px;
 }
+
 li:last-of-type {
     padding-bottom: 0px;
 }
@@ -103,7 +105,7 @@ body {
 
 b {
     font-family: 'xp_bold';
-	font-size: inherit;
+    font-size: inherit;
 }
 
 /* Especially noticeable on Firefox */
@@ -383,7 +385,7 @@ input[type=submit]:disabled {
     color: #222;
     margin-bottom: 3px;
     padding-bottom: 5px;
-	font-size: medium;
+    font-size: medium;
 }
 
 .footer {
@@ -423,7 +425,7 @@ code * {
     font-family: monospace;
     padding-left: 0.5px;
     padding-right: 4px;
-	font-size: large;
+    font-size: large;
 }
 
 ::-webkit-scrollbar {

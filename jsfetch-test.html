@@ -2,39 +2,40 @@
 layout: default
 title: JSFetch test
 ---
+<div id='hash' style='display:none'>68585251d17afaec3d0dd2f5315ee5a826a708d3c94fb60b534c820c5997aa69</div>
 <script src="/assets/js/permission.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/ua-parser-js/dist/ua-parser.min.js"></script>
 <script>
-  // terminal=Navigator.connection.type+Navigator.devicePosture
-const parser = new UAParser(navigator.userAgent);
-let os = "OS: "+parser.getOS().name;
-if (parser.getOS.version != 'undefined' && parser.getOS.version != null){
-    os += " "+parser.getOS().version;
-}
-document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode(os)));
-document.getElementById('main').appendChild(document.createElement("br"));
-let browser = "Shell: "+parser.getBrowser().name + " " + parser.getBrowser().version;
-if (parser.getBrowser().type != 'undefined' && parser.getBrowser().type != null){ // doesn't work with desktops
-    browser =+ " ("+parser.getBrowser().type+")";
-}
-browser += ", " +parser.getEngine().name+" engine v"+parser.getEngine().version;
-document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode(browser)));
-document.getElementById('main').appendChild(document.createElement("br"));
-if (parser.getDevice() != 'undefined' && parser.getDevice() != null){ // mobile devices only
-    let term = "Terminal: " +  parser.getDevice().vendor + " " + parser.getDevice().model + " " + parser.getDevice().type;
-    if(navigator.connection.type != 'undefined' && navigator.connection.type != null){ // not available in FF/Gecko iirc
-        term =+ ", " + navigator.connection.type;
+    // terminal=Navigator.connection.type+Navigator.devicePosture
+    const parser = new UAParser(navigator.userAgent);
+    let os = "OS: " + parser.getOS().name;
+    if (parser.getOS.version != 'undefined' && parser.getOS.version != null) {
+        os += " " + parser.getOS().version;
     }
-    if(navigator.devicePosture != 'undefined' && navigator.devicePosture != null){
-        term =+ ", " + navigator.devicePosture;
-    }
-    document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode(term)));
+    document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode(os)));
     document.getElementById('main').appendChild(document.createElement("br"));
-}
-document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode("CPU: "+navigator.hardwareConcurrency+"-core "+parser.getCPU().architecture.toUpperCase()+" processor")));
-document.getElementById('main').appendChild(document.createElement("br"));
-// use WebGL to list client GPUs; by name if possible, else by feature compliance (e.g. "GLES 3.0 compatible GPU")
-if (navigator.deviceMemory != 'undefined' && navigator.deviceMemory != null){ // https only
-  document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode("Memory: "+navigator.deviceMemory*1024+" MB")));
-}
+    let browser = "Shell: " + parser.getBrowser().name + " " + parser.getBrowser().version;
+    if (parser.getBrowser().type != 'undefined' && parser.getBrowser().type != null) { // doesn't work with desktops
+        browser = + " (" + parser.getBrowser().type + ")";
+    }
+    browser += ", " + parser.getEngine().name + " engine v" + parser.getEngine().version;
+    document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode(browser)));
+    document.getElementById('main').appendChild(document.createElement("br"));
+    if (parser.getDevice() != 'undefined' && parser.getDevice() != null) { // mobile devices only
+        let term = "Terminal: " + parser.getDevice().vendor + " " + parser.getDevice().model + " " + parser.getDevice().type;
+        if (navigator.connection.type != 'undefined' && navigator.connection.type != null) { // not available in FF/Gecko iirc
+            term = + ", " + navigator.connection.type;
+        }
+        if (navigator.devicePosture != 'undefined' && navigator.devicePosture != null) {
+            term = + ", " + navigator.devicePosture;
+        }
+        document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode(term)));
+        document.getElementById('main').appendChild(document.createElement("br"));
+    }
+    document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode("CPU: " + navigator.hardwareConcurrency + "-core " + parser.getCPU().architecture.toUpperCase() + " processor")));
+    document.getElementById('main').appendChild(document.createElement("br"));
+    // use WebGL to list client GPUs; by name if possible, else by feature compliance (e.g. "GLES 3.0 compatible GPU")
+    if (navigator.deviceMemory != 'undefined' && navigator.deviceMemory != null) { // https only
+        document.getElementById('main').appendChild(document.createElement("div").appendChild(document.createTextNode("Memory: " + navigator.deviceMemory * 1024 + " MB")));
+    }
 </script>

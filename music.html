@@ -32,7 +32,8 @@ mainly from the Roland SC-55/Sound Canvas.
           {% for song in site.data.music.music %}
           <tr>
             <td class="songs">
-              <audio controls src="/assets/mp3/my_music/{{ song.url }}" class="visible-music-player" preload="metadata"></audio>
+              <audio controls src="/assets/mp3/my_music/{{ song.url }}" class="visible-music-player"
+                preload="metadata"></audio>
             </td>
             <td style="text-align: center;">
               {{ song.title }}
@@ -47,9 +48,9 @@ mainly from the Roland SC-55/Sound Canvas.
               {% if song.is_on_yt == 'yes' %}
               <a href="{{ song.yt_url }}">Link</a>
               {% endif %}
-                            {% if song.is_on_yt == 'no' %}
-                            Not available
-                            {% endif %}
+              {% if song.is_on_yt == 'no' %}
+              Not available
+              {% endif %}
             </td>
             {% endfor %}
           </tr>
@@ -71,7 +72,7 @@ mainly from the Roland SC-55/Sound Canvas.
     <ul>
       <li>
         I remade the Touhou 6: EoSD soundtrack reimagining for the OPL3 synth.
-                If you want to listen to it, click
+        If you want to listen to it, click
         <a href="/projects/music/eosd_opl3.html">here</a>.
       </li>
     </ul>
