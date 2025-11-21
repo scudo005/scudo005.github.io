@@ -1,10 +1,9 @@
 var pass = prompt("Please insert the password to access this page.", "")
 var passHash = document.getElementById('hash').innerHTML
-var test = digestMessage(pass).then(
+digestMessage(pass).then(
     (result) => {
 	if (result != passHash)
 	   window.location.replace('/unauthorized.html');
-	return result
     }
 );
 async function digestMessage(message) {
