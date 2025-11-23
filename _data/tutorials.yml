@@ -1,3 +1,6 @@
 page:
   - title: How to make custom 4-channel BRSTMs (for MKWii specifically)
     url: tutorial-brstm.html
+
+  - title: How to reinstall Windows XP's MBR after removing GRUB
+    url: reset-xp-mbr-grub.html
