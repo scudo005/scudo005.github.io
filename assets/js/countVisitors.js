@@ -13,8 +13,8 @@ req.onload = () => {
 req.send();
 req.addEventListener('loadend', function () {
     //if (req.response === '') {
-      //  jsc.parentNode.appendChild(document.createElement('p').appendChild(document.createTextNode('Something went wrong. See the browser console for details.')));
-       // jsc.remove();
+       // jsc.parentNode.appendChild(document.createElement('p').appendChild(document.createTextNode('Something went wrong. See the browser console for details.')));
+       // jsc.remove(); // TODO: why is this breaking the page?
     //}
     jsc.appendChild(document.createTextNode(req.response));
 });
