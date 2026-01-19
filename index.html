@@ -29,7 +29,7 @@ Have a nice day!
 <br><br><hr><br>
 <b>Latest post:</b>&nbsp;&nbsp;{% for post in site.posts limit:1 %}<a href="{{ post.url }}">"{{ post.title }}"</a>, posted on {{ post.date | date_to_string: "ordinal", "US"}}{% endfor %}<br><br>
 <b>Latest project:</b>&nbsp;&nbsp;{% for project in site.data.projects.project reversed %}{% if forloop.first %}<a href="{{ project.url }}">{{ project.name }}</a>{% endif %}{% endfor %}<br><br>
-<b>Latest tutorial:</b>&nbsp;&nbsp;{% for tutorial in site.data.tutorials.page reversed %}{% if forloop.first %}<a href="{{ tutorial.url }}">{{ tutorial.title }}</a>{% endif %}{% endfor %}
+<b>Latest tutorial:</b>&nbsp;&nbsp;{% for tutorial in site.data.tutorials.page reversed %}{% if forloop.first %}<a href="tutorials/{{ tutorial.url }}">{{ tutorial.title }}</a>{% endif %}{% endfor %}
 
 <script>
   var sound_play2 = document.getElementById('nav_button');
