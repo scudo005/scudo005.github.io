@@ -5,9 +5,6 @@ pages:
   - title: Blog posts
     url: /blog.html
 
-  - title: About me
-    url: /me.html
-
   - title: Music
     url: /music.html
 
@@ -20,5 +17,8 @@ pages:
   - title: Tutorials
     url: /tutorials.html
 
-  - title: Links
+  - title: Recommended sites
     url: /links.html
+
+  - title: About me
+    url: /me.html
