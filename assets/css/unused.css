@@ -5,7 +5,7 @@ input[type=radio] {
     -moz-appearance: none;
     background: 0;
     border: none;
-    margin: 0;
+    margin: 0;main
     opacity: 0;
     position: fixed
 }
@@ -522,4 +522,64 @@ legend {
 
 .field-row-stacked *+* {
     margin-top: 6px
+}
+
+aside {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding: 8px;
+    display: flex;
+    align-items: stretch;
+    font-size: inherit;
+}
+
+aside .tree-view {
+    width: 100%;
+    /* TODO: Move scrollbar into the recessed region? */
+    overflow-y: scroll;
+}
+
+.component {
+    display: flex;
+    margin-top: 24px;
+}
+
+aside {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding: 8px;
+    display: flex;
+    align-items: stretch;
+    font-size: inherit;
+}
+
+aside .tree-view {
+    width: 100%;
+    /* TODO: Move scrollbar into the recessed region? */
+    overflow-y: scroll;
+}
+
+
+.example {
+    margin: 16px 0;
+    padding: 12px 24px;
+    border-left: 1px solid #808080;
+}
+
+details {
+    margin-top: 12px;
+}
+
+summary {
+    user-select: none;
+    cursor: pointer;
+    display: inline;
+}
+
+details[open] summary {
+    margin-bottom: 8px;
 }

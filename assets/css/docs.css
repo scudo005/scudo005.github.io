@@ -5,29 +5,11 @@ body {
     font-size: medium;
 }
 
-main {
-    width: 65rem;
-    margin-left: 240px;
-    margin-bottom: 60px;
-    font-size: inherit;
+#main {
+    margin: 30px 0px 25px 35.5px;
 }
 
-aside {
-    width: 200px;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    padding: 8px;
-    display: flex;
-    align-items: stretch;
-    font-size: inherit;
-}
 
-aside .tree-view {
-    width: 100%;
-    /* TODO: Move scrollbar into the recessed region? */
-    overflow-y: scroll;
-}
 
 h1 {
     margin: 12px 0;
@@ -71,11 +53,6 @@ p {
     line-height: 1.5;
 }
 
-.component {
-    display: flex;
-    margin-top: 24px;
-}
-
 blockquote {
     margin: 0 0 20px;
     padding: 20px;
@@ -86,25 +63,6 @@ blockquote footer {
     margin: 12px 0 0 12px;
 }
 
-.example {
-    margin: 16px 0;
-    padding: 12px 24px;
-    border-left: 1px solid #808080;
-}
-
-details {
-    margin-top: 12px;
-}
-
-summary {
-    user-select: none;
-    cursor: pointer;
-    display: inline;
-}
-
-details[open] summary {
-    margin-bottom: 8px;
-}
 
 button.focused {
     outline: 1px dotted #000000;
