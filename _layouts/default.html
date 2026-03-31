@@ -11,7 +11,8 @@
 	</head>
 
 	<body>
-		<script src="https://keepandroidopen.org/banner.js?size=minimal&animation=off&link=https://keepandroidopen.org" id="android"></script>
+	<header>
+		<script src="https://keepandroidopen.org/banner.js?size=minimal&animation=off&link=https://keepandroidopen.org" id="android" defer></script>
 		<div class="window">
 			<div class="title-bar">
 				<div class="title-bar-text">{{ site.title }}</div>
@@ -27,7 +28,8 @@
 				{% endfor %}
 			</div>
 		</div><br>
-
+	</header>
+	<main>
 		<div class="window">
 
 			<div class="window-body" id="main">
@@ -36,16 +38,18 @@
 		</div><br>
 		<div class="window-body">
 		</div>
-
+	</main>
+	<footer>
 		<div class="footer">
 			<div class="title-bar">
 				<div class="title-bar-text" style="text-align: left;">&copy; {{ 'now' | date: "%Y" }}<a href="https://github.com/scudo005">
 						{{ site.author }}
 					</a>
-					- Licensed under <a href="/LICENSE.txt">GPLv3</a>.&nbsp;Last updated on {{ 'now' | date: "%B %d, %Y @ %H:%M:%S" }}.&nbsp;&nbsp;<a href="/feed.xml"><img src="/assets/imgs/inline/rss.png" alt="RSS feed"></a></div>
+					- Licensed under <a href="/LICENSE.txt">GPLv3</a>.&nbsp;Last updated on {{ 'now' | date: "%B %d, %Y @ %H:%M:%S" }}.&nbsp;&nbsp;<a href="/feed.xml"><img src="/assets/imgs/inline/rss.png" alt="RSS feed" width="15" height="15"></a></div>
 			</div>
 		</div>
-		<script src="/assets/js/playAudioOnClick.js"></script>
-		<script src="/assets/js/hit.js"></script>
+	</footer>
+		<script src="/assets/js/playAudioOnClick.js" defer></script>
+		<script src="/assets/js/hit.js" defer></script>
 	</body>
 </html>

@@ -5,6 +5,7 @@
     font-family: "xp";
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     /* needed for footer */
     src: url(/assets/fonts/xp.woff) format("woff"),
         url(/assets/fonts/xp.woff2) format("woff2")
@@ -99,6 +100,7 @@ body {
 /* Hack: someone thought having a different font for bold text was a good idea */
 @font-face {
     font-family: "xp_bold";
+    font-display: swap;
     src: url(/assets/fonts/xp_bold.woff) format("woff"),
         url(/assets/fonts/xp_bold.woff2) format("woff2");
 }
