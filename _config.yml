@@ -9,6 +9,8 @@ description: Tech, art, and more.
 
 url: "https://scudo005.github.io" # update if necessary
 
+fedi_acc: "scudo@antani.cyou"
+
 # Build settings
 plugins:
   - jekyll-feed
