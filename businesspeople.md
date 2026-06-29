@@ -37,18 +37,24 @@ Since I'm an idiot, I basically got coerced into signing it the next day; I sign
 
 # Entering hell 
 
-In the mornings after this was the routine:
+In the days after this was the routine:
 
-1. Scream like crazy to train yourself to speak loudly at the phone
+1. Scream like crazy to train yourself to speak loudly at the phone while practicing the script to call the clients to take appointments
 2. Listen to some dumb fucking encouraging story from the manager 
 3. Calling people at the phone (following a script of course), which was the absolute worst part of the day (also your pay is based on your performance so _you really gotta call hundreds of people a week_)
 4. Pretend you are there to help them (because we were told CONSTANTLY that "we are not a call center")
+5. Go to their houses and basically coerce them into changing their providers through emotional manipulation ("don't you wanna save on your power bill?" "c'mon, if you need help call me up, this is my number, don't answer to call centers" "don't worry, I will take care of you and I will make you save money" "sign this so I can stop spam calls" and stuff like this)
+6. Go to sleep because you are mentally and (especially) physically demolished and can't think of anything but "god this is worse than hell I hope it's over soon"
 
 # The environment
 
 They asked of me to be very elegant and to buy a tie and moccasins. Fuck these guys to hell. They said like I had a million euros in my bank account already. Absolutely zero respect.
 
-They put A LOT of pressure to perform at all times, to sign as many contracts as you possibly can, every day. It was suffocating.
+They made us use our real everyday phones to call clients, giving us only a phone proxy to fool people into thinking it was a local number for their area and making them more likely to answer the phone.
+
+Once it happened that my manager/boss/employer/whatever brought me and the guy that was training me at client's houses to show us how to conduct business; that was 100% a flex for his expensive car and his fancy (?) music tastes. (garbage funky music.)
+
+They put A LOT of pressure to perform at all times, to call as many people and to sign as many contracts as you possibly could, every day. It was suffocating.
 
 Everyone in the company was visibly jacked up on something (mostly coffee or other stimulants, but I would not have been surprised to hear that someone was on drugs). That was very irritating. Also that made them look like they were part of the cult, which it kind of was.
 
@@ -56,10 +62,20 @@ The company was seen as this benefactor that made people save on their energy co
 
 I resigned at the end of the week. Me and the boss just shook hands and I just left. He didn't give a shit. (thank god)
 
+# The (very likely) illegal things they did
+
+Client data was very likely bought from data brokers and/or other energy providers, therefore making that data possibly illegal for the company to operate on. Of course, there was zero respect for privacy laws.
+
+Despite it being several times illegal, some contracts were completed (= adding the client's data on the contract) by making the client send us (that "us" makes me feel yucky) their power bills and IDs via WhatsApp so we could gather their data.
+
+Despite it being probably illegal, most contracts were marked as signed and done despite the fact that the only thing written on the contract was the client's signature and name, so we could write their data on the piece of paper while going from client to client.
+
+We sent over the client's data over WhatsApp and e-mails (our personal e-mail accounts and personal WhatsApp accounts, mind you) - which probably is in violation of the GDPR.
+
 # Conclusions
 
 Businesspeople are cultpeople, they develop a cult with their company paraphrased as this mighty entity that is there to help the customer, which is at the absolute bottom of the scale. 
 
-Paradoxically, the client was always viewed as this insufferable subhuman that doesn't deserve anything but contempt, while the company was its saviour, and you, the businessman, was its prophet, incapable of mistake and harbinger of the power of the mighty mothership company. It's literally how a cult works.
+Paradoxically, the client is always viewed as this insufferable subhuman that doesn't deserve anything but contempt, while the company was its saviour, and you, the businessman, was its prophet, incapable of mistake and harbinger of the power of the mighty mothership company. It's literally how a cult works.
 
 Never EVER work as a businessman. It ruins your humanity.
