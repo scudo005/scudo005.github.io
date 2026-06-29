@@ -1,5 +1,7 @@
 ---
 layout: default
+redirect_from:
+- /businesspeople.html
 title: About businesspeople
 ---
 
@@ -9,7 +11,7 @@ For barely a week I had the absolute displeasure of working at a company about s
 
 For obvious reasons, I won't mention the company or its employees by name. It's not them specifically, it's pretty much everyone that operates like this.
 
-# The beginnings
+## The beginnings
 
 The start was already bad enough: my first contact was via phone, and I couldn't understand the name of the company. That's already a red flag.
 
@@ -25,7 +27,7 @@ When I turned up, they said they "had a lot of clients lately", so I had to ente
 
 The interview went well, the boss was very upfront and kept the "backoffice work" lie. He said to come back in the afternoon so they could show me what they did on the workplace.
 
-# The castle of lies
+## The castle of lies
 
 It turned out that they were a company that sold power contracts door to door, _so they were not a transportation company_. Ugh. They also lied about their name, again.
 
@@ -35,7 +37,7 @@ I finally understood the actual name of the company, which was what we call here
 
 Since I'm an idiot, I basically got coerced into signing it the next day; I signed as a collaborator, with a lot of freedoms, a lot of bonuses... and a pay based on your performance. Red flag!
 
-# Entering hell 
+## Entering hell 
 
 In the days after this was the routine:
 
@@ -46,7 +48,7 @@ In the days after this was the routine:
 5. Go to their houses and basically coerce them into changing their providers through emotional manipulation ("don't you wanna save on your power bill?" "c'mon, if you need help call me up, this is my number, don't answer to call centers" "don't worry, I will take care of you and I will make you save money" "sign this so I can stop spam calls" and stuff like this)
 6. Go to sleep because you are mentally and (especially) physically demolished and can't think of anything but "god this is worse than hell I hope it's over soon"
 
-# The environment
+## The environment
 
 They asked of me to be very elegant and to buy a tie and moccasins. Fuck these guys to hell. They said like I had a million euros in my bank account already. Absolutely zero respect.
 
@@ -62,17 +64,17 @@ The company was seen as this benefactor that made people save on their energy co
 
 I resigned at the end of the week. Me and the boss just shook hands and I just left. He didn't give a shit. (thank god)
 
-# The (very likely) illegal things they did
+## The (very likely) illegal things they did
 
-Client data was very likely bought from data brokers and/or other energy providers, therefore making that data possibly illegal for the company to operate on. Of course, there was zero respect for privacy laws.
+- Client data was very likely bought from data brokers and/or other energy providers, therefore making that data possibly illegal for the company to operate on. Of course, there was zero respect for privacy laws.
 
-Despite it being several times illegal, some contracts were completed (= adding the client's data on the contract) by making the client send us (that "us" makes me feel yucky) their power bills and IDs via WhatsApp so we could gather their data.
+- Despite it being several times illegal, some contracts were completed (= adding the client's data on the contract) by making the client send us (that "us" makes me feel yucky) their power bills and IDs via WhatsApp so we could gather their data.
 
-Despite it being probably illegal, most contracts were marked as signed and done despite the fact that the only thing written on the contract was the client's signature and name, so we could write their data on the piece of paper while going from client to client.
+- Despite it being probably illegal, most contracts were marked as signed and done despite the fact that the only thing written on the contract was the client's signature and name, so we could write their data on the piece of paper while going from client to client.
 
-We sent over the client's data over WhatsApp and e-mails (our personal e-mail accounts and personal WhatsApp accounts, mind you) - which probably is in violation of the GDPR.
+- We sent over the client's data over WhatsApp and e-mails (our personal e-mail accounts and personal WhatsApp accounts, mind you) - which probably is in violation of the GDPR.
 
-# Conclusions
+## Conclusions
 
 Businesspeople are cultpeople, they develop a cult with their company paraphrased as this mighty entity that is there to help the customer, which is at the absolute bottom of the scale. 
 
