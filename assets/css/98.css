@@ -388,6 +388,7 @@ input[type=submit]:disabled {
     margin-bottom: 3px;
     padding-bottom: 5px;
     font-size: medium;
+    padding-right: 11px;
 }
 
 .footer {

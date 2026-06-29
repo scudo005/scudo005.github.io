@@ -4,11 +4,12 @@
 		<link rel="stylesheet" href="/assets/css/98.css">
 		<link rel="stylesheet" href="/assets/css/docs.css">
 		<link rel="stylesheet" href="/assets/css/vs.css">
+		<link rel="icon" href="/assets/imgs/favicon.ico">
 		<title>{{ site.title }} - {{ page.title }}</title>
 		<meta name="description" content="{{ site.description }}">
 		<meta name="application-name" content="{{ site.title }}">
 		<meta name="author" content="{{ site.author }}" lang="en">
-		<meta name="fediverse:creator" content="scudo@antani.cyou" />
+		<meta name="fediverse:creator" content="{{ site.fedi_acc }}">
 	</head>
 
 	<body>
@@ -46,7 +47,7 @@
 				<div class="title-bar-text" style="text-align: left;">&copy; {{ 'now' | date: "%Y" }}<a href="https://github.com/scudo005">
 						{{ site.author }}
 					</a>
-					- Licensed under <a href="/LICENSE.txt">GPLv3</a>.&nbsp;Last updated on {{ 'now' | date: "%B %d, %Y @ %H:%M:%S" }}.&nbsp;&nbsp;<a href="/feed.xml"><img src="/assets/imgs/inline/rss.png" alt="RSS feed" width="15" height="15"></a></div>
+					- Website code licensed under <a href="/CODE_LICENSE.txt">GPLv3</a>, content licensed under <a href="CONTENT_LICENSE.txt">CC BY-NC-SA 4.0</a>.&nbsp;Last updated on {{ 'now' | date: "%B %d, %Y @ %H:%M:%S" }} GMT.&nbsp;&nbsp;<a href="/feed.xml"><img src="/assets/imgs/inline/rss.png" alt="RSS feed" width="15" height="15"></a></div>
 			</div>
 		</div>
 	</footer>
