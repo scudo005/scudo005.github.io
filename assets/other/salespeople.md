@@ -2,10 +2,11 @@
 layout: default
 redirect_from:
 - /businesspeople.html
-title: About businesspeople
+- /assets/other/businesspeople/html
+title: About salespeople
 ---
 
-# About businesspeople
+# About salespeople
 
 For barely a week I had the absolute displeasure of working at a company about selling electricity and gas contracts for a local distributor to people, and I want to take note of everything that's happened.
 
@@ -54,7 +55,7 @@ They asked of me to be very elegant and to buy a tie and moccasins. Fuck these g
 
 They made us use our real everyday phones to call clients, giving us only a phone proxy to fool people into thinking it was a local number for their area and making them more likely to answer the phone.
 
-Once it happened that my manager/boss/employer/whatever brought me and the guy that was training me at client's houses to show us how to conduct business; that was 100% a flex for his expensive car and his fancy (?) music tastes. (garbage funky music.)
+Once it happened that my manager/boss/employer/whatever brought me and the guy that was training me at client's houses to show us how to conduct sales; that was 100% a flex for his expensive car and his fancy (?) music tastes. (garbage funky music.)
 
 They put A LOT of pressure to perform at all times, to call as many people and to sign as many contracts as you possibly could, every day. It was suffocating.
 
@@ -78,6 +79,6 @@ I resigned at the end of the week. Me and the boss just shook hands and I just l
 
 Businesspeople are cultpeople, they develop a cult with their company paraphrased as this mighty entity that is there to help the customer, which is at the absolute bottom of the scale. 
 
-Paradoxically, the client is always viewed as this insufferable subhuman that doesn't deserve anything but contempt, while the company was its saviour, and you, the businessman, was its prophet, incapable of mistake and harbinger of the power of the mighty mothership company. It's literally how a cult works.
+Paradoxically, the client is always viewed as this insufferable subhuman that doesn't deserve anything but contempt, while the company was its saviour, and you, the salesman, was its prophet, incapable of mistake and harbinger of the power of the mighty mothership company. It's literally how a cult works.
 
-Never EVER work as a businessman. It ruins your humanity.
+Never EVER work as a salesman. It ruins your humanity.
