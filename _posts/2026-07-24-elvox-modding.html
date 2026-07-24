@@ -1,0 +1,68 @@
+---
+layout: post
+title: Elvox 7548 video entryphone shenaningans
+---
+This video entryphone has a terrible ringtone for when the doorbell outside the door is rang, and a relative of mine wanted it changed. So, I got to work. <!--more-->
+<br><br>
+First things first: yes, there is a way to do this from the unit itself, but it's a PITA and it does not look very cool while you do it.<br><br>
+The <i>objectively much cooler</i> way to change the ringtone is by communicating with the unit via the serial port on the back:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">The device</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/elvox-back.jpg"><img src="/assets/imgs/posts/elvox-back_small.webp" alt="the back of a white slab of a plastic device, showing a mini USB port and a big ass screw terminal with wires coming out of it" class="body-photo"></a>
+	</div>
+</div>
+<br>
+As you can see, there is a mysterious mini USB port; that is just a serial interface, meant to connect to Elvox's programs. For my unit, a program called <a href="www.vimar.com/en/int/save-prog-configuration-5346122.html">SaveProg</a> is needed:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">The software</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/saveprog1.png"><img src="/assets/imgs/posts/saveprog1_small.webp" alt="screenshot of the first page of a NSIS-like installer" class="body-photo"></a>
+	</div>
+</div>
+<br>
+(yes, for some reason it is publically available. No idea why. Thanks though).<br><br>
+It installs some drivers for all the different RS232/FTDI to USB bridges:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">The drivers</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/saveprog-drivers.png"><img src="/assets/imgs/posts/saveprog-drivers_small.webp" alt="screenshot of a NSIS-like installer and the old/classic Windows XP-like driver install " class="body-photo"></a>
+	</div>
+</div>
+<br>
+And this is the full-ish interface:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">All the windows </div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/saveprog-full.png"><img src="/assets/imgs/posts/saveprog-full_small.webp" alt="screenshot of three old crusty MFC-like Windows GUIs" class="body-photo"></a>
+	</div>
+</div>
+<br>
+The window on the left is used to select which serial port you want to use, the window on the bottom right is used to tell the software with which kind of device you want to talk to (because SaveProg supports a whole host of different Elvox Due Fili devices), and the third one shows all the properties of the selected device.<br><br>
+Multiple devices can be controlled at the same time, and by the looks of it it is possible to manage different devices on the same serial port (or maybe I got it wrong? IDK I don't work for them lmao); it is surely possible to control all supported connected devices in the Device Configuration window (the one on the top right).<br><br>
+I don't have screenshots of the software actually connected to the device, so I can't tell you how to actually do what I did; suffice to say, it was a huge pain to change the damn ringtone once because the device just wouldn't show up (I assume it needs to be also connected to power and everything else?) and I'm not about to do it again for a blog post.<br><br>
+Anyway, this was my fun adventure with a video entryphone. I hope Elvox doesn't mind me :)
