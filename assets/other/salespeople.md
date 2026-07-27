@@ -77,7 +77,7 @@ I resigned at the end of the week. Me and the boss just shook hands and I just l
 
 ## Conclusions
 
-Businesspeople are cultpeople, they develop a cult with their company paraphrased as this mighty entity that is there to help the customer, which is at the absolute bottom of the scale. 
+Salespeople are cultpeople, they develop a cult with their company paraphrased as this mighty entity that is there to help the customer, which is at the absolute bottom of the scale. 
 
 Paradoxically, the client is always viewed as this insufferable subhuman that doesn't deserve anything but contempt, while the company was its saviour, and you, the salesman, was its prophet, incapable of mistake and harbinger of the power of the mighty mothership company. It's literally how a cult works.
 
