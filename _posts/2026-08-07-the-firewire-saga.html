@@ -1,0 +1,69 @@
+---
+layout: post
+title: The ASUS P8Z68-V FireWire saga
+---
+A few months ago, I got gifted a "new" desktop PC with an ASUS P8Z68-V PRO GEN/3 motherboard.
+<br><br><!--more-->
+This board is really interesting because it is recent enough to support UEFI (although not very well and I will make a future post explaining the situation) and USB3 but also old enough to still have PCI slots and... a built-in FireWire controller, a <a href="https://theretroweb.com/chips/4653">VIA VT6306</a>.<br><br>
+In order to use the FireWire functionality, a bracket that connects to a header on the motherboard has to be used; since I had an older ASUS board (a P5B-VM) that had FireWire functionality as well, I tried to use that.<br><br>
+I happen to have two digital DV cameras, so I tested them with the connector, to no avail. And they should be compatible... Here is the P5B-VM:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">P5B-VM</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/p5b-comp.jpg"><img src="/assets/imgs/posts/p5b.webp" alt="diagram showing how to connect the firewire bracket" class="body-photo"></a>
+	</div>
+</div>
+<br>
+And here is my board:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">P8Z68-V</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/p8z68v-comp.jpg"><img src="/assets/imgs/posts/p8z68v.webp" alt="diagram showing how to connect the firewire bracket; two usb looking ports show up on the bracket" class="body-photo"></a>
+	</div>
+</div>
+<br>
+As long as you plug in the second header, it should work.
+<br><br>
+I have two MiniDV cameras, one is a Canon MV700 and the other is a Panasonic NV-GS8, both with a small FireWire 400 connector for which I have a cable to connect it to a full-size FireWire 400 (AKA 1394a); said cable works with both cameras while interfacing to a 2006 MacBook Pro running iMovie HD:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">It works!</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/imovie.jpg"><img src="/assets/imgs/posts/imovie_small.webp" alt="picture of imovie hd showing on the left a frame of captured video and on the right a set of blanked out previously captured clips" class="body-photo"></a>
+	</div>
+</div>
+<br>
+As you can see, it works just fine here. (As a side note, I was using the Canon because the Panasonic has a shitass DV mechanism which is kinda loud)
+<br><br>
+When I try to connect the Panasonic camera via 1394a, nothing happens; the 1394 kernel module does not pick it up, <code>dvgrab</code> says there is no camera connected. The Canon yields a slightly different result; I get a lot of <code>Rediscovered device fw0</code> in my logs and nothing more.<br><br>
+I tried multiple things to fix the problem:
+<ul>
+  <li>I tried changing program
+    <li> I tried taking ownership and changing permissions for <code>/dev/fw0</code>
+    <li> I tried changing parameters and quirks for the 1394 kernel module (to no avail; also there is no debug parameter for this module)
+    <li>I tried changing OS; Windows 10 yields the same problem
+    <li>I checked the code for the 1394 kernel module to see if I could find some way of getting some extra logs
+</ul>
+The only hint I got was from <a href="https://github.com/lkundrak/firescope">firescope</a>, a program meant to debug the Linux kernel via FireWire, because it told me that the bus was being reset constantly. I have no idea if that is actually the problem. 
+<br><br>
+I actually have more FireWire controllers at my disposal, both on PCI cards; the first is an unnamed card based on the same VIA chipset my mainboard has, and yields the same results, and the other is <a href="https://theretroweb.com/expansioncards/s/heisei-systems-hf-1394ai"> this card</a> based on the <a href="https://theretroweb.com/chips/4681">Agere FW323</a> chip. <br><br>This card emits a loud high pitched whine that sounds like a capacitor is about to blow up when I power it on, so I have no idea if it actually works or not because I do not appreciate the idea of having my room stink for weeks because a capacitor blew up. Trust me, it's <i>bad</i>.
+<br><br>
+There are some unsourced claims that say that Windows 8/10 broke the FireWire stack somehow (despite the fact that I know for other people it just works...?) and the same goes for Linux after circa 2008 (despite the fact there was a complete from-scratch rewrite of the kernel modules that happened... well, circa 2008, funnily enough). <br><br>
+I have no idea if these claims make sense, as installing any OS on this computer is kind of a pain in the ass. Maybe XP works? I should try it. (With what drivers, though?)
