@@ -6,11 +6,11 @@ source "https://rubygems.org"
 #     bundle exec jekyll serve
 #
 # This will help ensure the proper Jekyll version is running.
-gem "bundler", "= 4.0.10"
+gem "bundler"
 # Happy Jekylling!
 gem "jekyll"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima"
+# gem "minima"
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
