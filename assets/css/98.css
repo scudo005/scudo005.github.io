@@ -387,7 +387,7 @@ input[type=submit]:disabled {
     color: #222;
     margin-bottom: 3px;
     padding-bottom: 5px;
-    font-size: medium;
+    font-size: 1.06rem;
     padding-right: 11px;
 }
 
