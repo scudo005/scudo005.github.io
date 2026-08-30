@@ -1,0 +1,59 @@
+---
+layout: post
+title: Digitizing analog video is still a giant mess
+---
+Let me get this straight: there is no perfect way to digitize analog video. There is always bound to be some loss. But it has no right to suck this much. <!--more--><br>
+<h3>The standard way is not very clear</h3>
+The preferred (and standardized) way to digitize both 525 and 625-line standard definition analog video (respectively NTSC-like and PAL/SECAM like video systems) is to refer to the ITU's <a href="https://www.itu.int/rec/r-rec-bt.601/">Rec. 601</a> standard (AKA BT.601 and several other names).<br><br>
+This document specifies how to <i>digitally sample</i> analog video; in particular, it specifies that analog video has to be digitized by sampling the luminance signal 720 times per scan line and sampling the "colour difference" signal 360 times per scan line:
+<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">The device</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/rec601-1.jpg"><img src="/assets/imgs/posts/rec601-1_small.webp" alt="a table reciting: Number of samples per digital
+active line: luminance signal, 720, each colour-difference signal, 360" class="body-photo"></a>
+	</div>
+</div>
+<br>
+The "colour difference" ITU is talking about are the gamma pre-corrected C<sub>R</sub> and C<sub>B</sub> chrominance signal; these are the two color components of an analog color video signal, that together with the luminance part compose a "composite" (or baseband!) video signal, which is then modulated with a 13.5 MHz carrier and transmitted over a wire (but not over the air; that requires extra modulation to put the composite video signal into a TV channel to be broadcast).<br><br>
+This way of representing analog video digitally is known as YC<sub>B</sub>C<sub>R</sub> 4:2:2, because the video information is split up in 3 components: the luminance "Y", the gamma-precorrected blue part of the signal "C<sub>B</sub>", and the gamma-precorrected red part of the signal "C<sub>R</sub>"<a href='#luminance'><sup>1</sup></a>&nbsp;, and for every 4 luminosity samples we have 2 blue samples and 2 red samples<a href='#ycbcr'><sup>2</sup></a>&nbsp;.
+<br><br>
+In all of this, ITU neglected to write down any recommendation for the <i>vertical</i> resolution! This is a huge problem!!
+<h3>Screen aspect ratio issues</h3>
+See, analog video (per both NTSC and PAL specifications) has a 4:3 aspect ratio; but the Rec. 601 spec is for both 4:3 and 16:9 widescreen video, and does not give any indication of any difference in sampling rates. This is on purpose to maintain compatibility with how actual widescreen analog video works.<br><br>
+Widescreen analog video works by simply cramping more horizontal information in every scanline; since no CRT screen has a defined horizontal resolution (especially black and white sets)<a href='#wide'><sup>3</sup></a>&nbsp;, widescreen-compatible sets are capable, if signaled to do so by <a href="https://en.wikipedia.org/wiki/Widescreen_signaling">special V-Blank data</a>, of showing that extra horizontal information by stretching the picture horizontally to achieve a 16:9 screen, while incompatible sets can just ignore that extra information (and do ignore it since they are physically incapable of showing it).<br><br>
+Capture cards ignore that information and don't react accordingly; some cards (like my Brooktree Bt848) have the option of horizontal oversampling to produce a widescreen digital picture; my card in particular can digitize at 960x576, which is almost a 16:10 resolution (it's off by about 0.06).<br><br>
+So, you have to know beforehand if what you are going to digitize is widescreen or not (almost always not) and if your capture card supports horizontal oversampling, and you must remember to not set oversampling where it is not needed or you will get a stretched picture.
+<h3>Pixel aspect ratio issues</h3>
+Analog video does not have pixels; but for practical purposes, during video digitizing it does. And it does not have square pixels; by some unsourced claims I have found on the internet (<a href="http://www.arachnotron.nl/videocap/doc/Karl_cap_v1_en.pdf">1</a> and <a href="https://www.cnblogs.com/freshair_cnblog/archive/2012/01/06/2314923.html">2</a>), PAL video specifically has a pixel aspect ratio of <sup>54</sup>/<sub>59</sub>, or <sup>45</sup>/<sub>48</sub>, or <sup>11</sup>/<sub>10</sub>. What? Which one is it? (Side note, <a href="https://www.mrynet.com/FTP/os/IRIX-pub/mirrors/www.realitydiluted.com/mirrors/reality.sgi.com/cpirazzi/lg/pixelaspect.html">SGI says</a> 525-line video uses a pixel aspect ratio of <sup>11</sup>/<sub>10</sub> and 625-line video uses a pixel aspect ratio of <sup>54</sup>/<sub>59</sub>).
+<br><br>
+The point to bring home is that analog video "pixels" (or more accurately, samples) are (at least it seems for PAL) to be wider than they are tall; this stretch may explain why some digital resolutions don't match a 4:3 aspect ratio when assuming square pixels.
+<h3>Common resolutions don't match 4:3 aspect ratios when assuming square pixels</h3>
+There are several resolution that are commonly suggested, and every one of it has its issues:
+<ul>
+  <li>720x576: the most common resolution, also the one used by DVDs and MiniDV tapes; it's a 5:4 picture. It's likely the correct one though, given non-square "wide" pixels.
+  <li>702x576: apparently used by MPEG (unsourced claim); it's a 39:32 picture, fairly close to 4:3.
+  <li>704x576: apparently suggested by ITU (unsourced claim); it's a 11:9 picture, even more square than the previous one.
+  <li>704x480: apparently used by all forms of digital TV (per <a href="https://www.pcmag.com/encyclopedia/term/dtv">PCMag</a>), it's a 22:15 picture (slightly widescreen)
+  <li>720x480: apparently popular with DVDs; it's a 3:2 picture, a bit thinner than widescreen. Internet says DVD player software commonly stretches this resolution to a 16:9 aspect ratio.
+</ul>
+Also: those 576 pixels of vertical resolution are nowhere to be found in Rec. 601, because that is the number of visible scanlines in a 625-line system (such as PAL); this means that they are too many for NTSC-like system. Oops!
+<h3>Frame rate and interlacing issues</h3>
+Deinterlacing <i>suuuuuuucks</i>... just use double Yadif. Good luck with progressive video. Remember: more lines, less fields per second. Progressive scan means half the lines, twice the framerate, and fields are frames, so you don't need to deinterlace.
+<h3>Conclusion</h3>
+My personal advice is: digitize in 720x576, digitally stretch to 16:9 if you have widescreen video, deinterlace if you need to, and take care to use the correct framerate for the video standard of your source.
+
+<!-- at the end of the page-->
+<br><br>
+<hr>
+<a href='#luminance'></a>
+<h5 id='luminance'><sup>1</sup>&nbsp;We work in luminance, and not in luminosity, because luminance is relative and luminosity is absolute. That is why we need to gamma-correct the red and blue signals; because we need them to be relative and not absolute.
+  <a href='#ycbcr'></a>
+  <h5 id='ycbcr'><sup>2</sup>&nbsp;High-quality analog video storage is digitized in YC<sub>B</sub>C<sub>R</sub> 4:4:4 to preserve more color information; all this also means that YC<sub>B</sub>C<sub>R</sub> 4:2:0 video via chroma subsampling is absolutely awesome because it allows us to get rid of the red part of the signal and save on bandwidth and storage.
+    <a href='#wide'></a>
+<h5 id='ycbcr'><sup>3</sup>&nbsp;Color CRTs are technically limited by the dot pitch of the shadow mask/aperture grille. Now get out of my house.
