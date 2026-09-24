@@ -1,0 +1,463 @@
+---
+layout: default
+title: Documentazione API carburanti MISE
+---
+<h1>{{ page.title }}</h1>
+Il <a href="mise.gov.it">MISE</a> ha una piattaforma dove è possibile ricercare informazioni sui carburanti. Chiaramente
+hanno anche una API pubblica, che però non è da loro documentata, quindi lo faccio io.<br><br>
+Questo è un set di endpoint REST ai quali bisogna parlare in JSON.
+<a name="fuels"></a>
+<h2>Endpoint <code style="font-size:inherit">fuels</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/fuels</code></p></b>
+<p>Metodo: GET</p>
+Qui si possono ottenere informazioni su quale codice corrisponde a quale carburante e in che modo viene erogato. Vedi
+endpoint <a href="#zona">zona</a>, <a href="#area">area</a>, <a href="#percorso">percorso</a> e <a
+    href="#impianto">impianto</a>.
+<a name="services"></a>
+<h2>Endpoint <code style="font-size:inherit">services</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/services</code></p></b>
+<p>Metodo: GET</p>
+Qui si possono ottenere informazioni su quale ID corrisponde a quale servizio disponibile presso il distributore.
+Vedi endpoint <a href="#zona">zona</a>, <a href="#area">area</a>, <a href="#percorso">percorso</a> e <a
+    href="#impianto">impianto</a>.
+<a name="region"></a>
+<h2>Endpoint <code style="font-size:inherit">region</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/region</code></p></b>
+<p>Metodo: GET</p>
+Qui si possono ottenere informazioni su quale ID corrisponde a quale regione. Vedi endpoint <a href="zona">zona</a>.
+<a name="province"></a>
+<h2>Endpoint <code style="font-size:inherit">province</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/province</code></p></b>
+<p>Metodo: GET</p>
+<p>Parametro: <b><code>regionId</code></p></b>
+Qui si possono ottenere informazioni su quale ID corrisponde a quale provincia di ogni regione, e sulla abbreviazione
+del nome di ogni provincia (es: RM per Roma). Vedi endpoint <a href="zona">zona</a>.<br><br>
+Attenzione: l'ID della provincia è relativo ad ogni regione, e bisogna passare l'ID della regione come parametro URL
+nella richiesta GET stessa.
+Ad esempio, per poter ottenere la lista delle province della Campania, bisogna fare un GET a
+<br><code>https://carburanti.mise.gov.it/ospzSearch/province?regionId=8</code>.
+<h3>Struttura delle risposte</h3>
+Risposta di esempio:<br><br>
+<pre>
+{
+    "results": [
+        {
+            "id": "AV",
+            "description": "Avellino"
+        },
+        {
+            "id": "BN",
+            "description": "Benevento"
+        },
+        {
+            "id": "CE",
+            "description": "Caserta"
+        },
+        {
+            "id": "NA",
+            "description": "Napoli"
+        },
+        {
+            "id": "SA",
+            "description": "Salerno"
+        }
+    ]
+}
+</pre>
+<a name="town"></a>
+<h2>Endpoint <code style="font-size:inherit">town</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/town</code></p></b>
+<p>Metodo: GET</p>
+<p>Parametro: <b><code>province</code></p></b>
+Qui si possono ottenere informazioni su quale codice corrisponde a quale comune di ogni provincia. Vedi endpoint <a
+    href="zona">zona</a>.<br><br>
+Attenzione: l'ID della provincia è relativo ad ogni regione, e bisogna passare l'ID della regione come parametro URL
+nella richiesta GET stessa.
+Ad esempio, per poter ottenere la lista dei comuni della provincia di Livorno, bisogna fare un GET a
+<br><code>https://carburanti.mise.gov.it/ospzSearch/town?province=LI</code>.
+<h3>Struttura delle risposte</h3>
+Risposta di esempio:<br><br>
+<pre>
+  {
+    "results": [
+        {
+            "id": "Bibbona",
+            "description": "Bibbona"
+        },
+        {
+            "id": "Campiglia Marittima",
+            "description": "Campiglia Marittima"
+        },
+        (righe omesse per brevità)
+        {
+            "id": "Sassetta",
+            "description": "Sassetta"
+        },
+        {
+            "id": "Suvereto",
+            "description": "Suvereto"
+        }
+    ]
+}
+</pre>
+<a name="allogos"></a>
+<h2>Endpoint <code style="font-size:inherit">allogos</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/allogos</code></p></b>
+<p>Metodo: GET</p>
+Qui si possono ottenere le icone di ogni distributore (es. Agip Eni, Q8, etc...)
+<h3>Struttura delle risposte</h3>
+Risposta di esempio:<br><br>
+<pre>
+{
+    "loghi": [
+        {
+            "bandieraId": 0,
+            "bandiera": "Bandiera non selezionata",
+            "isEliminabile": null,
+            "carburantiList": null,
+            "logoMarkerList": []
+        },
+        {
+            "bandieraId": 1,
+            "bandiera": "Agip Eni",
+            "isEliminabile": null,
+            "carburantiList": null,
+            "logoMarkerList": [
+                {
+                    "tipoFile": "th5",
+                    "estensione": "png",
+                    "content": (omesso per brevità)
+                },
+                {
+                    "tipoFile": "th4",
+                    "estensione": "png",
+                    "content": (omesso per brevità)
+                },
+                (omesso per brevità)
+                {
+                    "tipoFile": "logo",
+                    "estensione": "png",
+                    "content": (omesso per brevità)
+                }
+            ]
+        },
+        (omesso per brevità)
+}
+</pre>
+<h5><code>loghi</code></h5>
+Lista di tutte le icone delle catene di distributori.
+<h5><code>loghi.bandieraId</code></h5>
+ID univoco della catena di distributori.
+<h5><code>loghi.bandiera</code></h5>
+Nome della catena di distributori.
+<h5><code>loghi.isEliminabile</code></h5>
+Uso sconosciuto. Sembra essere sempre <code>null</code>.
+<h5><code>loghi.carburantiList</code></h5>
+Sembra essere sempre <code>null</code>.
+<h5><code>loghi.logoMarkerList</code></h5>
+Contiene una lista di tutte le icone associate a tale distributore.
+<h5><code>loghi.logoMarkerList.tipoFile</code></h5>
+Uso sconosciuto.
+<h5><code>loghi.logoMarkerList.estensione</code></h5>
+Specifica il formato e l'estensione dell'immagine.
+<h5><code>loghi.logoMarkerList.content</code></h5>
+Immagine codificata in base64.
+<a name="brands"></a>
+<h2>Endpoint <code style="font-size:inherit">brands</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/brands</code></p></b>
+<p>Metodo: GET</p>
+Qui si possono ottenere informazioni su quale codice corrisponde a quale catena di distributori.
+<a name="zona"></a>
+<h2>Endpoint <code style="font-size:inherit">zona</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/zona</code></p></b>
+<p>Metodo: POST</p>
+A questo endpoint si fanno richieste relative ad una zona
+geografica ristretta (eg. "in un raggio di 5km da casa mia").
+Nello specifico, la zona richiesta deve essere più piccola di 100 km<sup>2</sup>.
+<h3>Struttura delle richieste</h3>
+Questa è una richiesta di esempio:<br><br>
+<pre>
+{
+    "points": [
+        {
+            "lat": 42.24038103133198,
+            "lng": 13.690108122548217
+        }
+    ],
+    "fuelType": "1-x",
+    "priceOrder": "desc",
+    "radius": 5
+}
+</pre>
+<h5><code>points</code></h5>
+Contiene un set di coordinate cartesiane. È possibile inviare un solo set di coordinate cartesiane
+(per richiedere informazioni relative a una specifica posizione entro un certo raggio) ma anche inviare più set di
+coordinate (in modo per richiedere informazioni relative ad un'area ben specifica). Ad esempio, qui richiedo le
+informazioni di una zona quadrata:<br><br>
+<pre>
+"points": [
+    {
+        "lat": 45.55790865045476,
+        "lng": 11.986617250297979
+    },
+    {
+        "lat": 45.49826018466653,
+        "lng": 11.986617250297979
+    },
+    {
+        "lat": 45.509809985541054,
+        "lng": 12.071761293266729
+    },
+    {
+        "lat": 45.56367772582762,
+        "lng": 12.060774965141729
+    }
+]
+</pre><br>
+Questo parametro è obbligatorio.
+<h5><code>fuelType</code></h5>
+Specifica per quale tipo di carburante si cerca, e se si intende nello specifico self-service o
+servito.
+Per ottenere informazioni su quale codice corrisponde a quale carburante, basta fare una richiesta GET all'endpoint <a
+    href="#fuels">fuels.</a>
+Alcune cose da sapere:
+<ul>
+    <li>Con <code>-1</code> si richiede il self-service
+    <li>Con <code>-0</code> si richiede il servito
+    <li>Con <code>-x</code> si indica che è indifferente se è servito o self-service.
+</ul>
+Ad esempio, con questa richiesta<br><br>
+<pre>
+"fuelType": "1-0"
+</pre><br>
+si richiede un distributore con benzina e servito, mentre con<br><br>
+<pre>"fuelType": "2-x"
+</pre><br>
+si richiedono tutti i distributori che forniscono gasolio.<br><br>
+Questo parametro non è obbligatorio.
+<h5><code>priceOrder</code></h5>
+Serve a specificare se i risultati si vogliono in ordine ascendente o discendente. Si invia
+<code>desc</code> per discendente e <code>asc</code> per ascendente.<br><br>
+Questo parametro non è obbligatorio.
+<h5><code>radius</code></h5>
+Specifica il raggio della richiesta (ad es. 5km da questa posizione). Si invia il numero di
+chilometri desiderato.<br><br>
+Questo parametro è obbligatorio.
+<h5><code>service</code></h5>
+Serve a filtrare i distributori che offrono specifici servizi. Si invia l'ID del servizio richiesto
+prendendolo dall'endpoint <a href="#services">services.</a><br><br>
+Questo parametro non è obbligatorio.
+<h3>Struttura delle risposte</h3>
+Usa lo stesso formato che usa l'endpoint <a href="#area">area</a> (vedi <a href="#area_answer_fmt">qui</a>).
+<a name="area"></a>
+<h2>Endpoint <code style="font-size:inherit">area</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/area</code></p></b>
+<p>Metodo: POST</p>
+A questo endpoint si fanno richieste relative ad una zona geografica abbastanza ampia (anche a livello regionale,
+volendo).
+<h3>Struttura delle richieste</h3>
+Questa è una richiesta di esempio:<br><br>
+<pre>
+{
+    "region": 9,
+    "province": "VT",
+    "town": "Barbarano Romano",
+    "fuelType": null,
+    "service": null
+}
+</pre>
+<h5><code>region</code></h5>
+Il codice della regione, secondo il formato ottenuto dall'endpoint <a href="#province">region</a>.<br><br>
+Questo parametro è obbligatorio.
+<h5><code>province</code></h5>
+Il codice della provincia, secondo il formato ottenuto dall'endpoint <a href="#province">province</a>.<br><br>
+Questo parametro è obbligatorio.
+<h5><code>town</code></h5>
+Il codice del comune, secondo il formato ottenuto dall'endpoint <a href="#town">town</a>.<br><br>
+Questo parametro è obbligatorio.<br><br>
+<h5><code>fuelType</code></h5>
+Tipo di carburante, usa il formato dell'endpoint <a href="#zona">zona</a>.<br><br>
+Questo parametro è obbligatorio, ma può essere null.
+<h5><code>service</code></h5>
+Tipo di servizio disponibile, usa il formato dell'endpoint <a href="#zona">zona</a>.<br><br>
+Questo parametro è obbligatorio, ma può essere null.
+<a name="area_answer_fmt"></a>
+<h3>Struttura delle risposte</h3>
+Risposta di esempio:<br><br>
+<pre>
+{
+    "success": true,
+    "center": {
+        "lat": 42.249528737541915,
+        "lng": 12.061564028263092
+    },
+    "results": [
+        {
+            "id": 12125,
+            "name": "ENERPETROLI - PV BARBARANO ROMANO - VT",
+            "fuels": [
+                {
+                    "id": 123047708,
+                    "price": 2.149,
+                    "name": "Benzina",
+                    "fuelId": 1,
+                    "isSelf": true
+                },
+                {
+                    "id": 123047707,
+                    "price": 2.319,
+                    "name": "Gasolio",
+                    "fuelId": 2,
+                    "isSelf": true
+                }
+            ],
+            "location": {
+                "lat": 42.249528737541915,
+                "lng": 12.061564028263092
+            },
+            "insertDate": "2026-09-21T15:35:08+02:00",
+            "address": "STRADA PROVINCIALE BARBARANESE KM. 2,6 SNC 01010 - BARBARANO ROMANO VT",
+            "brand": "Enerpetroli",
+            "distance": null
+        }
+    ]
+}
+</pre>
+<h5><code>success</code></h5>
+Ritorna se la query ha avuto successo.
+<h5><code>center</code></h5>
+Set di coordinate cartesiane che corrispondono alla locazione geografica della zona in cui è stata effettuata la
+richiesta.
+<h5><code>results</code></h5>
+Contiene tutti i risultati.
+<h5><code>results.id</code></h5>
+ID univoco del distributore.
+<h5><code>results.name</code></h5>
+Nome del distributore.
+<h5><code>results.fuels</code></h5>
+Informazioni sui servizi di carburante forniti dal distributore.
+<h5><code>results.fuels.id</code></h5>
+ID univoco del servizio di carburante offerto dal distributore.
+<h5><code>results.fuels.price</code></h5>
+Prezzo al litro del carburante, espresso in euro con tre numeri decimali.
+<h5><code>results.fuels.name</code></h5>
+Nome del carburante erogato.
+<h5><code>results.fuels.fuelId</code></h5>
+ID del carburante, espresso nel formato che usa l'endpoint <a href="#fuels">fuels</a>.
+<h5><code>results.fuels.isSelf</code></h5>
+<code>true</code> se è self-service, <code>false</code> altrimenti.
+<h5><code>results.location</code></h5>
+Set di coordinate cartesiane dove si trova il distributore.
+<h5><code>results.insertDate</code></h5>
+Data e ora dell'ultimo aggiornamento dei prezzi, espresso in formato <a href="https://en.wikipedia.org/wiki/ISO_8601"
+    target="_blank">ISO 8601</a>.
+<h5><code>results.address</code></h5>
+Indirizzo del distributore.
+<h5><code>results.brand</code></h5>
+Catena del distributore (serve per es. distributore indipendente in franchise con Agip Eni).
+<h5><code>results.distance</code></h5>
+Distanza fra la posizione del distributore e la località specificata nella ricerca, espressa in chilometri.
+<a name="route"></a>
+<h2>Endpoint <code style="font-size:inherit">route</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/route</code></p></b>
+<p>Metodo: POST</p>
+A questo endpoint si fanno richieste relative a un percorso.
+<h3>Struttura delle richieste</h3>
+Richiesta di esempio:<br><br>
+<pre>
+{
+    "fuelType": "2-x",
+    "service": null,
+    "points": [
+        {
+            "lat": 44.12631,
+            "lng": 12.47243
+        },
+        {
+            "lat": 44.12642,
+            "lng": 12.47234
+        },
+        (omesso per brevità)
+        {
+            "lat": 44.1074,
+            "lng": 12.50849
+        },
+        {
+            "lat": 44.10708,
+            "lng": 12.50888
+        }
+    ]
+}
+</pre><br>
+Il formato è simile a quello dell'endpoint <a href="#area">area</a>.
+<h3>Struttura delle risposte</h3>
+Il formato è lo stesso di quello dell'endpoint <a href="#area">area</a>.
+<a name="highway"></a>
+<h2>Endpoint <code style="font-size:inherit">highway</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/highway</code></p></b>
+<p>Metodo: POST</p>
+A questo endpoint si fanno richieste relative a una tratta autostradale.
+<h3>Struttura delle richieste</h3>
+Richiesta di esempio:<br><br>
+<pre>
+{
+    "highwayId": "A10-23",
+    "fuelType": "4-x"
+    "priceOrder": "desc",
+    "service": "2"
+}
+</pre>
+<h5><code>highwayId</code></h5>
+Il codice che identifica l'autostrada e la tratta. Se la tratta non viene specificata, viene inviato solo il nome
+dell'autostrada (es. A10 nel caso di esempio).<br><br>
+Questo parametro è obbligatorio.
+<h5><code>fuelType</code></h5>
+Tipo di carburante, usa il formato dell'endpoint <a href="#zona">zona</a>.<br><br>
+Questo parametro è obbligatorio.
+<h5><code>priceOrder</code></h5>
+Serve a specificare se i risultati si vogliono in ordine ascendente o discendente. Si invia
+<code>desc</code> per discendente e <code>asc</code> per ascendente.<br><br>
+Questo parametro non è obbligatorio.
+<h5><code>service</code></h5>
+Tipo di servizio disponibile, usa il formato dell'endpoint <a href="#zona">zona</a>.<br><br>
+Questo parametro non è obbligatorio.
+<h3>Struttura delle risposte</h3>
+Il formato è lo stesso di quello dell'endpoint <a href="#area">area</a>.<br><br>
+<a name="servicearea"></a>
+<h2>Endpoint <code style="font-size:inherit">servicearea</code></h2>
+<p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/servicearea</code></p></b>
+<p>Metodo: POST</p>
+A questo endpoint si fanno richieste relative a uno specifico "impianto" (AKA distributore).
+<h3>Struttura delle richieste</h3>
+Richiesta di esempio:<br><br>
+<pre>
+{
+    "brand": "125",
+    "region": 14,
+    "province": null,
+    "fuelType": "1-1",
+    "priceOrder": "desc",
+    "service": "2"
+}
+</pre>
+<h5><code>brand</code></h5>
+Il codice della catena, secondo il formato dell'endpoint <a href="#brands">brands</a>.<br><br>
+Questo parametro è obbligatorio.
+<h5><code>region</code></h5>
+Il codice della regione, secondo il formato dell'endpoint <a href="#region">region</a>.<br><br>
+Questo parametro è obbligatorio.
+<h5><code>province</code></h5>
+Il codice della provincia, secondo il formato dell'endpoint <a href="#province">province</a>.<br><br>
+Questo parametro è obbligatorio, ma può essere null.
+<h5><code>fuelType</code></h5>
+Tipo di carburante, usa il formato dell'endpoint <a href="#zona">zona</a>.<br><br>
+Questo parametro non è obbligatorio.
+<h5><code>priceOrder</code></h5>
+Serve a specificare se i risultati si vogliono in ordine ascendente o discendente. Si invia
+<code>desc</code> per discendente e <code>asc</code> per ascendente.<br><br>
+Questo parametro non è obbligatorio.
+<h5><code>service</code></h5>
+Tipo di servizio disponibile, usa il formato dell'endpoint <a href="#zona">zona</a>.<br><br>
+Questo parametro non è obbligatorio.
+<h3>Struttura delle risposte</h3>
+Il formato è lo stesso di quello dell'endpoint <a href="#area">area</a>.

@@ -34,6 +34,13 @@ Here you can have a brief overview of all the projects I have published on this 
           {% endif %}
             {% endfor %}
         </ul>
+        <ul class="project-list">
+          {% for project in site.data.projects.project %}
+          {% if project.type == 'Software' %}
+          <li><a href="{{ project.url }}">{{ project.name }}</a></li>
+          {% endif %}
+            {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
