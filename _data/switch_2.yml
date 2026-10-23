@@ -43,3 +43,11 @@ facts:
   - title: "Team Cherry blows up every single online games store - Nintendo eShop included - by releasing Hollow Knight: Silksong"
     date: September 4, 2025
     description: <a href="https://www.polygon.com/steam-down-hollow-knight-silksong-release-nintendo-eshop-crash/">The Nintendo eShop did go down for a while (and Steam as well).</a> Funniest stuff I've seen in a while. (this list was too grim)
+
+  - title: Switch 2 jailbreak proof of concept is released
+    date: October 23. 2026
+    description: Programmer Sammy Hajhamid releases <a href="https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/">a proof of concept exploit</a> for running code with sysmodule privileges the Nintendo Switch 2 using a vulnerability in SmileBASIC, a Switch 1 game, largely made using Codex AI. Later the same day, the exploit code <a href="https://gitlab.com/pepsipu/ns2jb">is released</a>.
+
+  - title: SmileBASIC gets removed from the Switch 2's eShop
+    date: October 24, 2026
+    description: Well, you read the title.
