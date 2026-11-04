@@ -7,8 +7,14 @@
     font-weight: 700;
     font-display: swap;
     /* needed for footer */
-    src: url(/assets/fonts/xp.woff) format("woff"),
-        url(/assets/fonts/xp.woff2) format("woff2")
+    src: url(/assets/fonts/xp.woff2) format("woff2")
+}
+
+@font-face {
+    font-family: "mf";
+    font-weight: 800;
+    font-style: normal;
+    src: url(/assets/fonts/monof55.ttf);
 }
 
 i {
@@ -97,16 +103,8 @@ body {
     line-height: 1.3;
 }
 
-/* Hack: someone thought having a different font for bold text was a good idea */
-@font-face {
-    font-family: "xp_bold";
-    font-display: swap;
-    src: url(/assets/fonts/xp_bold.woff) format("woff"),
-        url(/assets/fonts/xp_bold.woff2) format("woff2");
-}
-
 b {
-    font-family: 'xp_bold';
+    font-family: inherit;
     font-size: inherit;
 }
 
@@ -150,9 +148,7 @@ select,
 table,
 textarea,
 ul.tree-view {
-    -webkit-font-smoothing: none;
-    font-smooth: never;
-    font-family: "xp", Arial;
+    font-family: "xp", Arial, Helvetica, sans-serif;
     font-size: 0.94rem;
     border: 1px solid black;
 }
@@ -389,6 +385,7 @@ input[type=submit]:disabled {
     padding-bottom: 5px;
     font-size: 1.06rem;
     padding-right: 11px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .footer {
@@ -421,6 +418,7 @@ pre {
     padding-right: 25px;
     width: fit-content;
     white-space: pre-wrap;
+    font-family: "mf", monospace;
 }
 
 code,
@@ -534,3 +532,178 @@ iframe{
     margin-top:-5px;
 }
 
+body {
+    margin: 10px;
+    padding: 10px;
+    background: #3e0000;
+    /*font-size: medium;*/
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#main {
+    margin: 30px 20px 25px 35.5px;
+    
+}
+
+
+
+h1 {
+    margin: 12px 0;
+}
+
+hr {
+    margin: 0;
+    border: none;
+    width: 400px;
+    height: 1px;
+    opacity: 0.5;
+    background: linear-gradient(to right,
+            red 20%,
+            yellow 20%,
+            yellow 36%,
+            green 36%,
+            green 60%,
+            blue 60%,
+            blue 100%);
+}
+
+h2 {
+    margin-bottom: 12px;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h3,
+h4 {
+    /* Swap the margin for a top-padding so linking to this section
+     *     results in a better scroll position */
+    padding-top: 20px;
+    margin-top: 0;
+    display: block;
+    flex: 0 0 180px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+blockquote {
+    margin: 0 0 20px;
+    padding: 20px;
+    background: #dfdfdf;
+}
+
+blockquote footer {
+    margin: 12px 0 0 12px;
+}
+
+
+button.focused {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+button.active {
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+        inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+}
+
+@media (max-width: 480px) {
+    aside {
+        display: none;
+    }
+
+    main {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding: 16px;
+    }
+
+    hr {
+        width: 100%;
+    }
+
+    p {
+        width: 100%;
+    }
+
+    h3,
+    h4 {
+        flex: 0;
+    }
+
+    .component {
+        display: block;
+        margin-top: 24px;
+    }
+
+    pre {
+        overflow-x: scroll;
+    }
+}
+/* Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name> */
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: white;
+    color: black;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-variable {
+    color: #008000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+    color: #00f;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+    color: #a31515;
+}
+
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+    color: #2b91af;
+}
+
+.hljs-doctag {
+    color: #808080;
+}
+
+.hljs-attr {
+    color: #f00;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+    color: #00b0e8;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}

@@ -34,9 +34,13 @@ Have a nice day!
 <script>
   var sound_play2 = document.getElementById('nav_button');
     if (navigator.getAutoplayPolicy(sound_play2) === 'allowed-muted' || navigator.getAutoplayPolicy(sound_play2) === 'disallowed') {
+        document.getElementById('main').appendChild(document.createElement('br'))
+        document.getElementById('main').appendChild(document.createElement('br'))
         document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode('If you want to experience the Windows XP click sounds, please allow audio autoplay. Look around the address bar area.')));
     }
     if (navigator.userAgent.includes("Mozilla/5.0 (Android")) {
+        document.getElementById('main').appendChild(document.createElement('br'))
+        document.getElementById('main').appendChild(document.createElement('br'))
         document.getElementById('main').appendChild(document.createElement('p').appendChild(document.createTextNode('Warning: this site is currently broken under Firefox for Android, and I do not know why. For an optimal experience on mobile, please use a Chromium-based browser.')));
     }
 </script>
