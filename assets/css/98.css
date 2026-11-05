@@ -17,10 +17,6 @@
     src: url(/assets/fonts/monof55.ttf);
 }
 
-i {
-    padding-right: 2px;
-}
-
 li:last-of-type {
     padding-bottom: 0px;
 }
@@ -241,7 +237,7 @@ input[type=submit].default:not(:disabled):active {
     box-shadow: inset 2px 2px #0a0a0a, inset -1px -1px #0a0a0a, inset -2px -2px #fff, inset 3px 3px grey, inset -3px -3px #dfdfdf
 }
 
-@media (not(hover)) {
+@media all and (not(hover)) {
 
     button:not(:disabled):hover,
     input[type=reset]:not(:disabled):hover,
@@ -382,9 +378,8 @@ input[type=submit]:disabled {
     margin: 10px;
     color: #222;
     margin-bottom: 3px;
-    padding-bottom: 5px;
+    padding: 5px;
     font-size: 1.06rem;
-    padding-right: 11px;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -541,11 +536,10 @@ body {
 }
 
 #main {
-    margin: 30px 20px 25px 35.5px;
-
+    margin: 30px;
+    text-align: justify;
+    text-justify: inter-word;
 }
-
-
 
 h1 {
     margin: 12px 0;
@@ -577,8 +571,6 @@ h3 {
 
 h3,
 h4 {
-    /* Swap the margin for a top-padding so linking to this section
-     *     results in a better scroll position */
     padding-top: 20px;
     margin-top: 0;
     display: block;
@@ -610,7 +602,7 @@ button.active {
         inset -2px -2px #dfdfdf, inset 2px 2px #808080;
 }
 
-@media (max-width: 500px) {
+@media all and (max-width: 500px) {
     aside {
         display: none;
     }
