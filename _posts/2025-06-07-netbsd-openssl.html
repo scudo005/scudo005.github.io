@@ -26,7 +26,9 @@ from
 					<button aria-label="Close"></button>
 				</div>
 			</div>
-			<a href="/assets/imgs/posts/openssl_crash_1.jpg"><img src="/assets/imgs/posts/openssl_crash_1_small.webp" class="body-photo" alt="gdb showing the program crashed with a SIGILL on an illegal instruction"></a>
+			<a href="/assets/imgs/posts/openssl_crash_1.jpg"><img src="/assets/imgs/posts/openssl_crash_1_small.webp"
+					class="body-photo"
+					alt="gdb showing the program crashed with a SIGILL on an illegal instruction"></a>
 		</div>
 	</div>
 </div><br>
@@ -46,7 +48,8 @@ was thrown in the first place. I ended up taking a look at the same function tha
 					<button aria-label="Close"></button>
 				</div>
 			</div>
-			<a href="/assets/imgs/posts/openssl_crash_2.jpg"><img src="/assets/imgs/posts/openssl_crash_2_small.webp" class="body-photo" alt="A decompilation showing a fcfid instruction present in the code"></a>
+			<a href="/assets/imgs/posts/openssl_crash_2.jpg"><img src="/assets/imgs/posts/openssl_crash_2_small.webp"
+					class="body-photo" alt="A decompilation showing a fcfid instruction present in the code"></a>
 		</div>
 	</div>
 </div><br>
@@ -64,7 +67,8 @@ instruction is, indeed, present only on 64-bit PowerPC CPUs, as you can see from
 					<button aria-label="Close"></button>
 				</div>
 			</div>
-			<a href="/assets/imgs/posts/fcfid.jpg"><img src="/assets/imgs/posts/fcfid_small.webp" class="body-photo" alt="IBM web page for the fcfid instruction; says 'Converts a 64-bit signed integer stored in a double into a double-precision floating-point value. This intrinsic is valid on any 64-bit PowerPC architecture.'"></a>
+			<a href="/assets/imgs/posts/fcfid.jpg"><img src="/assets/imgs/posts/fcfid_small.webp" class="body-photo"
+					alt="IBM web page for the fcfid instruction; says 'Converts a 64-bit signed integer stored in a double into a double-precision floating-point value. This intrinsic is valid on any 64-bit PowerPC architecture.'"></a>
 		</div>
 	</div>
 </div><br>
@@ -79,13 +83,15 @@ instruction.<br><br>
 					<button aria-label="Close"></button>
 				</div>
 			</div>
-			<a href="/assets/imgs/posts/openssl_crash_3.jpg"><img src="/assets/imgs/posts/openssl_crash_3_small.webp" class="body-photo" alt="GNU assembler saying 'unrecognized opcode: fcfid'"></a>
+			<a href="/assets/imgs/posts/openssl_crash_3.jpg"><img src="/assets/imgs/posts/openssl_crash_3_small.webp"
+					class="body-photo" alt="GNU assembler saying 'unrecognized opcode: fcfid'"></a>
 		</div>
 	</div>
 </div><br>
 Digging out NetBSD's source code, I can indeed confirm that
 <code>libcrypto</code>
-<a href="https://ftp.netbsd.org/pub/NetBSD/NetBSD-release-10/src/crypto/external/bsd/openssl/lib/libcrypto/arch/powerpc/ppccpuid.S" target="_blank">contains this function.</a>
+<a href="https://ftp.netbsd.org/pub/NetBSD/NetBSD-release-10/src/crypto/external/bsd/openssl/lib/libcrypto/arch/powerpc/ppccpuid.S"
+	target="_blank">contains this function.</a>
 Its scope appears to check if the CPU the OS is running on supports
 64-bit
 integer and floating point operations.
@@ -103,7 +109,9 @@ architecture, so running this function will always raise an illegal instruction 
 					<button aria-label="Close"></button>
 				</div>
 			</div>
-			<a href="/assets/imgs/posts/ppc64_probe.jpg"><img src="/assets/imgs/posts/ppc64_probe_small.webp" style="width: 50%; height: 50%;" class="body-photo" alt="Source code showing the function with the 64-bit code is targeted to any PowerPC machine supported by NetBSD"></a>
+			<a href="/assets/imgs/posts/ppc64_probe.jpg"><img src="/assets/imgs/posts/ppc64_probe_small.webp"
+					style="width: 50%; height: 50%;" class="body-photo"
+					alt="Source code showing the function with the 64-bit code is targeted to any PowerPC machine supported by NetBSD"></a>
 		</div>
 	</div>
 </div><br>

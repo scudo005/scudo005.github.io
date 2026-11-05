@@ -32,6 +32,11 @@ li:last-of-type {
 .image-block {
     width: 65%;
     margin: auto;
+
+    @media (max-device-width: 720px) {
+        width: 100%;
+        margin: auto;
+    }
 }
 
 blockquote {
@@ -189,6 +194,13 @@ h3 {
 
 h4 {
     font-size: 1.4rem
+}
+
+h3,
+h4 {
+    @media (max-device-width: 720px) {
+        flex: 0;
+    }
 }
 
 u {
@@ -414,6 +426,10 @@ pre {
     width: fit-content;
     white-space: pre-wrap;
     font-family: "mf", monospace;
+
+    @media (max-device-width: 720px) {
+        overflow-x: scroll;
+    }
 }
 
 code,
@@ -541,6 +557,15 @@ body {
     text-justify: inter-word;
 }
 
+main {
+    @media (max-device-width: 720px) {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding: 16px;
+    }
+}
+
 h1 {
     margin: 12px 0;
 }
@@ -559,6 +584,10 @@ hr {
             green 60%,
             blue 60%,
             blue 100%);
+
+    @media (max-device-width: 720px) {
+        width: 100%;
+    }
 }
 
 h2 {
@@ -579,6 +608,10 @@ h4 {
 
 p {
     line-height: 1.5;
+
+    @media (max-device-width: 720px) {
+        width: 100%;
+    }
 }
 
 blockquote {
@@ -602,43 +635,16 @@ button.active {
         inset -2px -2px #dfdfdf, inset 2px 2px #808080;
 }
 
-@media all and (max-width: 500px) {
-    aside {
+aside {
+    @media (max-device-width: 720px) {
         display: none;
     }
+}
 
-    main {
-        box-sizing: border-box;
-        width: 100%;
-        margin: 0;
-        padding: 16px;
-    }
-
-    hr {
-        width: 100%;
-    }
-
-    p {
-        width: 100%;
-    }
-
-    h3,
-    h4 {
-        flex: 0;
-    }
-
-    .component {
+.component {
+    @media (max-device-width: 720px) {
         display: block;
         margin-top: 24px;
-    }
-
-    pre {
-        overflow-x: scroll;
-    }
-
-    .image-block {
-        width: 100%;
-        margin: auto;
     }
 }
 

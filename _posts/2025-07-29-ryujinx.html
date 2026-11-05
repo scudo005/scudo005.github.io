@@ -3,7 +3,8 @@ layout: post
 title: Ryujinx can't (couldn't?) be compiled
 ---
 After Nintendo successfully managed to
-<a href="https://twitter.com/OatmealDome/status/1841186829837513017" target="_blank">close down the Ryujinx project</a>, out of curiosity I tried to compile its source code, as the repo
+<a href="https://twitter.com/OatmealDome/status/1841186829837513017" target="_blank">close down the Ryujinx project</a>,
+out of curiosity I tried to compile its source code, as the repo
 had
 been backed up and reuploaded both on GitHub and the Internet Archive.<br>
 There still were (and are) builds for Windows
@@ -42,7 +43,8 @@ Great. Another (almost) empty interface. But see that
 <code>GetCommandHandlers()</code>? That is the method that gave all those build errors before!
 <br><br>
 So I searched all references to that method; it was called only once in the whole project, inside
-<code>ServiceDispatchTables</code>, a class that should deal with command handlers relative to HorizonOS syscalls:<br><br>
+<code>ServiceDispatchTables</code>, a class that should deal with command handlers relative to HorizonOS
+syscalls:<br><br>
 <pre>
 public static ServiceDispatchTableBase Create(IServiceObject instance)
 	{
@@ -67,7 +69,8 @@ object, we need to look into
 <code>IServiceObject</code>
 to see if there are any methods called
 <code>GetCommandHandlers</code>.<br><br>
-There is indeed a method with that name, which is the only thing inside of that interface. What does that method do?<br><br>
+There is indeed a method with that name, which is the only thing inside of that interface. What does that method
+do?<br><br>
 <code>GetCommandHandlers</code>
 returns a
 <code>IReadOnlyDictionary</code>
@@ -75,7 +78,8 @@ collection; that is, a key-value pair where the key is an integer and the value 
 <code>CommandHandler</code>
 object, which is what we want to have. The problem is that this definition of
 <code>GetCommandHandlers</code>
-is defined inside of an interface, so it is the job of any class that implements that interface to also implement its methods; this means all the classes that implement all the HorizonOS syscalls have to implement
+is defined inside of an interface, so it is the job of any class that implements that interface to also implement its
+methods; this means all the classes that implement all the HorizonOS syscalls have to implement
 <code>GetCommandHandlers</code>.<br><br>
 The problem is that
 <b>no class in the whole project ever implements GetCommandHandlers.</b>

@@ -8,7 +8,7 @@ or "Main Unit Inspection Disc".<br><br>
 I decided to obtain a dump of the disk<a href='#disk'><sup>1</sup></a>&nbsp; out of curiosity; I first tried to run it
 on my Wii, where
 <a href="https://www.youtube.com/watch?v=NHOkzFMq45c" target="_blank">nothing interesting
-	happened</a>.<br><br>
+  happened</a>.<br><br>
 I then tried to run in Dolphin, where I ended up having to patch out some infinite loops. Here are all the things I had
 to fix to have the software run.
 <!--more-->
@@ -46,7 +46,8 @@ This infinite loop is probably a Dolphin inaccuracy.The loop code is then repeat
 reasons&trade;.
 <h4>Third loop (hangs while
   <code>memrange.lzs</code>
-  is on screen)</h4>
+  is on screen)
+</h4>
 <pre>
 0x8000cb6c:		lhz r0, -0x7f9c (r13) ; r0 = [r13-0x7f9c] (only lower 16 bits, load halfword and zero)
 0x8000cb70:		cmplwi r0, 0 ; is r0 zero? (unsigned; not like it matters.)
