@@ -1,0 +1,99 @@
+---
+layout: post
+title: I started reverse engineering Fortune Street (PAL) for the Wii
+---
+As the title says.<!--more--><br><br>
+I wanted to figure out if the computer players are actually cheating/rubberbanding to have close matches, so I started decompiling the game.<br>
+Since doing this sucks, I am going to write down what I find out so nobody has to do this shit again.<br><br>
+In order to make Ghidra capable of dealing with .dol executables, you need the appropriate extension (<a href="https://github.com/cuyler36/ghidra-gamecube-loader">this one</a>).
+
+<h3>Importing symbols</h3>
+
+The game uses Nintendo's relocatable sections format, and on all versions it also ships <i>two</i> symbol maps: one is called <code>main.sel</code>, which uses the SEL file format (of which I'm not sure if it was made by Nintendo or by Metrowerks, since they provided the PowerPC compiler toolset to Nintendo), and the second is called <code>homebutton.rso</code>, which contains a bunch of other maybe unused symbols and is maybe in a different format, but I haven't checked that file yet.<br><br>
+
+There is <a href="https://github.com/Megazig/WiiTools/blob/master/PythonTools/sel_parser.py">a Python 2 script</a> to extract the data out of the proprietary SEL file; to run it, you have to spin up a Python 2.7 Docker container and run it from there:<br><br>
+<pre>
+docker run --rm -it -v "$(pwd):/work" python:2.7-slim bash
+python /work/sel_parser.py main.sel > sym.txt
+</pre><br>
+The resulting output will be in this format:<br><br>
+<pre>
+=== .SEL Header ===
+prev: 00000000 -       next: 00000000 -      section_cnt: 0000001a -  section_off: 00000058
+ELF Offset: 00000128 - ELF Length: 00000008 -      Unk5: 00000001 -  Unk6: 00000000
+Unk7: 00000000 -       Unk8: 00000000 -      Unk9: 00000000 - Unk10: 00000000
+internalTableOffs: 00039e44 -      internalTablelength: 00000000 -     externalTableOffs: 00039e44 - externalTableLength: 00000000
+SymbOffset: 00000134 - SymbLength: 00039d10 - StrOffset: 00039e44 - importTableOffs: 00039e44
+importTableLength: 00000000 -      importTableNames: 000e8e0c
+
+Original ELF filename: main.elf
+
+=== Symbols ===
+_db_stack_addr 0x80841018
+_f_data 0x8044ec00
+_f_init 0x80004000
+_f_sbss 0x808173c0
+_f_text 0x80007480
+_f_bss 0x804ac880
+_f_rodata 0x8040df00
+_f_sdata2 0x80818fa0
+SDA_BASE 0x8081cc80
+_stack_end 0x8081f014
+SDA2_BASE 0x80820fa0
+_stack_addr 0x8083f018
+_f_sbss2 0x8081efe0
+_f_sdata 0x80814c80
+
+StrOffset: 0007d56d - Address: 002798f4 - Section: 00000002 - ElfHash: 00004d74 - btm_sec_pin_code_request
+StrOffset: 00084ff9 - Address: 002f44b8 - Section: 00000002 - ElfHash: 00006793 - abs
+StrOffset: 00085579 - Address: 00303014 - Section: 00000002 - ElfHash: 00006a63 - cos
+StrOffset: 000855ca - Address: 003038c0 - Section: 00000002 - ElfHash: 0000747e - nan
+StrOffset: 000addb9 - Address: 00365c38 - Section: 00000007 - ElfHash: 00007484 - nat
+StrOffset: 000855b7 - Address: 00303674 - Section: 00000002 - ElfHash: 00007767 - pow
+StrOffset: 00085594 - Address: 0030351c - Section: 00000002 - ElfHash: 000079fe - sin
+StrOffset: 00085598 - Address: 003035e8 - Section: 00000002 - ElfHash: 00007a7e - tan
+StrOffset: 00036c88 - Address: 000aeaec - Section: 00000002 - ElfHash: 0000ba49 - ShopPay__Q24Game9GameCharaFi
+StrOffset: 0005172b - Address: 001652b8 - Section: 00000002 - ElfHash: 0000c8f9 - IsOn__Q24Game13OpenCloseBaseFiiPi
+</pre><br><br>
+As you can see, this outputs physical addresses with their section. This is not very useful, so I slopped up <a href="/assets/other/convert_sel_to_ghidra.py">a script</a> to convert it to Ghidra's own format and automatically import all symbols. (Reminder to start Ghidra in Python mode.) Some symbols are skipped because they reference inexistent memory addresses, and some symbol names are truncated to deal with Ghidra's 2000 character limit for symbol names. (yes, this is a thing, apparently.). (Also, the script may output text directly, I redirected stdout and I haven't checked if it can write directly to a file and in which format it does write to a file.)
+
+<h3>Demangling symbols</h3>
+
+Now that you have most of your symbols imported, they will be mangled (because you may have overloaded functions and this will distinguish every unique symbol in your code); to do this, you may install <a href="https://github.com/npjg/Ghidra-CodeWarriorDemangler">this extension.</a><br><br>
+This is a fork of another extension (that hasn't been updated in 5 years) so it can work with the current latest version of Ghidra (12.1), but you need it to compile it yourself. Luckily there is a conveniently provided <code>build.sh</code>.<br><br>
+Not all symbols will be demangled, especially really long ones, but most of the work should have been done by this point.<br><br>
+Of course, given my amazing luck with computers, the extension didn't work correctly, so I slopped up <a href="/assets/other/DemangleCodewarrior.py">another script</a> to demangle symbols for me.
+
+<h3>Some discoveries I found</h3>
+
+<ol>
+<li> The game has a bunch of debug stuff/development leftovers, such as a billion debug strings and this very interesting function:<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">The code
+			</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/bs_dbg.jpg"><img src="/assets/imgs/posts/bs_dbg_small.webp" alt="a screenshot of ghidra showing a function called __set_debug_bba()" class="body-photo"></a>
+	</div>
+</div><br>
+<li> There is a lot of stubbed out SDK code, for some reason.
+<li> The game contains some bland anti-piracy; it only throws up an error screen mentioning an unauthorized device. Given that the game has <a href="https://tcrf.net/File:FortuneStreet-HomeConsole853_480_jpn.png">an unused anti-piracy warning</a>, I think that makes sense. I can't find the screenshot of the function right now, but it's at address <code>0x802A2760</code>.
+<li> In the middle of the Bluetooth handling code, there are some strings that suggest that the game supports/supported Bluetooth mice and keyboards, apparently...?<br><br>
+<div class="window image-block">
+	<div class="window-body">
+		<div class="title-bar">
+			<div class="title-bar-text">The code
+			</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<a href="/assets/imgs/posts/bs_bt.jpg"><img src="/assets/imgs/posts/bs_bt_small.webp" alt="a screenshot of ghidra showing strings related to mice movement and unknown keyboard scan codes" class="body-photo"></a>
+	</div>
+</div><br>
+
+</ol>
