@@ -24,7 +24,7 @@ Vedi endpoint <a href="#zona">zona</a>, <a href="#area">area</a>, <a href="#perc
 <h2>Endpoint <code style="font-size:inherit">region</code></h2>
 <p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/region</code></p></b>
 <p>Metodo: GET</p>
-Qui si possono ottenere informazioni su quale ID corrisponde a quale regione. Vedi endpoint <a href="zona">zona</a>.
+Qui si possono ottenere informazioni su quale ID corrisponde a quale regione. Vedi endpoint <a href="#zona">zona</a>.
 <a name="province"></a>
 <h2>Endpoint <code style="font-size:inherit">province</code></h2>
 <p>Indirizzo: <b><code>https://carburanti.mise.gov.it/ospzSearch/province</code></p></b>
@@ -69,7 +69,7 @@ Risposta di esempio:<br><br>
 <p>Metodo: GET</p>
 <p>Parametro: <b><code>province</code></p></b>
 Qui si possono ottenere informazioni su quale codice corrisponde a quale comune di ogni provincia. Vedi endpoint <a
-    href="zona">zona</a>.<br><br>
+    href="#zona">zona</a>.<br><br>
 Attenzione: l'ID della provincia è relativo ad ogni regione, e bisogna passare l'ID della regione come parametro URL
 nella richiesta GET stessa.
 Ad esempio, per poter ottenere la lista dei comuni della provincia di Livorno, bisogna fare un GET a <code>https://carburanti.mise.gov.it/ospzSearch/town?province=LI</code>.
